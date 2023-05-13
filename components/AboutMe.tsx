@@ -15,12 +15,12 @@ const AboutMe = () => {
             <div className="flex items-center">
               <img
                 className="h-12 w-12 rounded-full"
-                src={"/kelvin.jpg"}
+                src={"/kelvin.jpg "}
                 alt="Kelvin Ng'eno"
               />
               <div className="ml-4">
                 <h2 className="text-2xl font-bold leading-7 text-green-600 sm:text-3xl sm:truncate">
-                  Kelvin Ng'eno
+                  Kelvin Ng&apos;eno
                 </h2>
                 <div className="flex flex-wrap mt-1">
                   <div className="flex items-center text-sm mr-4">
@@ -81,31 +81,32 @@ const AboutMe = () => {
       </div>
       <div className="h-screen items-center justify-center w-full md:p-40 ">
         <p className="text-xl ">
-          Hi, I'm Kelvin Ng'eno, a skilled full stack software engineer with a
-          passion for developing{" "}
+          Hi, I&apos;m Kelvin Ng&apos;eno, a skilled full stack software
+          engineer with a passion for developing{" "}
           <span className="bg-green-600">innovative solutions</span>. I have a
           deep appreciation for the nuances of software development, and I pride
           myself on my ability to create software that is both{" "}
           <span className="bg-green-600">elegant</span> and{" "}
           <span className="bg-green-600">functional</span>. When it comes to
-          software engineering, I'm not afraid of the dark. In fact, it's
-          against a <span className="bg-green-600">dark background</span> that
-          my technical skills and creative spirit shine brightly. I navigate the
-          complex world of software engineering with ease and precision, and I'm
-          always looking for new challenges to tackle. Whether I'm working on a
-          mobile app or a web-based project, my commitment to{" "}
+          software engineering, I&apos;m not afraid of the dark. In fact,
+          it&apos;s against a{" "}
+          <span className="bg-green-600">dark background</span> that my
+          technical skills and creative spirit shine brightly. I navigate the
+          complex world of software engineering with ease and precision, and
+          I&apos;m always looking for new challenges to tackle. Whether I&apos;m
+          working on a mobile app or a web-based project, my commitment to{" "}
           <span className="bg-green-600">excellence</span> and attention to{" "}
           <span className="bg-green-600">detail</span> are evident in every line
           of code I write. I believe that the key to success in software
           development is a combination of{" "}
           <span className="bg-green-600">technical skill</span> and{" "}
-          <span className="bg-green-600">creative thinking</span>, and I'm
-          constantly pushing myself to develop both. In short, I'm a software
-          engineer who is passionate about what I do, and I'm committed to
-          delivering the{" "}
+          <span className="bg-green-600">creative thinking</span>, and I&apos;m
+          constantly pushing myself to develop both. In short, I&apos;m a
+          software engineer who is passionate about what I do, and I&apos;m
+          committed to delivering the{" "}
           <span className="bg-green-600">best possible results</span> for my
-          clients. If you're looking for a skilled and dedicated developer to
-          bring your project to life, I'd love to hear from you.
+          clients. If you&apos;re looking for a skilled and dedicated developer
+          to bring your project to life, I&apos;d love to hear from you.
         </p>
       </div>
     </section>
