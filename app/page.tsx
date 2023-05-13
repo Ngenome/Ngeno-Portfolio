@@ -42,7 +42,7 @@ function Hero() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="lg:text-left">
           <h1 className="text-4xl font-bold leading-tight tracking-tight mb-4">
-            Hi, I'm Kelvin Ng'eno
+            Hi, I&apos;m Kelvin Ng&apos;eno
           </h1>
           <p className="text-2xl mb-8">A Full Stack Software Engineer</p>
           <div className="flex justify-start">
