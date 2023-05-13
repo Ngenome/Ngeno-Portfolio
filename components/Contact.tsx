@@ -8,7 +8,10 @@ import {
 
 const ContactMe = () => {
   return (
-    <div className="flex flex-col text-white items-start justify-center h-screen">
+    <div
+      id="contact-me"
+      className="flex flex-col text-white items-start justify-center h-screen"
+    >
       <h1 className="text-4xl  font-bold mb-8">Get in touch</h1>
       <div className="flex items-center mb-4">
         <FaPhone className="text-3xl mr-4" />

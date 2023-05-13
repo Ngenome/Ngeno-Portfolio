@@ -94,7 +94,7 @@ export default function RootLayout({
           content="Kelvin Ng'eno is a skilled full stack software engineer with a passion for developing innovative solutions. Explore his portfolio to see his work and get in touch."
         />
         <meta name="twitter:image" content={`${url}/kelvin.jpg`} />
-        <title>Kelvin Ng'eno - Software Engineer Portfolio</title>
+        <title>Kelvin Ng&apos;eno - Software Engineer Portfolio</title>
         {/* logo */}
         <link rel="icon" href="/kelvin.jpg" />
       </head>

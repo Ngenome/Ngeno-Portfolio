@@ -69,7 +69,6 @@ function Hero() {
     </div>
   );
 }
-
 const ProjectView = ({
   image,
   links,
@@ -84,7 +83,7 @@ const ProjectView = ({
   time: string;
 }) => {
   return (
-    <div className="bg-white w-72 m-4  shadow overflow-hidden rounded-lg hover:bg-gray-50 duration-100 transition">
+    <div className="bg-gray-700 bg-opacity-20 text-green-600 w-72 m-4 shadow-lg overflow-hidden rounded-lg hover:bg-gray-800 duration-100 transition backdrop-blur-md ">
       <img
         className="w-full h-64 object-cover object-center"
         src={image}
@@ -92,22 +91,23 @@ const ProjectView = ({
       />
       <div className="px-4 py-5">
         <div className="font-bold text-xl mb-2">{title}</div>
-        <p className="text-gray-700 text-base">{description}</p>
+        <p className="text-gray-300 text-base">{description}</p>
         <div className="flex justify-between mt-4">
           <div className="flex flex-col">
             {links.map((link) => (
               <a
+                key={link}
                 href={link}
                 target="_blank"
                 rel="noreferrer"
-                className="text-blue-500 hover:text-blue-700"
+                className="text-blue-500 hover:text-blue-300"
               >
                 {link}
               </a>
             ))}
           </div>
 
-          <div className="text-gray-600">{time}</div>
+          <div className="text-gray-400">{time}</div>
         </div>
       </div>
     </div>

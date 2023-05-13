@@ -40,7 +40,7 @@ function PortfolioMetaTags() {
         name="twitter:image"
         content="https://yourdomain.com/path/to/your/image.jpg"
       />
-      <title>Kelvin Ng'eno - Software Engineer Portfolio</title>
+      <title>Kelvin Ng&apos;eno - Software Engineer Portfolio</title>
     </Head>
   );
 }

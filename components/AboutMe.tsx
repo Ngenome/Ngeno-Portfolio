@@ -8,7 +8,10 @@ import profilePic from "./profile-pic.jpg";
 
 const AboutMe = () => {
   return (
-    <section className="w-screen bg-gray-900 text-white py-16 px-4 sm:px-6 lg:px-8">
+    <section
+      id="about-me"
+      className="w-screen bg-gray-900 text-white py-16 px-4 sm:px-6 lg:px-8"
+    >
       <div className="max-w-7xl mx-auto">
         <div className="lg:flex lg:items-center lg:justify-between">
           <div className="flex-1 min-w-0">
