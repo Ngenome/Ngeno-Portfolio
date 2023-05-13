@@ -94,9 +94,9 @@ const ProjectView = ({
         <p className="text-gray-300 text-base">{description}</p>
         <div className="flex justify-between mt-4">
           <div className="flex flex-col">
-            {links.map((link) => (
+            {links.map((link, index) => (
               <a
-                key={link}
+                key={index}
                 href={link}
                 target="_blank"
                 rel="noreferrer"
@@ -190,7 +190,7 @@ export default function Home() {
 
         <div className="flex flex-row flex-wrap ">
           {projects.map((e, i) => {
-            return <ProjectView {...e} />;
+            return <ProjectView key={i} {...e} />;
           })}
         </div>
       </div>
