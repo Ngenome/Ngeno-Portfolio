@@ -82,7 +82,7 @@ const AboutMe = () => {
           </div>
         </div>
       </div>
-      <div className="h-screen items-center justify-center w-full md:p-40 ">
+      <div className="min-h-screen items-center justify-center w-full md:p-40 ">
         <p className="text-xl ">
           Hi, I&apos;m Kelvin Ng&apos;eno, a skilled full stack software
           engineer with a passion for developing{" "}
