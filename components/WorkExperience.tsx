@@ -4,13 +4,23 @@ const WorkExperience = () => {
   const experiences = [
     {
       id: 1,
+      company: "Dissolve Software",
+      companyUrl: "https://www.dissolvesoftware.com/",
+      position: "Founder",
+      duration: "January 2024 - Present",
+      mode: "_",
+      description:
+        "Dissolve Software is a software company that builds software for clients. I have worked on a number of projects including a farm management software, a construction company website and mobile app, a job procurement app, and a laundry app. I have also worked on a number of other projects.",
+    },
+    {
+      id: "#2",
       company: "M-jenzi",
-      companyUrl: "https://www.mjenzi.co/",
-      position: "Front End & Backend Engineer",
-      duration: "Jan 2023 - May 2023",
+      companyUrl: "https://www.mjenzi.com/",
+      position: "Front End & Backend Engineer, Mobile App Developer",
+      duration: "Jan 2023 - March 2024",
       mode: "FreeLance",
       description:
-        "M-jenzi is a construction company that enables  providers in this sector to have their businesses online. I worked on the vendor dashboard. Also worked on the Nodejs backend API. ",
+        "M-jenzi is a construction company that enables  providers in this sector to have their businesses online. I worked on the Django backend API.\n\n I also developed the vendor dashboard where vendors can register, and manage the products they sell. I also developed the main website and the mobile app using React Native. \n",
     },
     {
       id: 2,

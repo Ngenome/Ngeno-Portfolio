@@ -1,6 +1,5 @@
 import Image from "next/image";
 import React from "react";
-import PropTypes from "prop-types";
 import AboutMe from "@/components/AboutMe";
 import ContactMe from "@/components/Contact";
 import { FaLaptopCode, FaMobileAlt } from "react-icons/fa";
@@ -34,11 +33,6 @@ const SkillCard: React.FC<SkillCardProps> = ({ name, icon, level }) => {
       </div>
     </div>
   );
-};
-
-SkillCard.propTypes = {
-  name: PropTypes.string.isRequired,
-  level: PropTypes.number.isRequired,
 };
 
 function Hero() {
@@ -102,13 +96,13 @@ const ProjectView = ({
                 rel="noreferrer"
                 className="text-blue-500 hover:text-blue-300"
               >
-                {link}
+                {link.slice(0, 30)}
+                {link.length > 30 ? "..." : ""}
               </a>
             ))}
           </div>
-
-          <div className="text-gray-400">{time}</div>
         </div>
+        {/* <div className="text-gray-400">{time}</div> */}
       </div>
     </div>
   );
@@ -117,47 +111,55 @@ const ProjectView = ({
 export default function Home() {
   const projects = [
     {
-      image: "https://www.wera.app/logo.png",
-
+      image: "/talent-jobzy.png",
       links: [
-        "https://www.wera.app/",
-        "https://play.google.com/store/apps/details?id=com.wera.app",
+        "https://app.talent.jobzy.africa/",
+        "https://play.google.com/store/apps/details?id=com.enochk.jobzy_talent",
       ],
-      title: "Wera app",
+      title: "Talent App",
       description:
-        "A Service and Job procurement and Ecommerce app. This is an app where you can sell and buy goods, as well as provide and / or procure services. You can also procure services too. Download on Playstore.",
-      time: "May 2023",
-    },
-    {
-      image: "/jobzy-2.png",
-      links: [
-        "https://www.jobzy.africa/",
-        "https://play.google.com/store/apps/details?id=africa.jobzy.client",
-        "https://play.google.com/store/apps/details?id=africa.jobzy.provider",
-      ],
-
-      title: "Jobzy Apps",
-      description:
-        "Jobzy is a revolutionary platform that makes it easy for people to procure services and for service providers to offer their services. With two separate apps, one for clients and another for providers, Jobzy has become the go-to solution for anyone looking for a reliable and efficient way to get things done.",
-      time: "May 2023",
+        "Talent is a Jobs platform where job seekers can find jobs and apply for them. Employers can post jobs and find candidates. I worked on the Mobile App using React Native.",
     },
     {
       image:
-        "https://play-lh.googleusercontent.com/YtnzNcR_FpRrvxjbmIgUj9QX8G6JMnwm5qExaSJwR5Cscj2RZr6wknxcjzg2qBvVV1Bp=w416-h235-rw",
-
-      links: ["https://play.google.com/store/apps/details?id=com.fnotely.app"],
-      title: "Fnotely app",
+        "https://www.agrivi.com/wp-content/uploads/2022/01/AGRIVI-Blog-How-AGRIVI-Helps-Farmers-2.webp",
+      links: ["https://mfarmz.azurewebsites.net/"],
+      title: "M-Farmz",
       description:
-        "Simple but efficient note taking app made with react native Expo. Download on Playstore.",
-      time: "May 2023",
+        "M-Farmz is a custom made farm management software I made for a client. It includes a mobile application and an admin site. It helps my client manage their farm and keep track of their farm activities, expenses, and income.",
+      time: "March 2024 - May 2024",
+    },
+
+    {
+      image: "/m-jenzi-web.png",
+
+      links: ["https://www.m-jenzi.com/"],
+      title: "M-Jenzi",
+      description:
+        "M-jenzi  is a platform that connects clients with service providers. It is a platform where clients can request services and service providers can offer their services. ",
+
+      time: "Nov 2023 - March 2024",
+    },
+
+    {
+      image: "/m-jenzi-app.png",
+      links: [
+        "https://play.google.com/store/apps/details?id=com.mjenzi.client",
+      ],
+      title: "M-Jenzi Client App",
+      description:
+        "M-jenzi  App is a mobile application where customers can purchase construction materials, request services from service providers",
     },
     {
       image: "/mjenzi.png",
-      links: ["https://mjenzivendordashboard.netlify.app/"],
+      links: [
+        "https://vendor.mjenzi.com",
+        "https://mjenzivendordashboard.netlify.app/",
+      ],
       title: "MJENZI VENDOR DASHBOARD",
       description:
         "Vendor Management Dashboard. A platform where vendors can register, and manage the products they sell. View Website.",
-      time: "May 2023",
+      time: "Jan - May 2023",
     },
   ];
 
