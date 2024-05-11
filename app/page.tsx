@@ -121,8 +121,7 @@ export default function Home() {
         "Talent is a Jobs platform where job seekers can find jobs and apply for them. Employers can post jobs and find candidates. I worked on the Mobile App using React Native.",
     },
     {
-      image:
-        "https://www.agrivi.com/wp-content/uploads/2022/01/AGRIVI-Blog-How-AGRIVI-Helps-Farmers-2.webp",
+      image: "/mfarmz.png",
       links: ["https://mfarmz.azurewebsites.net/"],
       title: "M-Farmz",
       description:
