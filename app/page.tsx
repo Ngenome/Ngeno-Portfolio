@@ -68,13 +68,11 @@ const ProjectView = ({
   links,
   title,
   description,
-  time,
 }: {
   image: string;
   links: string[];
   title: string;
   description: string;
-  time: string;
 }) => {
   return (
     <div className="bg-gray-700 bg-opacity-20 text-green-600 w-72 m-4 shadow-lg overflow-hidden rounded-lg hover:bg-gray-800 duration-100 transition backdrop-blur-md ">
@@ -126,7 +124,6 @@ export default function Home() {
       title: "M-Farmz",
       description:
         "M-Farmz is a custom made farm management software I made for a client. It includes a mobile application and an admin site. It helps my client manage their farm and keep track of their farm activities, expenses, and income.",
-      time: "March 2024 - May 2024",
     },
 
     {
@@ -136,8 +133,6 @@ export default function Home() {
       title: "M-Jenzi",
       description:
         "M-jenzi  is a platform that connects clients with service providers. It is a platform where clients can request services and service providers can offer their services. ",
-
-      time: "Nov 2023 - March 2024",
     },
 
     {
@@ -158,7 +153,6 @@ export default function Home() {
       title: "MJENZI VENDOR DASHBOARD",
       description:
         "Vendor Management Dashboard. A platform where vendors can register, and manage the products they sell. View Website.",
-      time: "Jan - May 2023",
     },
   ];
 
