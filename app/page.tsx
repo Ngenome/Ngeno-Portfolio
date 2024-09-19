@@ -113,10 +113,11 @@ export default function Home() {
       links: [
         "https://app.talent.jobzy.africa/",
         "https://play.google.com/store/apps/details?id=com.enochk.jobzy_talent",
+        "https://apps.apple.com/us/app/talent-by-jobzy/id6479216045",
       ],
       title: "Talent App",
       description:
-        "Talent is a Jobs platform where job seekers can find jobs and apply for them. Employers can post jobs and find candidates. I worked on the Mobile App using React Native.",
+        "Talent is a Jobs platform where job seekers can find jobs and apply for them. Employers can post jobs and find candidates. I worked on the Mobile App using React Native. Web, Android and iOS",
     },
     {
       image: "/mfarmz.png",
@@ -147,10 +148,10 @@ export default function Home() {
     {
       image: "/mjenzi.png",
       links: [
-        "https://vendor.mjenzi.com",
+        "https://vendor.m-jenzi.com",
         "https://mjenzivendordashboard.netlify.app/",
       ],
-      title: "MJENZI VENDOR DASHBOARD",
+      title: "M-JENZI VENDOR DASHBOARD",
       description:
         "Vendor Management Dashboard. A platform where vendors can register, and manage the products they sell. View Website.",
     },
