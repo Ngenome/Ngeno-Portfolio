@@ -71,3 +71,9 @@ body {
   font-weight: bold;
   color: #ffafbd;
 }
+@layer utilities {
+  .vertical-text {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+  }
+}

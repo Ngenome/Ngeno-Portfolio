@@ -1,0 +1,3243 @@
+Compiled Text Files - Generated on 2024-12-28 19:06:25
+Source Directory: /home/kelvin/coding/personal/Ngeno-Portfolio
+
+##########
+FILE: postcss.config.js
+FULL PATH: /home/kelvin/coding/personal/Ngeno-Portfolio/postcss.config.js
+##########
+
+module.exports = {
+  plugins: {
+    tailwindcss: {},
+    autoprefixer: {},
+  },
+}
+
+
+==========
+
+##########
+FILE: types.ts
+FULL PATH: /home/kelvin/coding/personal/Ngeno-Portfolio/types.ts
+##########
+
+// types.ts
+
+export interface Project {
+  id: string;
+  title: string;
+  description: string;
+  image: string;
+  technologies: string[];
+  links: {
+    live?: string;
+    github?: string;
+    playStore?: string;
+    appStore?: string;
+  };
+  category: "ai" | "web" | "mobile" | "all" | "design";
+  featured: boolean;
+}
+
+export interface Experience {
+  id: string;
+  role: string;
+  company: string;
+  companyUrl?: string;
+  duration: string;
+  mode: string;
+  description: string;
+  achievements: string[];
+  technologies: string[];
+}
+
+export interface Skill {
+  name: string;
+  icon: React.ComponentType;
+  category:
+    | "ai"
+    | "web"
+    | "mobile"
+    | "cloud"
+    | "other"
+    | "frontend"
+    | "design"
+    | "backend";
+}
+
+export interface SkillCategory {
+  id: string;
+  title: string;
+  description: string;
+  icon: React.ComponentType;
+}
+
+export interface SocialLink {
+  id: string;
+  name: string;
+  url: string;
+  icon: React.ComponentType;
+}
+
+
+==========
+
+##########
+FILE: next.config.js
+FULL PATH: /home/kelvin/coding/personal/Ngeno-Portfolio/next.config.js
+##########
+
+/** @type {import('next').NextConfig} */
+const nextConfig = {}
+
+module.exports = nextConfig
+
+
+==========
+
+##########
+FILE: next-env.d.ts
+FULL PATH: /home/kelvin/coding/personal/Ngeno-Portfolio/next-env.d.ts
+##########
+
+/// <reference types="next" />
+/// <reference types="next/image-types/global" />
+
+// NOTE: This file should not be edited
+// see https://nextjs.org/docs/basic-features/typescript for more information.
+
+
+==========
+
+##########
+FILE: tailwind.config.js
+FULL PATH: /home/kelvin/coding/personal/Ngeno-Portfolio/tailwind.config.js
+##########
+
+// File: tailwind.config.js
+
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: [
+    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./app/**/*.{js,ts,jsx,tsx,mdx}",
+  ],
+  theme: {
+    extend: {
+      colors: {
+        lime: {
+          // From the color scheme image
+          light: "#C0FF02",
+          DEFAULT: "#32CC32",
+          dark: "#2BA62B",
+        },
+        yellow: {
+          light: "#FFE20B",
+          DEFAULT: "#F4FF00",
+          dark: "#FFE20B",
+        },
+        surface: {
+          light: "#1A1A1A",
+          DEFAULT: "#121212",
+          dark: "#0A0A0A",
+        },
+      },
+      fontFamily: {
+        sans: ["var(--font-inter)", "system-ui"],
+        display: ["var(--font-monument)", "system-ui"],
+        mono: ["var(--font-mono)", "monospace"],
+      },
+      fontSize: {
+        // Fluid typography
+        display: [
+          "clamp(2.5rem, 8vw, 6rem)",
+          { lineHeight: "1", letterSpacing: "-0.02em", fontWeight: "600" },
+        ],
+        h1: [
+          "clamp(2rem, 5vw, 4rem)",
+          { lineHeight: "1.1", letterSpacing: "-0.02em" },
+        ],
+        h2: [
+          "clamp(1.5rem, 4vw, 3rem)",
+          { lineHeight: "1.2", letterSpacing: "-0.02em" },
+        ],
+        body: ["clamp(1rem, 1.2vw, 1.125rem)", { lineHeight: "1.5" }],
+      },
+      spacing: {
+        section: "clamp(4rem, 10vw, 8rem)",
+      },
+      height: {
+        "screen-dvh": "100dvh",
+      },
+      animation: {
+        float: "float 6s ease-in-out infinite",
+        "slide-up": "slideUp 0.8s ease-out forwards",
+        "slide-down": "slideDown 0.8s ease-out forwards",
+        "fade-in": "fadeIn 0.5s ease-out forwards",
+        "scale-in": "scaleIn 0.5s ease-out forwards",
+        "rotate-in": "rotateIn 0.8s ease-out forwards",
+      },
+      keyframes: {
+        float: {
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-20px)" },
+        },
+        slideUp: {
+          "0%": { transform: "translateY(100px)", opacity: "0" },
+          "100%": { transform: "translateY(0)", opacity: "1" },
+        },
+        slideDown: {
+          "0%": { transform: "translateY(-100px)", opacity: "0" },
+          "100%": { transform: "translateY(0)", opacity: "1" },
+        },
+        fadeIn: {
+          "0%": { opacity: "0" },
+          "100%": { opacity: "1" },
+        },
+        scaleIn: {
+          "0%": { transform: "scale(0.8)", opacity: "0" },
+          "100%": { transform: "scale(1)", opacity: "1" },
+        },
+        rotateIn: {
+          "0%": { transform: "rotate(-10deg) scale(0.8)", opacity: "0" },
+          "100%": { transform: "rotate(0) scale(1)", opacity: "1" },
+        },
+      },
+      transitionTimingFunction: {
+        "out-expo": "cubic-bezier(0.19, 1, 0.22, 1)",
+        "in-expo": "cubic-bezier(0.95, 0.05, 0.795, 0.035)",
+      },
+    },
+  },
+  plugins: [
+    function ({ addUtilities }) {
+      const newUtilities = {
+        ".text-balance": {
+          textWrap: "balance",
+        },
+        ".text-stroke": {
+          "-webkit-text-stroke": "1px currentColor",
+          color: "transparent",
+        },
+      };
+      addUtilities(newUtilities);
+    },
+  ],
+};
+
+
+==========
+
+##########
+FILE: components/Metatags.tsx
+FULL PATH: /home/kelvin/coding/personal/Ngeno-Portfolio/components/Metatags.tsx
+##########
+
+import Head from "next/head";
+
+function PortfolioMetaTags() {
+  return (
+    <Head>
+      <meta charSet="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <meta
+        name="description"
+        content="Kelvin Ng'eno is a skilled full stack software engineer with a passion for developing innovative solutions. Explore his portfolio to see his work and get in touch."
+      />
+      <meta
+        name="keywords"
+        content="Kelvin Ng'eno, software engineer, portfolio, web development, full stack development"
+      />
+      <meta name="author" content="Kelvin Ng'eno" />
+      <meta
+        property="og:title"
+        content="Kelvin Ng'eno - Software Engineer Portfolio"
+      />
+      <meta
+        property="og:description"
+        content="Kelvin Ng'eno is a skilled full stack software engineer with a passion for developing innovative solutions. Explore his portfolio to see his work and get in touch."
+      />
+      <meta
+        property="og:image"
+        content="https://yourdomain.com/path/to/your/image.jpg"
+      />
+      <meta property="og:url" content="https://yourdomain.com" />
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta
+        name="twitter:title"
+        content="Kelvin Ng'eno - Software Engineer Portfolio"
+      />
+      <meta
+        name="twitter:description"
+        content="Kelvin Ng'eno is a skilled full stack software engineer with a passion for developing innovative solutions. Explore his portfolio to see his work and get in touch."
+      />
+      <meta
+        name="twitter:image"
+        content="https://yourdomain.com/path/to/your/image.jpg"
+      />
+      <title>Kelvin Ng&apos;eno - Software Engineer Portfolio</title>
+    </Head>
+  );
+}
+
+export default PortfolioMetaTags;
+
+
+==========
+
+##########
+FILE: components/Cursor.tsx
+FULL PATH: /home/kelvin/coding/personal/Ngeno-Portfolio/components/Cursor.tsx
+##########
+
+"use client";
+
+import useCanvasCursor from "@/hooks/useCanvasCursor";
+
+const CanvasCursor = () => {
+  useCanvasCursor();
+
+  return <canvas className="pointer-events-none fixed inset-0" id="canvas" />;
+};
+export default CanvasCursor;
+
+
+==========
+
+##########
+FILE: components/Footer.tsx
+FULL PATH: /home/kelvin/coding/personal/Ngeno-Portfolio/components/Footer.tsx
+##########
+
+// File: components/Footer.tsx
+import React from "react";
+import { motion } from "framer-motion";
+import { Link as ScrollLink } from "react-scroll";
+
+const Footer = () => {
+  const currentYear = new Date().getFullYear();
+
+  const footerLinks = [
+    { label: "Home", to: "home" },
+    { label: "Work", to: "projects" },
+    { label: "Skills", to: "skills" },
+    { label: "Experience", to: "experience" },
+    { label: "Contact", to: "contact" },
+  ];
+
+  return (
+    <footer className="relative bg-surface-dark py-16 overflow-hidden">
+      {/* Top border gradient */}
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-lime-DEFAULT/20 to-transparent" />
+
+      {/* Background pattern */}
+      <div
+        className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,.02)_1px,transparent_1px),linear-gradient(to_right,rgba(255,255,255,.02)_1px,transparent_1px)] 
+                   bg-[size:4rem_4rem] opacity-20"
+      />
+
+      <div className="container mx-auto px-6">
+        <div className="grid md:grid-cols-2 gap-12 mb-12">
+          {/* Brand Section */}
+          <div>
+            <motion.a
+              href="#"
+              className="inline-block text-2xl font-display font-bold text-lime-light mb-4"
+              whileHover={{ scale: 1.05 }}
+            >
+              KN
+            </motion.a>
+            <p className="text-gray-400 max-w-md">
+              Crafting digital experiences through innovative solutions in web
+              development, mobile applications, and artificial intelligence.
+            </p>
+          </div>
+
+          {/* Quick Links */}
+          <div className="grid grid-cols-2 gap-8">
+            <div>
+              <h3 className="text-white font-medium mb-4">Quick Links</h3>
+              <ul className="space-y-2">
+                {footerLinks.map((link) => (
+                  <li key={link.to}>
+                    <ScrollLink
+                      to={link.to}
+                      spy={true}
+                      smooth={true}
+                      offset={-100}
+                      duration={1000}
+                      className="text-gray-400 hover:text-lime-light transition-colors cursor-pointer"
+                    >
+                      {link.label}
+                    </ScrollLink>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h3 className="text-white font-medium mb-4">Contact</h3>
+              <ul className="space-y-2 text-gray-400">
+                <li>
+                  <a
+                    href="tel:+254726299179"
+                    className="hover:text-lime-light transition-colors"
+                  >
+                    +254 726 299 179
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="mailto:interstellarcg@gmail.com"
+                    className="hover:text-lime-light transition-colors"
+                  >
+                    interstellarcg@gmail.com
+                  </a>
+                </li>
+                <li>Nairobi, Kenya</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom Section */}
+        <div className="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-lime-DEFAULT/10">
+          <p className="text-gray-400 text-sm mb-4 md:mb-0">
+            © {currentYear} Kelvin Ng'eno. All rights reserved.
+          </p>
+          <div className="flex items-center gap-4">
+            <motion.a
+              href="https://github.com/ngenome"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-400 hover:text-lime-light transition-colors"
+              whileHover={{ scale: 1.1 }}
+            >
+              GitHub
+            </motion.a>
+            <motion.a
+              href="https://linkedin.com/in/kelvin-ngeno"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-400 hover:text-lime-light transition-colors"
+              whileHover={{ scale: 1.1 }}
+            >
+              LinkedIn
+            </motion.a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+};
+
+export default Footer;
+
+
+==========
+
+##########
+FILE: components/Layout.tsx
+FULL PATH: /home/kelvin/coding/personal/Ngeno-Portfolio/components/Layout.tsx
+##########
+
+import React from "react";
+
+interface LayoutProps {
+  children: React.ReactNode;
+}
+
+const Layout = ({ children }: LayoutProps) => {
+  return (
+    <div className="min-h-screen bg-gray-900 text-white">
+      {/* Add any global styles or components here */}
+      <div className="flex flex-col min-h-screen">{children}</div>
+    </div>
+  );
+};
+
+export default Layout;
+
+
+==========
+
+##########
+FILE: components/projects/ProjectCard.tsx
+FULL PATH: /home/kelvin/coding/personal/Ngeno-Portfolio/components/projects/ProjectCard.tsx
+##########
+
+// File: components/projects/ProjectCard.tsx
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { FaGithub, FaGlobe, FaGooglePlay, FaAppStore } from "react-icons/fa";
+import { Project } from "@/types";
+
+interface ProjectCardProps {
+  project: Project;
+  index: number;
+}
+
+const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
+  const [isHovered, setIsHovered] = useState(false);
+
+  // Links configuration
+  const links = [
+    {
+      icon: FaGlobe,
+      url: project.links.live,
+      label: "Visit Site",
+      color: "primary",
+    },
+    {
+      icon: FaGithub,
+      url: project.links.github,
+      label: "View Code",
+      color: "accent",
+    },
+    {
+      icon: FaGooglePlay,
+      url: project.links.playStore,
+      label: "Play Store",
+      color: "primary",
+    },
+    {
+      icon: FaAppStore,
+      url: project.links.appStore,
+      label: "App Store",
+      color: "accent",
+    },
+  ].filter((link) => link.url); // Only show links that exist
+
+  return (
+    <motion.article
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{
+        duration: 0.6,
+        delay: index * 0.1,
+        ease: [0.19, 1, 0.22, 1],
+      }}
+      className="group relative"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      {/* Card Content */}
+      <div className="relative bg-surface-light rounded-2xl overflow-hidden">
+        {/* Image Section */}
+        <div className="aspect-video relative overflow-hidden">
+          <motion.img
+            src={project.image}
+            alt={project.title}
+            className="w-full h-full object-cover"
+            animate={{
+              scale: isHovered ? 1.05 : 1,
+            }}
+            transition={{ duration: 0.4 }}
+          />
+
+          {/* Overlay */}
+          <motion.div
+            className="absolute inset-0 bg-surface-dark/80 flex items-center justify-center p-6"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: isHovered ? 1 : 0 }}
+            transition={{ duration: 0.3 }}
+          >
+            {/* Links - Now always visible but animated */}
+            <div className="flex gap-4 absolute bottom-6 left-6 z-20">
+              {links.map((link, i) => (
+                <motion.a
+                  key={link.url}
+                  href={link.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`p-3 rounded-full bg-${link.color}-DEFAULT hover:bg-${link.color}-light 
+                            transition-all duration-300 text-surface-dark`}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{
+                    opacity: isHovered ? 1 : 0,
+                    y: isHovered ? 0 : 20,
+                  }}
+                  transition={{
+                    duration: 0.3,
+                    delay: i * 0.1,
+                  }}
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <link.icon className="w-5 h-5" />
+                  <span className="sr-only">{link.label}</span>
+                </motion.a>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+
+        {/* Content Section */}
+        <div className="p-6">
+          <motion.h3
+            className="font-display text-2xl font-bold text-primary-light mb-2"
+            layout
+          >
+            {project.title}
+          </motion.h3>
+
+          <motion.p className="text-sm text-gray-400 mb-4 line-clamp-2" layout>
+            {project.description}
+          </motion.p>
+
+          {/* Technologies */}
+          <div className="flex flex-wrap gap-2">
+            {project.technologies.map((tech) => (
+              <span
+                key={tech}
+                className="px-2 py-1 text-xs rounded-full bg-surface-dark 
+                         text-primary-light border border-primary-light/20"
+              >
+                {tech}
+              </span>
+            ))}
+          </div>
+        </div>
+      </div>
+    </motion.article>
+  );
+};
+
+export default ProjectCard;
+
+
+==========
+
+##########
+FILE: components/navigation/Navigation.tsx
+FULL PATH: /home/kelvin/coding/personal/Ngeno-Portfolio/components/navigation/Navigation.tsx
+##########
+
+// File: components/navigation/Navigation.tsx
+import React, { useState, useEffect } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { Link as ScrollLink } from "react-scroll";
+import { FaBars, FaTimes } from "react-icons/fa";
+
+const Navigation = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("home");
+  const [dimensions, setDimensions] = useState({ height: 0, width: 0 });
+  const { scrollY } = useScroll();
+
+  // Update dimensions on client side
+  useEffect(() => {
+    const updateDimensions = () => {
+      if (typeof window !== "undefined") {
+        setDimensions({
+          height: document.documentElement.scrollHeight,
+          width: window.innerWidth,
+        });
+      }
+    };
+
+    updateDimensions();
+    window.addEventListener("resize", updateDimensions);
+    return () => window.removeEventListener("resize", updateDimensions);
+  }, []);
+
+  // Transform values for scroll-based effects
+  const headerBg = useTransform(
+    scrollY,
+    [0, 50],
+    ["rgba(18, 18, 18, 0)", "rgba(18, 18, 18, 0.8)"]
+  );
+  const headerBlur = useTransform(scrollY, [0, 50], [0, 8]);
+
+  const navItems = [
+    { id: "home", label: "HOME" },
+    { id: "projects", label: "WORK" },
+    { id: "skills", label: "SKILLS" },
+    { id: "experience", label: "EXPERIENCE" },
+    { id: "contact", label: "CONTACT" },
+  ];
+
+  const NavLink = ({ item, onClick = () => {} }) => (
+    <ScrollLink
+      to={item.id}
+      spy={true}
+      smooth={true}
+      offset={-100}
+      duration={1000}
+      className={`relative px-4 py-2 text-sm tracking-wider cursor-pointer transition-colors duration-300
+                ${
+                  activeSection === item.id
+                    ? "text-lime-light"
+                    : "text-gray-400 hover:text-white"
+                }`}
+      onClick={onClick}
+    >
+      {item.label}
+      {activeSection === item.id && (
+        <motion.div
+          layoutId="activeSection"
+          className="absolute bottom-0 left-0 right-0 h-px bg-lime-light"
+          transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+        />
+      )}
+    </ScrollLink>
+  );
+
+  return (
+    <>
+      <motion.header
+        style={{
+          backgroundColor: headerBg,
+          backdropFilter: `blur(${headerBlur}px)`,
+        }}
+        className="fixed top-0 left-0 right-0 z-50 border-b border-lime-DEFAULT/10"
+      >
+        <nav className="container mx-auto px-6 py-4">
+          <div className="flex items-center justify-between">
+            {/* Logo */}
+            <motion.a
+              href="#"
+              className="text-2xl font-display font-bold text-lime-light"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              KN
+            </motion.a>
+
+            {/* Desktop Navigation */}
+            <div className="hidden md:flex items-center gap-2">
+              {navItems.map((item) => (
+                <NavLink key={item.id} item={item} />
+              ))}
+            </div>
+
+            {/* Mobile Menu Button */}
+            <motion.button
+              className="block md:hidden text-lime-light"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+            >
+              {isMenuOpen ? (
+                <FaTimes className="w-6 h-6" />
+              ) : (
+                <FaBars className="w-6 h-6" />
+              )}
+            </motion.button>
+          </div>
+
+          {/* Mobile Menu */}
+          <motion.div
+            initial={false}
+            animate={{
+              height: isMenuOpen ? "auto" : 0,
+              opacity: isMenuOpen ? 1 : 0,
+            }}
+            className="md:hidden overflow-hidden"
+          >
+            <div className="py-4 space-y-4">
+              {navItems.map((item) => (
+                <NavLink
+                  key={item.id}
+                  item={item}
+                  onClick={() => setIsMenuOpen(false)}
+                />
+              ))}
+            </div>
+          </motion.div>
+        </nav>
+      </motion.header>
+
+      {/* Progress Bar */}
+      {dimensions.height > 0 && (
+        <motion.div
+          className="fixed top-0 left-0 right-0 h-1 bg-lime-light origin-left z-50"
+          style={{
+            scaleX: useTransform(
+              scrollY,
+              [0, dimensions.height - window.innerHeight],
+              [0, 1]
+            ),
+          }}
+        />
+      )}
+
+      {/* Mobile menu overlay */}
+      {isMenuOpen && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="fixed inset-0 bg-black bg-opacity-50 z-40 md:hidden"
+          onClick={() => setIsMenuOpen(false)}
+        />
+      )}
+    </>
+  );
+};
+
+export default Navigation;
+
+
+==========
+
+##########
+FILE: components/common/animations.tsx
+FULL PATH: /home/kelvin/coding/personal/Ngeno-Portfolio/components/common/animations.tsx
+##########
+
+// File: components/common/animations.tsx
+import React from "react";
+import { motion } from "framer-motion";
+
+// Text that reveals character by character
+export const RevealText = ({ text, className = "" }) => {
+  return (
+    <motion.span
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true }}
+      className={`inline-block ${className}`}
+    >
+      {text.split("").map((char, i) => (
+        <motion.span
+          key={i}
+          className="inline-block"
+          variants={{
+            hidden: { opacity: 0, y: 50 },
+            visible: { opacity: 1, y: 0 },
+          }}
+          transition={{
+            duration: 0.5,
+            delay: i * 0.03,
+            ease: [0.19, 1, 0.22, 1],
+          }}
+        >
+          {char === " " ? "\u00A0" : char}
+        </motion.span>
+      ))}
+    </motion.span>
+  );
+};
+
+// Smooth underline animation
+export const AnimatedUnderline = ({ children, className = "" }) => {
+  return (
+    <span className={`relative inline-block group ${className}`}>
+      {children}
+      <motion.span
+        className="absolute bottom-0 left-0 w-full h-px bg-lime-light"
+        initial={{ scaleX: 0 }}
+        whileInView={{ scaleX: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8, ease: [0.19, 1, 0.22, 1] }}
+      />
+    </span>
+  );
+};
+
+// Fade up animation for content blocks
+export const FadeUpDiv = ({ children, delay = 0, className = "" }) => {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{
+        duration: 0.8,
+        delay,
+        ease: [0.19, 1, 0.22, 1],
+      }}
+      className={className}
+    >
+      {children}
+    </motion.div>
+  );
+};
+
+// Magnetic animation for buttons and interactive elements
+export const MagneticButton = ({ children, className = "" }) => {
+  const magneticRef = React.useRef(null);
+  const [position, setPosition] = React.useState({ x: 0, y: 0 });
+
+  const handleMouseMove = (e) => {
+    const { clientX, clientY } = e;
+    const { left, top, width, height } =
+      magneticRef.current.getBoundingClientRect();
+    const x = (clientX - (left + width / 2)) * 0.2;
+    const y = (clientY - (top + height / 2)) * 0.2;
+    setPosition({ x, y });
+  };
+
+  const handleMouseLeave = () => {
+    setPosition({ x: 0, y: 0 });
+  };
+
+  return (
+    <motion.div
+      ref={magneticRef}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      animate={{ x: position.x, y: position.y }}
+      transition={{ type: "spring", stiffness: 150, damping: 15 }}
+      className={className}
+    >
+      {children}
+    </motion.div>
+  );
+};
+
+// Staggered list animation
+export const StaggeredList = ({ children, staggerDelay = 0.1 }) => {
+  return (
+    <motion.div
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true }}
+      variants={{
+        visible: {
+          transition: {
+            staggerChildren: staggerDelay,
+          },
+        },
+      }}
+    >
+      {React.Children.map(children, (child) => (
+        <motion.div
+          variants={{
+            hidden: { opacity: 0, x: -20 },
+            visible: { opacity: 1, x: 0 },
+          }}
+          transition={{ duration: 0.5, ease: [0.19, 1, 0.22, 1] }}
+        >
+          {child}
+        </motion.div>
+      ))}
+    </motion.div>
+  );
+};
+
+// Split text animation for headings
+interface SplitHeadingProps {
+  children: React.ReactNode;
+  className?: string;
+}
+
+export const SplitHeading = ({
+  children,
+  className = "",
+}: SplitHeadingProps) => {
+  // Convert children to string and handle nested elements
+  const text = React.Children.toArray(children)
+    .map((child) => {
+      if (typeof child === "string") return child;
+      if (
+        React.isValidElement(child) &&
+        typeof child.props.children === "string"
+      ) {
+        return child.props.children;
+      }
+      return "";
+    })
+    .join(" ")
+    .split(" ")
+    .filter((word) => word.length > 0);
+
+  return (
+    <h2 className={className}>
+      {text.map((word, i) => (
+        <motion.span
+          key={i}
+          className="inline-block overflow-hidden mr-2"
+          initial={{ y: "100%" }}
+          whileInView={{ y: 0 }}
+          viewport={{ once: true }}
+          transition={{
+            duration: 1,
+            delay: i * 0.1,
+            ease: [0.19, 1, 0.22, 1],
+          }}
+        >
+          {word}
+        </motion.span>
+      ))}
+    </h2>
+  );
+};
+
+// Word by word reveal animation
+export const WordReveal = ({ text, className = "" }) => {
+  const words = text.split(" ");
+
+  return (
+    <span className={className}>
+      {words.map((word, i) => (
+        <motion.span
+          key={i}
+          className="inline-block"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{
+            duration: 0.5,
+            delay: i * 0.1,
+            ease: [0.19, 1, 0.22, 1],
+          }}
+        >
+          {word}{" "}
+        </motion.span>
+      ))}
+    </span>
+  );
+};
+
+
+==========
+
+##########
+FILE: components/common/SectionWrapper.tsx
+FULL PATH: /home/kelvin/coding/personal/Ngeno-Portfolio/components/common/SectionWrapper.tsx
+##########
+
+// File: components/common/SectionWrapper.tsx
+import React, { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
+
+interface SectionWrapperProps {
+  children: React.ReactNode;
+  className?: string;
+  effect?: "fade" | "slide" | "parallax" | "scale" | "none";
+  index?: number; // For staggered animations
+  zIndex?: number;
+  overlap?: "top" | "bottom" | "none";
+}
+
+const SectionWrapper = ({
+  children,
+  className = "",
+  effect = "fade",
+  index = 0,
+  zIndex = 0,
+  overlap = "none",
+}: SectionWrapperProps) => {
+  const sectionRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"],
+  });
+
+  // Overlap classes
+  const overlapClasses = {
+    top: "-mb-32 relative",
+    bottom: "-mt-32 relative",
+    none: "",
+  };
+
+  // Different animation variants
+  const variants = {
+    fade: {
+      hidden: { opacity: 0 },
+      visible: { opacity: 1 },
+    },
+    slide: {
+      hidden: { opacity: 0, y: 100 },
+      visible: { opacity: 1, y: 0 },
+    },
+    scale: {
+      hidden: { opacity: 0, scale: 0.8 },
+      visible: { opacity: 1, scale: 1 },
+    },
+    none: {
+      hidden: {},
+      visible: {},
+    },
+  };
+
+  // Parallax effect
+  const y = useTransform(
+    scrollYProgress,
+    [0, 1],
+    effect === "parallax" ? ["0%", "100%"] : ["0%", "0%"]
+  );
+
+  // Opacity based on scroll
+  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
+
+  return (
+    <motion.section
+      ref={sectionRef}
+      className={`relative ${overlapClasses[overlap]} ${className}`}
+      style={{ zIndex }}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: "-100px" }}
+      variants={variants[effect]}
+      transition={{
+        duration: 0.8,
+        delay: index * 0.2,
+        ease: [0.19, 1, 0.22, 1],
+      }}
+    >
+      <motion.div style={{ y, opacity }}>{children}</motion.div>
+    </motion.section>
+  );
+};
+
+export default SectionWrapper;
+
+
+==========
+
+##########
+FILE: components/sections/Contact.tsx
+FULL PATH: /home/kelvin/coding/personal/Ngeno-Portfolio/components/sections/Contact.tsx
+##########
+
+// File: components/sections/Contact.tsx
+import React, { useState } from "react";
+import { motion } from "framer-motion";
+import { SplitHeading, MagneticButton } from "@/components/common/animations";
+import { socialLinks } from "@/data/social";
+import {
+  FaEnvelope,
+  FaPhone,
+  FaMapMarkerAlt,
+  FaFileDownload,
+} from "react-icons/fa";
+
+const ContactLink = ({ icon: Icon, label, value, href, delay = 0 }) => (
+  <motion.a
+    href={href}
+    initial={{ opacity: 0, y: 20 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.8, delay }}
+    viewport={{ once: true }}
+    className="group relative flex items-start gap-4 p-6 rounded-xl bg-surface-light border border-lime-DEFAULT/10
+               hover:border-lime-DEFAULT/30 transition-all duration-300"
+  >
+    {/* Hover gradient effect */}
+    <div
+      className="absolute inset-0 rounded-xl bg-gradient-to-br from-lime-DEFAULT/5 to-transparent opacity-0 
+                   group-hover:opacity-100 transition-opacity duration-300"
+    />
+
+    <div
+      className="relative p-3 rounded-full bg-surface-dark text-lime-light group-hover:scale-110 
+                   transition-transform duration-300"
+    >
+      <Icon className="w-6 h-6" />
+    </div>
+    <div className="relative">
+      <p className="text-gray-400 text-sm mb-1">{label}</p>
+      <p className="text-white font-medium group-hover:text-lime-light transition-colors duration-300">
+        {value}
+      </p>
+    </div>
+  </motion.a>
+);
+
+const SocialLink = ({ link, index }) => (
+  <MagneticButton>
+    <motion.a
+      href={link.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      initial={{ opacity: 0, scale: 0 }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.5, delay: index * 0.1 }}
+      viewport={{ once: true }}
+      className="relative p-4 rounded-full bg-surface-light border border-lime-DEFAULT/10
+                 hover:border-lime-DEFAULT/30 transition-all duration-300 group"
+    >
+      {/* Hover effect */}
+      <div
+        className="absolute inset-0 rounded-full bg-gradient-to-br from-lime-DEFAULT/5 to-transparent 
+                     opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+      />
+      <link.icon
+        className="relative w-6 h-6 text-gray-400 group-hover:text-lime-light 
+                           transition-colors duration-300"
+      />
+
+      {/* Tooltip */}
+      <span
+        className="absolute -bottom-8 left-1/2 -translate-x-1/2 whitespace-nowrap text-sm text-gray-400 
+                     opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+      >
+        {link.name}
+      </span>
+    </motion.a>
+  </MagneticButton>
+);
+
+const ContactSection = () => {
+  const contactInfo = [
+    {
+      icon: FaPhone,
+      label: "Phone",
+      value: "+254 726 299 179",
+      href: "tel:+254726299179",
+    },
+    {
+      icon: FaEnvelope,
+      label: "Email",
+      value: "interstellarcg@gmail.com",
+      href: "mailto:interstellarcg@gmail.com",
+    },
+    {
+      icon: FaMapMarkerAlt,
+      label: "Location",
+      value: "Nairobi, Kenya",
+      href: "#",
+    },
+  ];
+
+  return (
+    <section
+      id="contact"
+      className="relative py-section bg-surface-dark overflow-hidden"
+    >
+      {/* Background Elements */}
+      <div className="absolute inset-0">
+        <div
+          className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] 
+                     from-lime-DEFAULT/5 via-transparent to-transparent"
+        />
+        {/* Grid pattern */}
+        <div
+          className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,.05)_1px,transparent_1px),linear-gradient(to_right,rgba(255,255,255,.05)_1px,transparent_1px)] 
+                     bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"
+        />
+      </div>
+
+      <div className="container mx-auto px-6">
+        <div className="relative max-w-4xl mx-auto text-center mb-24">
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-lime-light font-mono text-sm tracking-wider mb-4"
+          >
+            GET IN TOUCH
+          </motion.p>
+          <SplitHeading className="text-h1 font-display text-white mb-6">
+            Let's Create
+            <br />
+            Something Amazing
+          </SplitHeading>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="text-gray-400 text-body max-w-2xl mx-auto"
+          >
+            Have a project in mind or want to explore possibilities? I'm always
+            open to discussing new opportunities and innovative ideas.
+          </motion.p>
+        </div>
+
+        {/* Contact Info Grid */}
+        <div className="grid md:grid-cols-3 gap-6 mb-16">
+          {contactInfo.map((info, index) => (
+            <ContactLink key={info.label} {...info} delay={index * 0.2} />
+          ))}
+        </div>
+
+        {/* Social Links */}
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="flex flex-wrap justify-center items-center gap-6"
+        >
+          {socialLinks.map((link, index) => (
+            <SocialLink key={link.id} link={link} index={index} />
+          ))}
+        </motion.div>
+
+        {/* Resume Download */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.6 }}
+          viewport={{ once: true }}
+          className="text-center mt-16"
+        >
+          <MagneticButton>
+            <motion.a
+              href="/resume.pdf"
+              download
+              className="inline-flex items-center gap-3 px-8 py-4 bg-lime-DEFAULT text-surface-dark 
+                       font-medium rounded-full hover:bg-lime-light transition-colors duration-300
+                       group"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <FaFileDownload className="w-5 h-5 group-hover:animate-bounce" />
+              <span>Download Resume</span>
+            </motion.a>
+          </MagneticButton>
+        </motion.div>
+      </div>
+    </section>
+  );
+};
+
+export default ContactSection;
+
+
+==========
+
+##########
+FILE: components/sections/Projects.tsx
+FULL PATH: /home/kelvin/coding/personal/Ngeno-Portfolio/components/sections/Projects.tsx
+##########
+
+// File: components/sections/Projects.tsx
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Project } from "@/types";
+import { FaGithub, FaGlobe, FaGooglePlay, FaAppStore } from "react-icons/fa";
+import { SplitHeading } from "../common/animations";
+import { projects } from "@/data/projects";
+
+const ProjectCard = ({
+  project,
+  index,
+}: {
+  project: Project;
+  index: number;
+}) => {
+  const [isHovered, setIsHovered] = useState(false);
+
+  const links = [
+    {
+      icon: FaGlobe,
+      url: project.links.live,
+      label: "Visit Site",
+      bgColor: "bg-lime-DEFAULT hover:border-lime-light",
+    },
+    {
+      icon: FaGithub,
+      url: project.links.github,
+      label: "View Code",
+      bgColor: "bg-yellow-DEFAULT hover:border-yellow-light",
+    },
+    {
+      icon: FaGooglePlay,
+      url: project.links.playStore,
+      label: "Play Store",
+      bgColor: "bg-lime-DEFAULT hover:border-lime-light",
+    },
+    {
+      icon: FaAppStore,
+      url: project.links.appStore,
+      label: "App Store",
+      bgColor: "bg-yellow-DEFAULT hover:border-yellow-light",
+    },
+  ].filter((link) => link.url);
+
+  return (
+    <motion.article
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5, delay: index * 0.1 }}
+      className="group relative bg-surface-light rounded-xl overflow-hidden"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      {/* Project Image */}
+      <div className="aspect-video relative overflow-hidden">
+        <motion.img
+          src={project.image}
+          alt={project.title}
+          className="w-full h-full object-cover"
+          animate={{
+            scale: isHovered ? 1.1 : 1,
+          }}
+          transition={{ duration: 0.4 }}
+        />
+
+        {/* Image Overlay */}
+        <motion.div
+          className="absolute inset-0 bg-surface-dark/80 flex items-center justify-center p-6"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: isHovered ? 1 : 0 }}
+          transition={{ duration: 0.3 }}
+        >
+          <p className="text-gray-200 text-sm md:text-base">
+            {project.description}
+          </p>
+        </motion.div>
+      </div>
+
+      {/* Content */}
+      <div className="p-6">
+        <h3
+          className="text-xl font-display text-white mb-3 group-hover:text-lime-light 
+                     transition-colors duration-300"
+        >
+          {project.title}
+        </h3>
+
+        <div className="flex flex-wrap gap-2 mb-6">
+          {project.technologies.map((tech) => (
+            <span
+              key={tech}
+              className="px-3 py-1 text-xs rounded-full bg-surface-dark 
+                       text-lime-light border border-lime-DEFAULT/20"
+            >
+              {tech}
+            </span>
+          ))}
+        </div>
+
+        {/* Project Links - Always visible */}
+        <div className="flex flex-wrap gap-3">
+          {links.map((link, i) => (
+            <motion.a
+              key={link.url}
+              href={link.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`flex items-center gap-2 px-4 py-2 rounded-full ${link.bgColor} 
+                       text-surface-dark transition-all duration-300`}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <link.icon className="w-4 h-4 text-white" />
+              <span className="text-sm font-medium text-white">
+                {link.label}
+              </span>
+            </motion.a>
+          ))}
+        </div>
+      </div>
+    </motion.article>
+  );
+};
+
+const ProjectsSection = () => {
+  const [activeCategory, setActiveCategory] = useState("all");
+
+  const categories = [
+    { id: "all", label: "All Work" },
+    { id: "ai", label: "AI & ML" },
+    { id: "web", label: "Web Apps" },
+    { id: "mobile", label: "Mobile Apps" },
+  ];
+
+  const filteredProjects =
+    activeCategory === "all"
+      ? projects
+      : projects.filter((p) => p.category === activeCategory);
+
+  return (
+    <section id="projects" className="relative py-section bg-surface-dark">
+      <div className="container mx-auto px-6">
+        {/* Section Header */}
+        <div className="max-w-4xl mb-16">
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            className="text-lime-light font-mono text-sm tracking-wider mb-4"
+          >
+            FEATURED WORK
+          </motion.p>
+          <SplitHeading className="text-h1 font-display text-white mb-6">
+            Selected Projects
+          </SplitHeading>
+        </div>
+
+        {/* Category Filter */}
+        <div className="flex flex-wrap justify-start gap-3 mb-12">
+          {categories.map((category) => (
+            <motion.button
+              key={category.id}
+              onClick={() => setActiveCategory(category.id)}
+              className={`px-6 py-3 rounded-full text-sm font-medium transition-all duration-300
+                       ${
+                         activeCategory === category.id
+                           ? "bg-lime-DEFAULT text-surface-dark"
+                           : "bg-surface-light text-gray-400 hover:text-white"
+                       }`}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              {category.label}
+            </motion.button>
+          ))}
+        </div>
+
+        {/* Projects Grid */}
+        <motion.div
+          layout
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+        >
+          <AnimatePresence mode="popLayout">
+            {filteredProjects.map((project, index) => (
+              <ProjectCard key={project.id} project={project} index={index} />
+            ))}
+          </AnimatePresence>
+        </motion.div>
+      </div>
+    </section>
+  );
+};
+
+export default ProjectsSection;
+
+
+==========
+
+##########
+FILE: components/sections/Hero.tsx
+FULL PATH: /home/kelvin/coding/personal/Ngeno-Portfolio/components/sections/Hero.tsx
+##########
+
+// File: components/sections/Hero.tsx
+import React, { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import {
+  SplitHeading,
+  RevealText,
+  MagneticButton,
+} from "@/components/common/animations";
+import { FaArrowDown } from "react-icons/fa";
+
+const Hero = () => {
+  const containerRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end start"],
+  });
+
+  // Parallax effects
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
+  const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
+
+  return (
+    <section
+      ref={containerRef}
+      className="relative h-screen-dvh flex items-center justify-center overflow-hidden bg-surface-dark"
+    >
+      {/* Background grid pattern */}
+      <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(255,255,255,.03)_1px,transparent_1px),linear-gradient(180deg,rgba(255,255,255,.03)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]" />
+
+      {/* Accent circle */}
+      <div className="absolute top-1/4 -right-1/4 w-[40vw] h-[40vw] rounded-full bg-lime-DEFAULT/10 blur-3xl" />
+      <div className="absolute -bottom-1/4 -left-1/4 w-[40vw] h-[40vw] rounded-full bg-yellow-DEFAULT/10 blur-3xl" />
+
+      <motion.div
+        style={{ y, opacity }}
+        className="relative z-10 container mx-auto px-6"
+      >
+        <div className="max-w-4xl mx-auto text-center">
+          {/* Eyebrow text */}
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="text-lime-light font-mono text-sm tracking-wider mb-6"
+          >
+            FULL STACK DEVELOPER & AI ENGINEER
+          </motion.p>
+
+          {/* Main heading */}
+          <div className="mb-8">
+            <SplitHeading className="font-display text-display text-balance leading-none text-white mb-4">
+              Crafting Digital Excellence
+            </SplitHeading>
+            <RevealText
+              text="Where Code Meets Creativity"
+              className="text-yellow-light font-display text-h2 text-balance"
+            />
+          </div>
+
+          {/* Description */}
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="text-gray-400 text-body max-w-2xl mx-auto mb-12"
+          >
+            Building tomorrow's digital landscape with innovative solutions in
+            web development, mobile applications, and artificial intelligence.
+          </motion.p>
+
+          {/* CTA Buttons */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+            <MagneticButton>
+              <motion.a
+                href="#work"
+                className="inline-flex items-center gap-2 px-8 py-4 bg-lime-DEFAULT text-surface-dark 
+                         font-medium rounded-full hover:bg-lime-light transition-colors duration-300"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                View My Work
+              </motion.a>
+            </MagneticButton>
+
+            <MagneticButton>
+              <motion.a
+                href="#contact"
+                className="inline-flex items-center gap-2 px-8 py-4 border border-lime-DEFAULT/30 
+                         text-lime-light font-medium rounded-full hover:bg-lime-DEFAULT/10 
+                         transition-colors duration-300"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                Let's Connect
+              </motion.a>
+            </MagneticButton>
+          </div>
+        </div>
+      </motion.div>
+
+      {/* Scroll indicator */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1 }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+      >
+        <span className="text-gray-400 text-sm">Scroll to explore</span>
+        <motion.div
+          animate={{ y: [0, 10, 0] }}
+          transition={{ duration: 1.5, repeat: Infinity }}
+        >
+          <FaArrowDown className="text-lime-light" />
+        </motion.div>
+      </motion.div>
+    </section>
+  );
+};
+
+export default Hero;
+
+
+==========
+
+##########
+FILE: components/sections/Skills.tsx
+FULL PATH: /home/kelvin/coding/personal/Ngeno-Portfolio/components/sections/Skills.tsx
+##########
+
+// File: components/sections/Skills.tsx
+import React, { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { SplitHeading } from "@/components/common/animations";
+import { skillCategories, skills } from "@/data/skills";
+
+const SkillsSection = () => {
+  const containerRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"],
+  });
+
+  // Transform values for horizontal scroll effect
+  const x = useTransform(scrollYProgress, [0, 1], ["0%", "-75%"]);
+  // return <div></div>;
+  return (
+    <section
+      ref={containerRef}
+      id="skills"
+      className="relative py-section bg-surface-dark overflow-hidden"
+    >
+      {/* Background Elements */}
+      <div className="absolute inset-0">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-lime-DEFAULT/5 via-transparent to-transparent" />
+        <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-lime-DEFAULT/20 to-transparent" />
+      </div>
+
+      <div className="container mx-auto px-6">
+        {/* Section Header */}
+        <div className="max-w-4xl mb-24">
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-lime-light font-mono text-sm tracking-wider mb-4"
+          >
+            EXPERTISE
+          </motion.p>
+          <SplitHeading className="text-h1 font-display text-white mb-6">
+            Technical Prowess &
+            <br />
+            Creative Innovation
+          </SplitHeading>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="text-gray-400 text-body max-w-2xl"
+          >
+            Combining cutting-edge technologies with creative problem-solving to
+            build scalable, user-centric solutions that make an impact.
+          </motion.p>
+        </div>
+
+        {/* Horizontally Scrolling Skills */}
+        <div className="relative h-[40vh] mb-24">
+          <motion.div style={{ x }} className="absolute left-0 flex gap-8">
+            {skillCategories.map((category) => (
+              <motion.div
+                key={category.id}
+                className="relative flex-none w-[300px] bg-surface-light rounded-xl p-6 border border-lime-DEFAULT/10
+                         hover:border-lime-DEFAULT/30 transition-colors duration-300"
+                whileHover={{ y: -10 }}
+              >
+                <category.icon className="w-12 h-12 text-lime-light mb-4" />
+                <h3 className="text-xl font-display text-white mb-2">
+                  {category.title}
+                </h3>
+                <p className="text-gray-400 text-sm">{category.description}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+
+        {/* Skills Grid */}
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          {skills.map((skill, index) => (
+            <motion.div
+              key={skill.name}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="group relative bg-surface-light rounded-lg p-6 border border-lime-DEFAULT/10
+                       hover:border-lime-DEFAULT/30 transition-all duration-300"
+            >
+              {/* Hover effect */}
+              <div
+                className="absolute inset-0 bg-gradient-to-br from-lime-DEFAULT/10 to-transparent opacity-0 
+                           group-hover:opacity-100 transition-opacity duration-300 rounded-lg"
+              />
+
+              <div className="relative">
+                <skill.icon className="w-8 h-8 text-lime-light mb-3 group-hover:scale-110 transition-transform duration-300" />
+                <h4 className="text-white font-medium">{skill.name}</h4>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default SkillsSection;
+
+
+==========
+
+##########
+FILE: components/sections/Experience.tsx
+FULL PATH: /home/kelvin/coding/personal/Ngeno-Portfolio/components/sections/Experience.tsx
+##########
+
+// File: components/sections/Experience.tsx
+import React, { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { experiences } from "@/data/experience";
+import { SplitHeading } from "@/components/common/animations";
+
+const ExperienceCard = ({ experience, index }) => {
+  const cardRef = useRef(null);
+  const [isExpanded, setIsExpanded] = React.useState(false);
+
+  return (
+    <motion.div
+      ref={cardRef}
+      initial={{ opacity: 0, x: -50 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.8, delay: index * 0.2 }}
+      viewport={{ once: true }}
+      className="relative pl-8 md:pl-32 pb-16"
+    >
+      {/* Timeline line with gradient */}
+      <div className="absolute left-0 top-0 h-full w-px md:w-24">
+        <div className="h-full w-px md:h-px bg-gradient-to-r from-lime-DEFAULT to-yellow-DEFAULT opacity-20" />
+        <motion.div
+          className="absolute left-0 top-0 h-full w-px md:h-px bg-gradient-to-r from-lime-DEFAULT to-yellow-DEFAULT"
+          initial={{ scaleY: 0, scaleX: 0 }}
+          whileInView={{ scaleY: 1, scaleX: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1, ease: "easeOut" }}
+          style={{ originY: 0, originX: 0 }}
+        />
+      </div>
+
+      {/* Timeline dot with pulsing effect */}
+      <div className="absolute left-[-4px] md:left-24 top-0">
+        <div className="relative w-2 h-2 md:w-3 md:h-3">
+          <motion.div
+            className="absolute inset-0 bg-lime-DEFAULT rounded-full"
+            initial={{ scale: 0 }}
+            whileInView={{ scale: 1 }}
+            viewport={{ once: true }}
+          />
+          <div className="absolute inset-0 bg-lime-DEFAULT rounded-full animate-ping opacity-75" />
+          <div className="absolute inset-[-4px] bg-lime-DEFAULT rounded-full opacity-30 animate-pulse" />
+        </div>
+      </div>
+
+      {/* Content Card */}
+      <motion.div
+        layout
+        className="relative bg-surface-light rounded-xl p-6 md:p-8 border border-lime-DEFAULT/10 
+                 hover:border-lime-DEFAULT/30 transition-colors duration-300"
+      >
+        {/* Date pill */}
+        <div
+          className="absolute -top-3 left-6 px-4 py-1 bg-surface-dark rounded-full 
+                     border border-lime-DEFAULT/20 text-lime-light text-sm"
+        >
+          {experience.duration}
+        </div>
+
+        <div className="pt-4">
+          {/* Header */}
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-6">
+            <div>
+              <motion.h3
+                className="text-xl font-display text-white mb-1"
+                layout
+              >
+                {experience.role}
+              </motion.h3>
+              <motion.a
+                href={experience.companyUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-lime-light hover:text-lime-DEFAULT transition-colors inline-flex items-center gap-1"
+                whileHover={{ x: 5 }}
+              >
+                {experience.company}
+                <span className="text-xs">→</span>
+              </motion.a>
+            </div>
+            <span className="text-sm text-gray-400">{experience.mode}</span>
+          </div>
+
+          {/* Description */}
+          <motion.p className="text-gray-400 mb-6" layout>
+            {experience.description}
+          </motion.p>
+
+          {/* Achievements */}
+          <motion.div
+            className={`grid gap-4 overflow-hidden transition-all duration-500 ${
+              isExpanded ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
+            }`}
+          >
+            <div className="min-h-0">
+              <ul className="space-y-3">
+                {experience.achievements.map((achievement, i) => (
+                  <motion.li
+                    key={i}
+                    className="flex items-start gap-2 text-gray-400"
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: i * 0.1 }}
+                  >
+                    <span className="text-lime-light mt-1.5">•</span>
+                    {achievement}
+                  </motion.li>
+                ))}
+              </ul>
+            </div>
+          </motion.div>
+
+          {/* Expand/Collapse Button */}
+          <motion.button
+            onClick={() => setIsExpanded(!isExpanded)}
+            className="mt-6 text-sm text-lime-light hover:text-lime-DEFAULT transition-colors"
+            whileHover={{ x: 5 }}
+          >
+            {isExpanded ? "Show Less" : "Show More"}
+          </motion.button>
+
+          {/* Technologies */}
+          <div className="mt-6 pt-6 border-t border-lime-DEFAULT/10">
+            <div className="flex flex-wrap gap-2">
+              {experience.technologies.map((tech) => (
+                <span
+                  key={tech}
+                  className="px-3 py-1 text-xs rounded-full bg-surface-dark
+                           text-lime-light border border-lime-DEFAULT/20"
+                >
+                  {tech}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </motion.div>
+    </motion.div>
+  );
+};
+
+const ExperienceSection = () => {
+  const containerRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"],
+  });
+
+  // Parallax effect for background elements
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
+
+  return (
+    <section
+      ref={containerRef}
+      id="experience"
+      className="relative py-section bg-surface-dark overflow-hidden"
+    >
+      {/* Background Elements */}
+      <motion.div
+        style={{ y }}
+        className="absolute inset-0 pointer-events-none"
+      >
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom,_var(--tw-gradient-stops))] from-lime-DEFAULT/5 via-transparent to-transparent" />
+      </motion.div>
+
+      <div className="container mx-auto px-6 relative">
+        {/* Section Header */}
+        <div className="max-w-4xl mb-24">
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-lime-light font-mono text-sm tracking-wider mb-4"
+          >
+            PROFESSIONAL JOURNEY
+          </motion.p>
+          <SplitHeading className="text-h1 font-display text-white mb-6">
+            Experience &
+            <br />
+            Work History
+          </SplitHeading>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="text-gray-400 text-body max-w-2xl"
+          >
+            A timeline of my professional growth, key projects, and achievements
+            in software development and innovation.
+          </motion.p>
+        </div>
+
+        {/* Experience Timeline */}
+        <div className="relative">
+          {experiences.map((experience, index) => (
+            <ExperienceCard
+              key={experience.id}
+              experience={experience}
+              index={index}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default ExperienceSection;
+
+
+==========
+
+##########
+FILE: hooks/useCanvasCursor.tsx
+FULL PATH: /home/kelvin/coding/personal/Ngeno-Portfolio/hooks/useCanvasCursor.tsx
+##########
+
+// @ts-nocheck
+
+import { useEffect } from "react";
+
+const useCanvasCursor = () => {
+  function n(e) {
+    this.init(e || {});
+  }
+  n.prototype = {
+    init: function (e) {
+      this.phase = e.phase || 0;
+      this.offset = e.offset || 0;
+      this.frequency = e.frequency || 0.001;
+      this.amplitude = e.amplitude || 1;
+    },
+    update: function () {
+      return (
+        (this.phase += this.frequency),
+        (e = this.offset + Math.sin(this.phase) * this.amplitude)
+      );
+    },
+    value: function () {
+      return e;
+    },
+  };
+
+  function Line(e) {
+    this.init(e || {});
+  }
+
+  Line.prototype = {
+    init: function (e) {
+      this.spring = e.spring + 0.1 * Math.random() - 0.02;
+      this.friction = E.friction + 0.01 * Math.random() - 0.002;
+      this.nodes = [];
+      for (var t, n = 0; n < E.size; n++) {
+        t = new Node();
+        t.x = pos.x;
+        t.y = pos.y;
+        this.nodes.push(t);
+      }
+    },
+    update: function () {
+      var e = this.spring,
+        t = this.nodes[0];
+      t.vx += (pos.x - t.x) * e;
+      t.vy += (pos.y - t.y) * e;
+      for (var n, i = 0, a = this.nodes.length; i < a; i++)
+        (t = this.nodes[i]),
+          0 < i &&
+            ((n = this.nodes[i - 1]),
+            (t.vx += (n.x - t.x) * e),
+            (t.vy += (n.y - t.y) * e),
+            (t.vx += n.vx * E.dampening),
+            (t.vy += n.vy * E.dampening)),
+          (t.vx *= this.friction),
+          (t.vy *= this.friction),
+          (t.x += t.vx),
+          (t.y += t.vy),
+          (e *= E.tension);
+    },
+    draw: function () {
+      var e,
+        t,
+        n = this.nodes[0].x,
+        i = this.nodes[0].y;
+      ctx.beginPath();
+      ctx.moveTo(n, i);
+      for (var a = 1, o = this.nodes.length - 2; a < o; a++) {
+        e = this.nodes[a];
+        t = this.nodes[a + 1];
+        n = 0.5 * (e.x + t.x);
+        i = 0.5 * (e.y + t.y);
+        ctx.quadraticCurveTo(e.x, e.y, n, i);
+      }
+      e = this.nodes[a];
+      t = this.nodes[a + 1];
+      ctx.quadraticCurveTo(e.x, e.y, t.x, t.y);
+      ctx.stroke();
+      ctx.closePath();
+    },
+  };
+
+  function onMousemove(e) {
+    function o() {
+      lines = [];
+      for (var e = 0; e < E.trails; e++)
+        lines.push(new Line({ spring: 0.4 + (e / E.trails) * 0.025 }));
+    }
+    function c(e) {
+      e.touches
+        ? ((pos.x = e.touches[0].pageX), (pos.y = e.touches[0].pageY))
+        : ((pos.x = e.clientX), (pos.y = e.clientY)),
+        e.preventDefault();
+    }
+    function l(e) {
+      1 == e.touches.length &&
+        ((pos.x = e.touches[0].pageX), (pos.y = e.touches[0].pageY));
+    }
+    document.removeEventListener("mousemove", onMousemove),
+      document.removeEventListener("touchstart", onMousemove),
+      document.addEventListener("mousemove", c),
+      document.addEventListener("touchmove", c),
+      document.addEventListener("touchstart", l),
+      c(e),
+      o(),
+      render();
+  }
+
+  function render() {
+    if (ctx.running) {
+      ctx.globalCompositeOperation = "source-over";
+      ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+      ctx.globalCompositeOperation = "lighter";
+      ctx.strokeStyle = "hsla(" + Math.round(f.update()) + ",50%,50%,0.2)";
+      ctx.lineWidth = 1;
+      for (var e, t = 0; t < E.trails; t++) {
+        (e = lines[t]).update();
+        e.draw();
+      }
+      ctx.frame++;
+      window.requestAnimationFrame(render);
+    }
+  }
+
+  function resizeCanvas() {
+    ctx.canvas.width = window.innerWidth - 20;
+    ctx.canvas.height = window.innerHeight;
+  }
+
+  var ctx,
+    f,
+    e = 0,
+    pos = {},
+    lines = [],
+    E = {
+      debug: true,
+      friction: 0.5,
+      trails: 20,
+      size: 50,
+      dampening: 0.25,
+      tension: 0.98,
+    };
+  function Node() {
+    this.x = 0;
+    this.y = 0;
+    this.vy = 0;
+    this.vx = 0;
+  }
+
+  const renderCanvas = function () {
+    ctx = document.getElementById("canvas").getContext("2d");
+    ctx.running = true;
+    ctx.frame = 1;
+    f = new n({
+      phase: Math.random() * 2 * Math.PI,
+      amplitude: 85,
+      frequency: 0.0015,
+      offset: 285,
+    });
+    document.addEventListener("mousemove", onMousemove);
+    document.addEventListener("touchstart", onMousemove);
+    document.body.addEventListener("orientationchange", resizeCanvas);
+    window.addEventListener("resize", resizeCanvas);
+    window.addEventListener("focus", () => {
+      if (!ctx.running) {
+        ctx.running = true;
+        render();
+      }
+    });
+    window.addEventListener("blur", () => {
+      ctx.running = true;
+    });
+    resizeCanvas();
+  };
+
+  useEffect(() => {
+    renderCanvas();
+
+    return () => {
+      ctx.running = false;
+      document.removeEventListener("mousemove", onMousemove);
+      document.removeEventListener("touchstart", onMousemove);
+      document.body.removeEventListener("orientationchange", resizeCanvas);
+      window.removeEventListener("resize", resizeCanvas);
+      window.removeEventListener("focus", () => {
+        if (!ctx.running) {
+          ctx.running = true;
+          render();
+        }
+      });
+      window.removeEventListener("blur", () => {
+        ctx.running = true;
+      });
+    };
+  }, []);
+};
+
+export default useCanvasCursor;
+
+
+==========
+
+##########
+FILE: hooks/useScrollSmooth.ts
+FULL PATH: /home/kelvin/coding/personal/Ngeno-Portfolio/hooks/useScrollSmooth.ts
+##########
+
+// File: hooks/useScrollSmooth.ts
+import { useEffect } from "react";
+import Lenis from "@studio-freight/lenis";
+
+export const useSmoothScroll = () => {
+  useEffect(() => {
+    const lenis = new Lenis({
+      duration: 0.8, // Reduced from 1.2 for faster response
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      orientation: "vertical", // Changed from direction to orientation
+      wheelMultiplier: 1, // Added to make wheel scrolling more responsive
+      touchMultiplier: 2,
+      smoothWheel: true,
+    });
+
+    function raf(time: number) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+
+    // Handle anchor links
+    const handleAnchorClick = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      const anchor = target.closest("a");
+
+      if (anchor?.hash) {
+        e.preventDefault();
+        const targetElement = document.querySelector(anchor.hash);
+        if (targetElement) {
+          lenis.scrollTo(targetElement, {
+            offset: -100,
+            immediate: false,
+            duration: 1.2,
+          });
+        }
+      }
+    };
+
+    document.addEventListener("click", handleAnchorClick);
+
+    return () => {
+      document.removeEventListener("click", handleAnchorClick);
+      lenis.destroy();
+    };
+  }, []);
+};
+// Hook for scroll-triggered animations
+export const useScrollReveal = (threshold = 0.1) => {
+  useEffect(() => {
+    const observerCallback: IntersectionObserverCallback = (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("reveal");
+        }
+      });
+    };
+
+    const observerOptions = {
+      root: null,
+      rootMargin: "0px",
+      threshold,
+    };
+
+    const observer = new IntersectionObserver(
+      observerCallback,
+      observerOptions
+    );
+    const targets = document.querySelectorAll(".reveal-on-scroll");
+    targets.forEach((target) => observer.observe(target));
+
+    return () => observer.disconnect();
+  }, [threshold]);
+};
+
+
+==========
+
+##########
+FILE: app/page.tsx
+FULL PATH: /home/kelvin/coding/personal/Ngeno-Portfolio/app/page.tsx
+##########
+
+// File: app/page.tsx
+"use client";
+
+import React, { useEffect } from "react";
+import Navigation from "@/components/navigation/Navigation";
+import Hero from "@/components/sections/Hero";
+import SkillsSection from "@/components/sections/Skills";
+import ProjectsSection from "@/components/sections/Projects";
+import ExperienceSection from "@/components/sections/Experience";
+import ContactSection from "@/components/sections/Contact";
+import Footer from "@/components/Footer";
+import { useSmoothScroll } from "@/hooks/useScrollSmooth";
+import { DM_Sans, JetBrains_Mono } from "next/font/google";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { socialLinks } from "@/data/social";
+import localFont from "next/font/local";
+import CanvasCursor from "@/components/Cursor";
+
+// Preload fonts
+const fontSans = DM_Sans({
+  subsets: ["latin"],
+  variable: "--font-inter",
+});
+
+const fontDisplay = localFont({
+  src: "../public/fonts/MonumentExtended-Regular.otf",
+  variable: "--font-monument",
+});
+
+const fontMono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-mono",
+});
+
+export default function Home() {
+  // Initialize smooth scrolling
+  // useSmoothScroll();
+
+  return (
+    <main
+      className={`bg-surface-dark min-h-screen ${fontSans.variable} ${fontDisplay.variable} ${fontMono.variable}`}
+    >
+      <CanvasCursor />
+      {/* Navigation */}
+      <Navigation />
+
+      {/* Page Content */}
+      <div className="relative">
+        {/* Hero Section */}
+        <section className="relative min-h-screen">
+          <Hero />
+        </section>
+
+        {/* Main Content */}
+        <div className="relative">
+          {/* Skills Section - Overlapping previous section */}
+          <div className="relative -mt-32 z-10">
+            <SkillsSection />
+          </div>
+
+          {/* Projects Section - Shifting up slightly */}
+          <div className="relative -mt-16">
+            <ProjectsSection />
+          </div>
+
+          {/* Experience Section */}
+          <div className="relative">
+            <ExperienceSection />
+          </div>
+
+          {/* Contact Section - Overlapping previous section */}
+          <div className="relative -mt-32 z-20">
+            <ContactSection />
+          </div>
+        </div>
+
+        {/* Footer */}
+        <Footer />
+
+        {/* Fixed Elements */}
+        <SideElements />
+      </div>
+    </main>
+  );
+}
+
+// Side elements component for additional visual flair
+const SideElements = () => {
+  return (
+    <>
+      {/* Email on right side */}
+      <motion.div
+        initial={{ opacity: 0, x: 20 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.8, delay: 1 }}
+        className="fixed right-8 bottom-0 hidden lg:flex flex-col items-center gap-6 z-50"
+      >
+        <a
+          href="mailto:interstellarcg@gmail.com"
+          className="text-gray-400 hover:text-lime-light transition-colors duration-300 vertical-text"
+        >
+          interstellarcg@gmail.com
+        </a>
+        <div className="w-px h-24 bg-lime-DEFAULT/20" />
+      </motion.div>
+
+      {/* Social links on left side */}
+      <motion.div
+        initial={{ opacity: 0, x: -20 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.8, delay: 1 }}
+        className="fixed left-8 bottom-0 hidden lg:flex flex-col items-center gap-6 z-50"
+      >
+        <div className="space-y-6">
+          {socialLinks.map((link, index) => (
+            <motion.a
+              key={link.id}
+              href={link.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block text-gray-400 hover:text-lime-light transition-colors duration-300"
+              whileHover={{ x: 5 }}
+            >
+              <link.icon className="w-5 h-5" />
+            </motion.a>
+          ))}
+        </div>
+        <div className="w-px h-24 bg-lime-DEFAULT/20" />
+      </motion.div>
+
+      {/* Scroll progress indicator */}
+      <motion.div
+        className="fixed top-0 left-0 w-full h-1 bg-lime-DEFAULT origin-left z-50"
+        style={{
+          scaleX: useTransform(useScroll().scrollYProgress, [0, 1], [0, 1]),
+        }}
+      />
+
+      {/* Mouse follower effect */}
+      <MouseFollower />
+    </>
+  );
+};
+
+// Custom mouse follower effect
+const MouseFollower = () => {
+  const [mousePosition, setMousePosition] = React.useState({ x: 0, y: 0 });
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      setMousePosition({ x: e.clientX, y: e.clientY });
+    };
+
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
+  }, []);
+
+  return (
+    <motion.div
+      className="fixed w-8 h-8 pointer-events-none z-50 mix-blend-difference"
+      animate={{
+        x: mousePosition.x - 16,
+        y: mousePosition.y - 16,
+      }}
+      transition={{
+        type: "spring",
+        damping: 50,
+        stiffness: 500,
+        mass: 0.1,
+      }}
+    >
+      <div className="w-full h-full rounded-full border border-lime-light opacity-50" />
+      <div className="absolute inset-2 rounded-full bg-lime-light blur-sm opacity-20" />
+    </motion.div>
+  );
+};
+
+// Add custom styles to global.css
+/*
+
+*/
+
+
+==========
+
+##########
+FILE: app/layout.tsx
+FULL PATH: /home/kelvin/coding/personal/Ngeno-Portfolio/app/layout.tsx
+##########
+
+import { DM_Sans } from "next/font/google";
+import "./globals.css";
+import Layout from "@/components/Layout";
+
+export const metadata = {
+  title: "Kelvin Ng'eno - Full Stack Developer & AI Engineer",
+  description:
+    "Full Stack Developer and AI Engineer specializing in web development, mobile apps, and artificial intelligence solutions.",
+  keywords: [
+    "Full Stack Developer",
+    "AI Engineer",
+    "React Developer",
+    "Mobile App Developer",
+    "Machine Learning Engineer",
+    "Kenya",
+    "Software Engineer",
+  ].join(", "),
+};
+// Preload fonts
+const fontSans = DM_Sans({
+  subsets: ["latin"],
+});
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <html lang="en" className="scroll-smooth">
+      <body className={fontSans.className}>
+        <Layout>{children}</Layout>
+      </body>
+    </html>
+  );
+}
+
+
+==========
+
+##########
+FILE: app/_olayout.tsx
+FULL PATH: /home/kelvin/coding/personal/Ngeno-Portfolio/app/_olayout.tsx
+##########
+
+import "./globals.css";
+import { Inter } from "next/font/google";
+import PortfolioMetaTags from "@/components/Metatags";
+
+const inter = Inter({ subsets: ["latin"] });
+const url = "https://ngeno-kelvin.vercel.app";
+export const metadata = {
+  title: "Kelvin Ngeno",
+  meta: [
+    { charset: "UTF-8" },
+    { name: "viewport", content: "width=device-width, initial-scale=1.0" },
+    {
+      name: "description",
+      content:
+        "Kelvin Ng'eno is a skilled full stack software engineer with a passion for developing innovative solutions. Explore his portfolio to see his work and get in touch.",
+    },
+    {
+      name: "keywords",
+      content:
+        "Kelvin Ng'eno, software engineer, portfolio, web development, full stack development",
+    },
+    { name: "author", content: "Kelvin Ng'eno" },
+    {
+      property: "og:title",
+      content: "Kelvin Ng'eno - Software Engineer Portfolio",
+    },
+    {
+      property: "og:description",
+      content:
+        "Kelvin Ng'eno is a skilled full stack software engineer with a passion for developing innovative solutions. Explore his portfolio to see his work and get in touch.",
+    },
+    {
+      property: "og:image",
+      content: `${url}/kelvin.jpg`,
+    },
+    { property: "og:url", content: url },
+    { name: "twitter:card", content: "summary_large_image" },
+    {
+      name: "twitter:title",
+      content: "Kelvin Ng'eno - Software Engineer Portfolio",
+    },
+    {
+      name: "twitter:description",
+      content:
+        "Kelvin Ng'eno is a skilled full stack software engineer with a passion for developing innovative solutions. Explore his portfolio to see his work and get in touch.",
+    },
+    {
+      name: "twitter:image",
+      content: `${url}/kelvin.jpg`,
+    },
+  ],
+};
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <html lang="en">
+      <head>
+        <meta charSet="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <meta
+          name="description"
+          content="Kelvin Ng'eno is a skilled full stack software engineer with a passion for developing innovative solutions. Explore his portfolio to see his work and get in touch."
+        />
+        <meta
+          name="keywords"
+          content="Kelvin Ng'eno, software engineer, portfolio, web development, full stack development"
+        />
+        <meta name="author" content="Kelvin Ng'eno" />
+        <meta
+          property="og:title"
+          content="Kelvin Ng'eno - Software Engineer Portfolio"
+        />
+        <meta
+          property="og:description"
+          content="Kelvin Ng'eno is a skilled full stack software engineer with a passion for developing innovative solutions. Explore his portfolio to see his work and get in touch."
+        />
+        <meta
+          property="og:image"
+          content="https://yourdomain.com/path/to/your/image.jpg"
+        />
+        <meta property="og:url" content="https://ngeno-kelvin.vercel.app" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:title"
+          content="Kelvin Ng'eno - Software Engineer Portfolio"
+        />
+        <meta
+          name="twitter:description"
+          content="Kelvin Ng'eno is a skilled full stack software engineer with a passion for developing innovative solutions. Explore his portfolio to see his work and get in touch."
+        />
+        <meta name="twitter:image" content={`${url}/kelvin.jpg`} />
+        <title>Kelvin Ng&apos;eno - Software Engineer Portfolio</title>
+        {/* logo */}
+        <link rel="icon" href="/kelvin.jpg" />
+      </head>
+
+      <body className={""}>{children}</body>
+    </html>
+  );
+}
+
+
+==========
+
+##########
+FILE: data/projects.ts
+FULL PATH: /home/kelvin/coding/personal/Ngeno-Portfolio/data/projects.ts
+##########
+
+// src/data/projects.ts
+import { Project } from "../types";
+
+export const projects: Project[] = [
+  {
+    id: "mantice-ai",
+    title: "ManticeAI",
+    description:
+      "A comprehensive platform offering access to various generative AI tools through a pay-as-you-go model. Platform enables users to access a wide range of AI tools and capabilities.",
+    image: "images/projects/mantice-ai.png",
+    technologies: [
+      "Python",
+      "AI",
+      "LLMs",
+      "Machine Learning",
+      "API Integration",
+      "ClaudeAI",
+      "Paystack",
+    ],
+    links: {
+      live: "https://manticeai.com",
+    },
+    category: "ai",
+    featured: true,
+  },
+  {
+    id: "talent-app",
+    title: "Talent App (Jobzy Limited)",
+    description:
+      "An AI Powered Job Search React Native mobile app for iOS, Android, and Huawei devices, enabling seamless job searches with advanced filters, personalized job alerts, and intuitive navigation. You can use AI to generate Resumes, CVs, and Cover Letters as well as job application emails.",
+    image: "images/projects/talent-app.png",
+    technologies: [
+      "React Native",
+      "Expo",
+      "iOS",
+      "Android",
+      "API Integration",
+      "AI",
+      "OpenAI",
+    ],
+    links: {
+      live: "https://app.talent.jobzy.africa/",
+      playStore:
+        "https://play.google.com/store/apps/details?id=com.enochk.jobzy_talent",
+      appStore: "https://apps.apple.com/us/app/talent-by-jobzy/id6479216045",
+    },
+    category: "mobile",
+    featured: true,
+  },
+  {
+    id: "m-farmz",
+    title: "M-Farmz",
+    description:
+      "Custom farm management software with mobile application and admin site. Helps clients manage their farm activities, track expenses, income, and overall farm operations.",
+    image: "/mfarmz.png",
+    technologies: ["React", "Django", "React Native", "PostgreSQL", "Azure"],
+    links: {
+      live: "https://mfarmz.azurewebsites.net/",
+    },
+    category: "web",
+    featured: true,
+  },
+  {
+    id: "m-jenzi-platform",
+    title: "M-jenzi Platform",
+    description:
+      "Construction e-commerce platform connecting clients with service providers. Platform includes vendor dashboard, client interface, and mobile applications.",
+    image: "/m-jenzi-web.png",
+    technologies: ["React", "Django", "React Native", "PostgreSQL"],
+    links: {
+      live: "https://www.m-jenzi.com/",
+    },
+    category: "web",
+    featured: true,
+  },
+  {
+    id: "m-jenzi-app",
+    title: "M-jenzi Mobile App",
+    description:
+      "Mobile application for purchasing construction materials and requesting services from providers. Integrated with the main M-jenzi platform.",
+    image: "/m-jenzi-app.png",
+    technologies: ["React Native", "Expo", "API Integration"],
+    links: {
+      playStore:
+        "https://play.google.com/store/apps/details?id=com.mjenzi.client",
+    },
+    category: "mobile",
+    featured: true,
+  },
+  {
+    id: "m-jenzi-vendor",
+    title: "M-JENZI Vendor Dashboard",
+    description:
+      "Comprehensive vendor management dashboard where vendors can register and manage their products. Complete e-commerce management solution.",
+    image: "/mjenzi.png",
+    technologies: ["React", "TypeScript", "Tailwind CSS", "API Integration"],
+    links: {
+      live: "https://vendor.m-jenzi.com",
+    },
+    category: "web",
+    featured: true,
+  },
+  {
+    id: "audio-transcription",
+    title: "Audio Transcription with OpenAI Whisper",
+    description:
+      "Implementation of OpenAI's open source Whisper model for audio transcription using PyTorch.",
+    image: "images/projects/openai-whisper.png",
+    technologies: ["PyTorch", "Python", "OpenAI", "Machine Learning"],
+    links: {
+      github:
+        "https://colab.research.google.com/drive/1UgeKSqfoBGmpA4UtNHFBKqZtcyXuMx-1",
+    },
+    category: "ai",
+    featured: true,
+  },
+  {
+    id: "stability-ai",
+    title: "Stability AI Models Integration",
+    description:
+      "Implementation and integration of various Stability AI models for image generation and processing.",
+    image: "images/projects/sd3-api.png",
+    technologies: ["Python", "Stability AI", "Machine Learning"],
+    links: {
+      github:
+        "https://colab.research.google.com/drive/1AkFQuHCYmMGCJfG9HzhBohzir-sty7We",
+    },
+    category: "ai",
+    featured: true,
+  },
+  {
+    id: "tortoise-tts",
+    title: "Text to Speech with Tortoise TTS",
+    description:
+      "Implementation of Tortoise TTS for high-quality text-to-speech conversion.",
+    image: "images/projects/tortoise-tts.png",
+    technologies: ["Python", "TTS", "Machine Learning"],
+    links: {
+      github:
+        "https://colab.research.google.com/drive/1z6Dr0dWameD37dZt5tkGFEFisg6f1XdW",
+    },
+    category: "ai",
+    featured: true,
+  },
+  {
+    id: "fashion-gan",
+    title: "FashionGAN",
+    description:
+      "Implementation of Generative Adversarial Network for fashion image generation.",
+    image: "images/projects/fashion-gan.png",
+    technologies: ["Python", "GAN", "PyTorch", "Machine Learning"],
+    links: {
+      github:
+        "https://colab.research.google.com/drive/1PTd9tmu3MFIPpRq4hRfzsQVJbj7uBtsW",
+    },
+    category: "ai",
+    featured: true,
+  },
+];
+
+
+==========
+
+##########
+FILE: data/experience.ts
+FULL PATH: /home/kelvin/coding/personal/Ngeno-Portfolio/data/experience.ts
+##########
+
+// src/data/experience.ts
+import { Experience } from "../types";
+
+export const experiences: Experience[] = [
+  {
+    id: "dissolve-software",
+    role: "Founder",
+    company: "Dissolve Software",
+    companyUrl: "https://www.dissolvesoftware.com/",
+    duration: "January 2024 - Present",
+    mode: "Full-time",
+    description:
+      "Founded and leading a software company that builds custom solutions for clients. Specializing in web development, mobile apps, and AI integration.",
+    achievements: [
+      "Developed comprehensive farm management software",
+      "Built construction company website and mobile application",
+      "Created job procurement platform",
+      "Implemented AI-powered solutions for clients",
+    ],
+    technologies: ["React", "Django", "React Native", "AWS", "AI/ML"],
+  },
+  {
+    id: "mjenzi",
+    role: "Front End & Backend Engineer, Mobile App Developer",
+    company: "M-jenzi",
+    companyUrl: "https://www.m-jenzi.com/",
+    duration: "Jan 2023 - March 2024",
+    mode: "Freelance",
+    description:
+      "Led development of construction sector e-commerce platform connecting service providers with customers.",
+    achievements: [
+      "Developed Django backend API",
+      "Created vendor dashboard for product management",
+      "Built main website using React",
+      "Developed mobile app using React Native",
+      "Received #1 Kenya E-commerce Award for Construction Websites",
+    ],
+    technologies: ["Django", "React", "React Native", "PostgreSQL", "Azure"],
+  },
+  {
+    id: "jobzy",
+    role: "Full Stack Developer",
+    company: "Jobzy",
+    companyUrl: "https://www.jobzy.africa/",
+    duration: "Nov 2022 - Present",
+    mode: "Freelance",
+    description:
+      "Developed a revolutionary platform for service procurement with separate apps for clients and service providers.",
+    achievements: [
+      "Built complete client and provider mobile applications",
+      "Developed backend API with Django",
+      "Implemented real-time features and notifications",
+      "Created admin dashboard for platform management",
+      "Integrated payment systems and service matching algorithms",
+    ],
+    technologies: [
+      "React Native",
+      "Django",
+      "PostgreSQL",
+      "Redux",
+      "WebSocket",
+    ],
+  },
+  {
+    id: "wera",
+    role: "Full Stack Developer",
+    company: "Wera",
+    companyUrl: "https://wera.app",
+    duration: "June 2022 - Nov 2022",
+    mode: "Freelance",
+    description:
+      "Developed a comprehensive service procurement and e-commerce platform.",
+    achievements: [
+      "Built full-stack e-commerce and service procurement platform",
+      "Developed backend API with Django",
+      "Created responsive website using Next.js",
+      "Implemented user authentication and authorization",
+      "Integrated payment gateways and order management",
+    ],
+    technologies: [
+      "Next.js",
+      "Django",
+      "PostgreSQL",
+      "AWS",
+      "Payment Integration",
+    ],
+  },
+  {
+    id: "snobole",
+    role: "Mobile App Developer",
+    company: "Snobole Software",
+    companyUrl: "https://snobole.com",
+    duration: "Jan 2022 - June 2022",
+    mode: "Freelance",
+    description: "Developed mobile applications for various client projects.",
+    achievements: [
+      "Developed complete laundry service mobile application",
+      "Implemented real-time order tracking",
+      "Created user-friendly interface and booking system",
+      "Integrated payment processing and user management",
+    ],
+    technologies: ["React Native", "Node.js", "MongoDB", "Express", "Redux"],
+  },
+  {
+    id: "ai-research",
+    role: "AI/ML Developer",
+    company: "Independent Research",
+    duration: "2023 - Present",
+    mode: "Personal Projects",
+    description:
+      "Conducted independent research and development in AI and machine learning.",
+    achievements: [
+      "Implemented various AI models including LLMs and GANs",
+      "Developed audio transcription systems using OpenAI Whisper",
+      "Created text-to-speech solutions with Tortoise TTS",
+      "Built and deployed AI-powered applications",
+      "Developed ManticeAI.com platform for AI tools access",
+    ],
+    technologies: [
+      "Python",
+      "TensorFlow",
+      "PyTorch",
+      "LLMs",
+      "Neural Networks",
+      "Computer Vision",
+    ],
+  },
+];
+
+
+==========
+
+##########
+FILE: data/skills.ts
+FULL PATH: /home/kelvin/coding/personal/Ngeno-Portfolio/data/skills.ts
+##########
+
+// src/data/skills.ts
+import { Skill, SkillCategory } from "../types";
+import {
+  FaBrain,
+  FaCode,
+  FaMobile,
+  FaCloud,
+  FaDatabase,
+  FaPalette,
+  FaRobot,
+  FaServer,
+} from "react-icons/fa";
+
+export const skillCategories: SkillCategory[] = [
+  {
+    id: "ai",
+    title: "AI & Machine Learning",
+    description:
+      "Expertise in artificial intelligence, machine learning, and deep neural networks",
+    icon: FaBrain,
+  },
+  {
+    id: "frontend",
+    title: "Frontend Development",
+    description: "Building responsive and interactive user interfaces",
+    icon: FaCode,
+  },
+  {
+    id: "mobile",
+    title: "Mobile Development",
+    description: "Creating cross-platform mobile applications",
+    icon: FaMobile,
+  },
+  {
+    id: "backend",
+    title: "Backend Development",
+    description: "Developing robust server-side applications and APIs",
+    icon: FaServer,
+  },
+  {
+    id: "cloud",
+    title: "Cloud & DevOps",
+    description: "Cloud infrastructure and deployment automation",
+    icon: FaCloud,
+  },
+  {
+    id: "design",
+    title: "Design & UI/UX",
+    description: "Creating intuitive and appealing user experiences",
+    icon: FaPalette,
+  },
+];
+
+export const skills: Skill[] = [
+  // AI & Machine Learning
+  {
+    name: "TensorFlow",
+    icon: FaBrain,
+    category: "ai",
+  },
+  {
+    name: "PyTorch",
+    icon: FaBrain,
+    category: "ai",
+  },
+  {
+    name: "Neural Networks",
+    icon: FaBrain,
+    category: "ai",
+  },
+  {
+    name: "LLM Integration",
+    icon: FaRobot,
+    category: "ai",
+  },
+  {
+    name: "AI Agents",
+    icon: FaRobot,
+    category: "ai",
+  },
+  {
+    name: "Prompt Engineering",
+    icon: FaRobot,
+    category: "ai",
+  },
+  {
+    name: "Computer Vision",
+    icon: FaBrain,
+    category: "ai",
+  },
+
+  // Frontend Development
+  {
+    name: "React",
+    icon: FaCode,
+    category: "frontend",
+  },
+  {
+    name: "Next.js",
+    icon: FaCode,
+    category: "frontend",
+  },
+  {
+    name: "TypeScript",
+    icon: FaCode,
+    category: "frontend",
+  },
+  {
+    name: "Tailwind CSS",
+    icon: FaCode,
+    category: "frontend",
+  },
+  {
+    name: "Redux",
+    icon: FaCode,
+    category: "frontend",
+  },
+  {
+    name: "HTML5/CSS3",
+    icon: FaCode,
+    category: "frontend",
+  },
+  {
+    name: "SASS",
+    icon: FaCode,
+    category: "frontend",
+  },
+
+  // Mobile Development
+  {
+    name: "React Native",
+    icon: FaMobile,
+    category: "mobile",
+  },
+  {
+    name: "Expo",
+    icon: FaMobile,
+    category: "mobile",
+  },
+  {
+    name: "iOS Development",
+    icon: FaMobile,
+    category: "mobile",
+  },
+  {
+    name: "Android Development",
+    icon: FaMobile,
+    category: "mobile",
+  },
+
+  // Backend Development
+  {
+    name: "Django",
+    icon: FaServer,
+    category: "backend",
+  },
+  {
+    name: "Python",
+    icon: FaServer,
+    category: "backend",
+  },
+  {
+    name: "Node.js",
+    icon: FaServer,
+    category: "backend",
+  },
+  {
+    name: "Express",
+    icon: FaServer,
+    category: "backend",
+  },
+  {
+    name: "REST APIs",
+    icon: FaServer,
+    category: "backend",
+  },
+  {
+    name: "GraphQL",
+    icon: FaServer,
+    category: "backend",
+  },
+
+  // Databases & Cloud
+  {
+    name: "PostgreSQL",
+    icon: FaDatabase,
+    category: "cloud",
+  },
+  {
+    name: "MongoDB",
+    icon: FaDatabase,
+    category: "cloud",
+  },
+  {
+    name: "MySQL",
+    icon: FaDatabase,
+    category: "cloud",
+  },
+  {
+    name: "AWS",
+    icon: FaCloud,
+    category: "cloud",
+  },
+  {
+    name: "Azure",
+    icon: FaCloud,
+    category: "cloud",
+  },
+  {
+    name: "Docker",
+    icon: FaCloud,
+    category: "cloud",
+  },
+  {
+    name: "Redis",
+    icon: FaDatabase,
+    category: "cloud",
+  },
+
+  // Design Tools
+  {
+    name: "Figma",
+    icon: FaPalette,
+    category: "design",
+  },
+  {
+    name: "Canva",
+    icon: FaPalette,
+    category: "design",
+  },
+  {
+    name: "Blender 3D",
+    icon: FaPalette,
+    category: "design",
+  },
+];
+
+
+==========
+
+##########
+FILE: data/social.ts
+FULL PATH: /home/kelvin/coding/personal/Ngeno-Portfolio/data/social.ts
+##########
+
+// src/data/social.ts
+import { SocialLink } from "../types";
+import {
+  FaGithub,
+  FaLinkedin,
+  FaInstagram,
+  FaEnvelope,
+  FaPhone,
+  FaGlobe,
+  FaTwitter,
+} from "react-icons/fa";
+
+export const socialLinks: SocialLink[] = [
+  {
+    id: "github",
+    name: "GitHub",
+    url: "https://github.com/ngenome",
+    icon: FaGithub,
+  },
+  {
+    id: "linkedin",
+    name: "LinkedIn",
+    url: "https://linkedin.com/in/kelvin-ngeno",
+    icon: FaLinkedin,
+  },
+  {
+    id: "instagram",
+    name: "Instagram",
+    url: "https://www.instagram.com/darlstellar",
+    icon: FaInstagram,
+  },
+  {
+    id: "twitter",
+    name: "Twitter",
+    url: "https://twitter.com/devngeno",
+    icon: FaTwitter,
+  },
+  {
+    id: "company",
+    name: "Dissolve Software",
+    url: "https://www.dissolvesoftware.com",
+    icon: FaGlobe,
+  },
+];
+
+export const contactInfo = {
+  email: {
+    personal: "interstellarcg@gmail.com",
+    business: "kelvin@dissolvesoftware.com",
+  },
+  phone: {
+    primary: "+254 726 299 179",
+    secondary: "+254 736 886 886",
+  },
+  location: "Nairobi, Kenya",
+  availability: "Open to new opportunities and collaborations",
+  preferredContact: "Email or LinkedIn",
+  timeZone: "EAT (UTC+3)",
+  languages: [
+    {
+      language: "English",
+      proficiency: "Fluent",
+    },
+    {
+      language: "Kiswahili",
+      proficiency: "Fluent",
+    },
+  ],
+};
+
+export const resumeData = {
+  downloadUrl: "/resume.pdf",
+  lastUpdated: "2024-03",
+  sections: {
+    profile: {
+      title: "Professional Summary",
+      content:
+        "Innovative and results-driven Full Stack Developer with over 3 years of experience in web and mobile app development, and 4 years in front-end development. Adept at designing scalable APIs, integrating backends with intuitive front-ends, and delivering user-centric digital solutions. Passionate about leveraging cutting-edge technologies to create impactful software.",
+    },
+    expertise: [
+      "Full Stack Development",
+      "Mobile App Development",
+      "AI/ML Integration",
+      "Cloud Architecture",
+      "UI/UX Design",
+      "System Architecture",
+      "Technical Leadership",
+    ],
+  },
+};
+
+
+==========
