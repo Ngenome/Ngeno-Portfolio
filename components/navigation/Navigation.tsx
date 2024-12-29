@@ -114,7 +114,7 @@ const Navigation = () => {
           backgroundColor: headerBg,
           backdropFilter: `blur(${headerBlur}px)`,
         }}
-        className="fixed top-0 left-0 right-0 z-50 border-b border-lime-DEFAULT/10"
+        className="fixed top-0 left-0 right-0 z-50 border-b border-lime-default/10"
       >
         <nav className="container mx-auto px-6 py-4">
           <div className="flex items-center justify-between">

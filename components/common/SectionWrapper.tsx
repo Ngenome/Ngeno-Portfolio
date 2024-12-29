@@ -65,7 +65,7 @@ const SectionWrapper = ({
   return (
     <motion.section
       ref={sectionRef}
-      className={`relative ${overlapClasses[overlap]} ${className}`}
+      className={`relative  ${className}`}
       style={{ zIndex }}
       initial="hidden"
       whileInView="visible"

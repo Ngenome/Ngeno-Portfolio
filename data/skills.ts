@@ -233,4 +233,36 @@ export const skills: Skill[] = [
     icon: FaPalette,
     category: "design",
   },
+
+  // ---------
+  {
+    name: "Test-Driven Development",
+    icon: FaCode,
+    category: "backend",
+  },
+  {
+    name: "CI/CD Pipelines",
+    icon: FaCloud,
+    category: "cloud",
+  },
+  {
+    name: "Vue.js",
+    icon: FaCode,
+    category: "frontend",
+  },
+  {
+    name: "Angular",
+    icon: FaCode,
+    category: "frontend",
+  },
+  {
+    name: "Jest Testing",
+    icon: FaCode,
+    category: "frontend",
+  },
+  {
+    name: "Performance Optimization",
+    icon: FaCode,
+    category: "backend",
+  },
 ];

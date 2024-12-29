@@ -17,8 +17,8 @@ const ContactLink = ({ icon: Icon, label, value, href, delay = 0 }) => (
     whileInView={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.8, delay }}
     viewport={{ once: true }}
-    className="group relative flex items-start gap-4 p-6 rounded-xl bg-surface-light border border-lime-DEFAULT/10
-               hover:border-lime-DEFAULT/30 transition-all duration-300"
+    className="group relative flex items-start gap-4 p-6 rounded-xl bg-surface-light border border-lime-default/10
+               hover:border-lime-default/30 transition-all duration-300"
   >
     <div
       className="relative p-3 rounded-full bg-surface-dark text-lime-light group-hover:scale-110 
@@ -47,8 +47,8 @@ const SocialLink = ({ link, index }) => (
       href={link.url}
       target="_blank"
       rel="noopener noreferrer"
-      className="relative block p-4 rounded-full bg-surface-light border border-lime-DEFAULT/10
-                hover:border-lime-DEFAULT/30 transition-all duration-300 group z-10"
+      className="relative block p-4 rounded-full bg-surface-light border border-lime-default/10
+                hover:border-lime-default/30 transition-all duration-300 group z-10"
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.95 }}
     >
@@ -57,7 +57,7 @@ const SocialLink = ({ link, index }) => (
       {/* Improved tooltip positioning and visibility */}
       <span
         className="absolute -bottom-10 left-1/2 -translate-x-1/2 px-2 py-1 text-sm 
-                    bg-surface-dark border border-lime-DEFAULT/10 rounded-md
+                    bg-surface-dark border border-lime-default/10 rounded-md
                     opacity-0 group-hover:opacity-100 transition-all duration-300 whitespace-nowrap"
       >
         {link.name}
@@ -97,7 +97,7 @@ const ContactSection = () => {
       <div className="absolute inset-0">
         <div
           className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] 
-                     from-lime-DEFAULT/5 via-transparent to-transparent"
+                     from-lime-default/5 via-transparent to-transparent"
         />
         <div
           className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,.05)_1px,transparent_1px),linear-gradient(to_right,rgba(255,255,255,.05)_1px,transparent_1px)] 

@@ -24,14 +24,14 @@ const Hero = () => {
     <section
       ref={containerRef}
       id="home"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-surface-dark pt-32"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-surface-dark pt-32 pb-48"
     >
       {/* Background grid pattern */}
       <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(255,255,255,.03)_1px,transparent_1px),linear-gradient(180deg,rgba(255,255,255,.03)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]" />
 
       {/* Accent circles */}
-      <div className="absolute top-1/4 -right-1/4 w-[40vw] h-[40vw] rounded-full bg-lime-DEFAULT/10 blur-3xl" />
-      <div className="absolute -bottom-1/4 -left-1/4 w-[40vw] h-[40vw] rounded-full bg-yellow-DEFAULT/10 blur-3xl" />
+      <div className="absolute top-1/4 -right-1/4 w-[40vw] h-[40vw] rounded-full bg-lime-default/10 blur-3xl" />
+      <div className="absolute -bottom-1/4 -left-1/4 w-[40vw] h-[40vw] rounded-full bg-yellow-default/10 blur-3xl" />
 
       <motion.div
         style={{ y, opacity }}
@@ -91,7 +91,7 @@ const Hero = () => {
                 smooth={true}
                 offset={-100}
                 duration={1000}
-                className="inline-flex items-center gap-2 px-8 py-4 bg-lime-DEFAULT text-surface-dark 
+                className="inline-flex items-center gap-2 px-8 py-4 bg-lime-default text-surface-dark 
                          font-medium rounded-full hover:bg-lime-light transition-colors duration-300 cursor-pointer"
               >
                 View My Work
@@ -105,8 +105,8 @@ const Hero = () => {
                 smooth={true}
                 offset={-100}
                 duration={1000}
-                className="inline-flex items-center gap-2 px-8 py-4 border border-lime-DEFAULT/30 
-                         text-lime-light font-medium rounded-full hover:bg-lime-DEFAULT/10 
+                className="inline-flex items-center gap-2 px-8 py-4 border border-lime-default/30 
+                         text-lime-light font-medium rounded-full hover:bg-lime-default/10 
                          transition-colors duration-300 cursor-pointer"
               >
                 Let's Connect

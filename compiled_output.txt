@@ -1,4 +1,4 @@
-Compiled Text Files - Generated on 2024-12-28 19:06:25
+Compiled Text Files - Generated on 2024-12-28 21:48:33
 Source Directory: /home/kelvin/coding/personal/Ngeno-Portfolio
 
 ##########
@@ -130,21 +130,22 @@ module.exports = {
           // From the color scheme image
           light: "#C0FF02",
           DEFAULT: "#32CC32",
+          default: "#32CC32",
           dark: "#2BA62B",
         },
         yellow: {
           light: "#FFE20B",
-          DEFAULT: "#F4FF00",
+          default: "#F4FF00",
           dark: "#FFE20B",
         },
         surface: {
           light: "#1A1A1A",
-          DEFAULT: "#121212",
+          default: "#121212",
           dark: "#0A0A0A",
         },
       },
       fontFamily: {
-        sans: ["var(--font-inter)", "system-ui"],
+        sans: ["var(--font-inter)", "Inter", "system-ui"],
         display: ["var(--font-monument)", "system-ui"],
         mono: ["var(--font-mono)", "monospace"],
       },
@@ -314,6 +315,8 @@ FULL PATH: /home/kelvin/coding/personal/Ngeno-Portfolio/components/Footer.tsx
 import React from "react";
 import { motion } from "framer-motion";
 import { Link as ScrollLink } from "react-scroll";
+import { socialLinks } from "@/data/social";
+import { FaGithub, FaLinkedin, FaHeart } from "react-icons/fa";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -326,8 +329,38 @@ const Footer = () => {
     { label: "Contact", to: "contact" },
   ];
 
+  // Separate component for footer link to improve interactivity
+  const FooterLink = ({ to, label }) => (
+    <li>
+      <ScrollLink
+        to={to}
+        spy={true}
+        smooth={true}
+        offset={-100}
+        duration={1000}
+        className="block py-2 text-gray-400 hover:text-lime-light transition-colors cursor-pointer"
+        activeClass="text-lime-light"
+      >
+        {label}
+      </ScrollLink>
+    </li>
+  );
+
+  // Separate component for contact link
+  const ContactLink = ({ href, children }) => (
+    <li>
+      <motion.a
+        href={href}
+        whileHover={{ x: 5 }}
+        className="block py-2 text-gray-400 hover:text-lime-light transition-colors"
+      >
+        {children}
+      </motion.a>
+    </li>
+  );
+
   return (
-    <footer className="relative bg-surface-dark py-16 overflow-hidden">
+    <footer className="relative bg-surface-dark py-16 overflow-hidden z-10">
       {/* Top border gradient */}
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-lime-DEFAULT/20 to-transparent" />
 
@@ -337,14 +370,15 @@ const Footer = () => {
                    bg-[size:4rem_4rem] opacity-20"
       />
 
-      <div className="container mx-auto px-6">
+      <div className="container mx-auto px-6 relative">
         <div className="grid md:grid-cols-2 gap-12 mb-12">
           {/* Brand Section */}
           <div>
             <motion.a
-              href="#"
+              href="/"
               className="inline-block text-2xl font-display font-bold text-lime-light mb-4"
               whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
             >
               KN
             </motion.a>
@@ -358,73 +392,59 @@ const Footer = () => {
           <div className="grid grid-cols-2 gap-8">
             <div>
               <h3 className="text-white font-medium mb-4">Quick Links</h3>
-              <ul className="space-y-2">
+              <ul className="space-y-1">
                 {footerLinks.map((link) => (
-                  <li key={link.to}>
-                    <ScrollLink
-                      to={link.to}
-                      spy={true}
-                      smooth={true}
-                      offset={-100}
-                      duration={1000}
-                      className="text-gray-400 hover:text-lime-light transition-colors cursor-pointer"
-                    >
-                      {link.label}
-                    </ScrollLink>
-                  </li>
+                  <FooterLink key={link.to} {...link} />
                 ))}
               </ul>
             </div>
             <div>
               <h3 className="text-white font-medium mb-4">Contact</h3>
-              <ul className="space-y-2 text-gray-400">
-                <li>
-                  <a
-                    href="tel:+254726299179"
-                    className="hover:text-lime-light transition-colors"
-                  >
-                    +254 726 299 179
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="mailto:interstellarcg@gmail.com"
-                    className="hover:text-lime-light transition-colors"
-                  >
-                    interstellarcg@gmail.com
-                  </a>
-                </li>
-                <li>Nairobi, Kenya</li>
+              <ul className="space-y-1">
+                <ContactLink href="tel:+254726299179">
+                  +254 726 299 179
+                </ContactLink>
+                <ContactLink href="mailto:interstellarcg@gmail.com">
+                  interstellarcg@gmail.com
+                </ContactLink>
+                <ContactLink href="https://maps.google.com/?q=Nairobi,Kenya">
+                  Nairobi, Kenya
+                </ContactLink>
               </ul>
             </div>
           </div>
         </div>
 
+        {/* Social Links */}
+        <div className="flex flex-wrap justify-center gap-6 mb-12">
+          {socialLinks.map((link) => (
+            <motion.a
+              key={link.id}
+              href={link.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-3 rounded-full bg-surface-light border border-lime-DEFAULT/10
+                       hover:border-lime-DEFAULT/30 text-gray-400 hover:text-lime-light 
+                       transition-all duration-300"
+              whileHover={{ scale: 1.1, y: -5 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <link.icon className="w-5 h-5" />
+            </motion.a>
+          ))}
+        </div>
+
         {/* Bottom Section */}
         <div className="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-lime-DEFAULT/10">
-          <p className="text-gray-400 text-sm mb-4 md:mb-0">
-            © {currentYear} Kelvin Ng'eno. All rights reserved.
-          </p>
-          <div className="flex items-center gap-4">
-            <motion.a
-              href="https://github.com/ngenome"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-gray-400 hover:text-lime-light transition-colors"
-              whileHover={{ scale: 1.1 }}
-            >
-              GitHub
-            </motion.a>
-            <motion.a
-              href="https://linkedin.com/in/kelvin-ngeno"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-gray-400 hover:text-lime-light transition-colors"
-              whileHover={{ scale: 1.1 }}
-            >
-              LinkedIn
-            </motion.a>
+          <div className="flex items-center gap-2 text-gray-400 text-sm mb-4 md:mb-0">
+            <span>© {currentYear}</span>
+            <span className="text-lime-light">Kelvin Ng'eno</span>
+            <span className="flex items-center gap-1">
+              Made with <FaHeart className="text-red-500 animate-pulse" />
+            </span>
           </div>
+
+          <div className="flex items-center gap-6"></div>
         </div>
       </div>
     </footer>
@@ -550,7 +570,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
                   href={link.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`p-3 rounded-full bg-${link.color}-DEFAULT hover:bg-${link.color}-light 
+                  className={`p-3 rounded-full bg-${link.color}-default hover:bg-${link.color}-light 
                             transition-all duration-300 text-surface-dark`}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{
@@ -620,12 +640,40 @@ import { Link as ScrollLink } from "react-scroll";
 import { FaBars, FaTimes } from "react-icons/fa";
 
 const Navigation = () => {
+  // State management
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
   const [dimensions, setDimensions] = useState({ height: 0, width: 0 });
-  const { scrollY } = useScroll();
 
-  // Update dimensions on client side
+  // Scroll and transform effects
+  const { scrollY } = useScroll();
+  const headerBg = useTransform(
+    scrollY,
+    [0, 50],
+    ["rgba(18, 18, 18, 0)", "rgba(18, 18, 18, 0.8)"]
+  );
+  const headerBlur = useTransform(scrollY, [0, 50], [0, 8]);
+  const progressBarScale = useTransform(
+    scrollY,
+    [
+      0,
+      typeof window !== "undefined"
+        ? document.documentElement.scrollHeight - window.innerHeight
+        : 1000,
+    ],
+    [0, 1]
+  );
+
+  // Navigation items
+  const navItems = [
+    { id: "home", label: "HOME" },
+    { id: "projects", label: "WORK" },
+    { id: "skills", label: "SKILLS" },
+    { id: "experience", label: "EXPERIENCE" },
+    { id: "contact", label: "CONTACT" },
+  ];
+
+  // Update dimensions effect
   useEffect(() => {
     const updateDimensions = () => {
       if (typeof window !== "undefined") {
@@ -638,25 +686,36 @@ const Navigation = () => {
 
     updateDimensions();
     window.addEventListener("resize", updateDimensions);
+
+    // Cleanup
     return () => window.removeEventListener("resize", updateDimensions);
   }, []);
 
-  // Transform values for scroll-based effects
-  const headerBg = useTransform(
-    scrollY,
-    [0, 50],
-    ["rgba(18, 18, 18, 0)", "rgba(18, 18, 18, 0.8)"]
-  );
-  const headerBlur = useTransform(scrollY, [0, 50], [0, 8]);
+  // Handle section visibility
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = navItems.map((item) => ({
+        id: item.id,
+        offset: document.getElementById(item.id)?.offsetTop || 0,
+      }));
 
-  const navItems = [
-    { id: "home", label: "HOME" },
-    { id: "projects", label: "WORK" },
-    { id: "skills", label: "SKILLS" },
-    { id: "experience", label: "EXPERIENCE" },
-    { id: "contact", label: "CONTACT" },
-  ];
+      const currentPosition = window.scrollY + 100; // Adding offset for header
 
+      const currentSection = sections.reduce((acc, section) => {
+        if (currentPosition >= section.offset) {
+          return section.id;
+        }
+        return acc;
+      }, sections[0].id);
+
+      setActiveSection(currentSection);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // NavLink component
   const NavLink = ({ item, onClick = () => {} }) => (
     <ScrollLink
       to={item.id}
@@ -690,7 +749,7 @@ const Navigation = () => {
           backgroundColor: headerBg,
           backdropFilter: `blur(${headerBlur}px)`,
         }}
-        className="fixed top-0 left-0 right-0 z-50 border-b border-lime-DEFAULT/10"
+        className="fixed top-0 left-0 right-0 z-50 border-b border-lime-default/10"
       >
         <nav className="container mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
@@ -749,18 +808,10 @@ const Navigation = () => {
       </motion.header>
 
       {/* Progress Bar */}
-      {dimensions.height > 0 && (
-        <motion.div
-          className="fixed top-0 left-0 right-0 h-1 bg-lime-light origin-left z-50"
-          style={{
-            scaleX: useTransform(
-              scrollY,
-              [0, dimensions.height - window.innerHeight],
-              [0, 1]
-            ),
-          }}
-        />
-      )}
+      <motion.div
+        className="fixed top-0 left-0 right-0 h-1 bg-lime-light origin-left z-50"
+        style={{ scaleX: progressBarScale }}
+      />
 
       {/* Mobile menu overlay */}
       {isMenuOpen && (
@@ -793,7 +844,7 @@ import { motion } from "framer-motion";
 // Text that reveals character by character
 export const RevealText = ({ text, className = "" }) => {
   return (
-    <motion.span
+    <motion.div
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true }}
@@ -816,7 +867,7 @@ export const RevealText = ({ text, className = "" }) => {
           {char === " " ? "\u00A0" : char}
         </motion.span>
       ))}
-    </motion.span>
+    </motion.div>
   );
 };
 
@@ -1066,7 +1117,7 @@ const SectionWrapper = ({
   return (
     <motion.section
       ref={sectionRef}
-      className={`relative ${overlapClasses[overlap]} ${className}`}
+      className={`relative  ${className}`}
       style={{ zIndex }}
       initial="hidden"
       whileInView="visible"
@@ -1094,7 +1145,7 @@ FULL PATH: /home/kelvin/coding/personal/Ngeno-Portfolio/components/sections/Cont
 ##########
 
 // File: components/sections/Contact.tsx
-import React, { useState } from "react";
+import React from "react";
 import { motion } from "framer-motion";
 import { SplitHeading, MagneticButton } from "@/components/common/animations";
 import { socialLinks } from "@/data/social";
@@ -1112,15 +1163,9 @@ const ContactLink = ({ icon: Icon, label, value, href, delay = 0 }) => (
     whileInView={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.8, delay }}
     viewport={{ once: true }}
-    className="group relative flex items-start gap-4 p-6 rounded-xl bg-surface-light border border-lime-DEFAULT/10
-               hover:border-lime-DEFAULT/30 transition-all duration-300"
+    className="group relative flex items-start gap-4 p-6 rounded-xl bg-surface-light border border-lime-default/10
+               hover:border-lime-default/30 transition-all duration-300"
   >
-    {/* Hover gradient effect */}
-    <div
-      className="absolute inset-0 rounded-xl bg-gradient-to-br from-lime-DEFAULT/5 to-transparent opacity-0 
-                   group-hover:opacity-100 transition-opacity duration-300"
-    />
-
     <div
       className="relative p-3 rounded-full bg-surface-dark text-lime-light group-hover:scale-110 
                    transition-transform duration-300"
@@ -1137,37 +1182,34 @@ const ContactLink = ({ icon: Icon, label, value, href, delay = 0 }) => (
 );
 
 const SocialLink = ({ link, index }) => (
-  <MagneticButton>
+  <motion.div
+    initial={{ opacity: 0, scale: 0.5 }}
+    whileInView={{ opacity: 1, scale: 1 }}
+    transition={{ duration: 0.5, delay: index * 0.1 }}
+    viewport={{ once: true }}
+    className="relative"
+  >
     <motion.a
       href={link.url}
       target="_blank"
       rel="noopener noreferrer"
-      initial={{ opacity: 0, scale: 0 }}
-      whileInView={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
-      viewport={{ once: true }}
-      className="relative p-4 rounded-full bg-surface-light border border-lime-DEFAULT/10
-                 hover:border-lime-DEFAULT/30 transition-all duration-300 group"
+      className="relative block p-4 rounded-full bg-surface-light border border-lime-default/10
+                hover:border-lime-default/30 transition-all duration-300 group z-10"
+      whileHover={{ scale: 1.1 }}
+      whileTap={{ scale: 0.95 }}
     >
-      {/* Hover effect */}
-      <div
-        className="absolute inset-0 rounded-full bg-gradient-to-br from-lime-DEFAULT/5 to-transparent 
-                     opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-      />
-      <link.icon
-        className="relative w-6 h-6 text-gray-400 group-hover:text-lime-light 
-                           transition-colors duration-300"
-      />
+      <link.icon className="w-6 h-6 text-gray-400 group-hover:text-lime-light transition-colors duration-300" />
 
-      {/* Tooltip */}
+      {/* Improved tooltip positioning and visibility */}
       <span
-        className="absolute -bottom-8 left-1/2 -translate-x-1/2 whitespace-nowrap text-sm text-gray-400 
-                     opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+        className="absolute -bottom-10 left-1/2 -translate-x-1/2 px-2 py-1 text-sm 
+                    bg-surface-dark border border-lime-default/10 rounded-md
+                    opacity-0 group-hover:opacity-100 transition-all duration-300 whitespace-nowrap"
       >
         {link.name}
       </span>
     </motion.a>
-  </MagneticButton>
+  </motion.div>
 );
 
 const ContactSection = () => {
@@ -1188,7 +1230,7 @@ const ContactSection = () => {
       icon: FaMapMarkerAlt,
       label: "Location",
       value: "Nairobi, Kenya",
-      href: "#",
+      href: "https://maps.google.com/?q=Nairobi,Kenya",
     },
   ];
 
@@ -1201,17 +1243,16 @@ const ContactSection = () => {
       <div className="absolute inset-0">
         <div
           className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] 
-                     from-lime-DEFAULT/5 via-transparent to-transparent"
+                     from-lime-default/5 via-transparent to-transparent"
         />
-        {/* Grid pattern */}
         <div
           className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,.05)_1px,transparent_1px),linear-gradient(to_right,rgba(255,255,255,.05)_1px,transparent_1px)] 
                      bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"
         />
       </div>
 
-      <div className="container mx-auto px-6">
-        <div className="relative max-w-4xl mx-auto text-center mb-24">
+      <div className="container mx-auto px-6 relative">
+        <div className="max-w-4xl mx-auto text-center mb-24">
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -1237,7 +1278,7 @@ const ContactSection = () => {
         </div>
 
         {/* Contact Info Grid */}
-        <div className="grid md:grid-cols-3 gap-6 mb-16">
+        <div className="grid md:grid-cols-3 gap-6 mb-24">
           {contactInfo.map((info, index) => (
             <ContactLink key={info.label} {...info} delay={index * 0.2} />
           ))}
@@ -1245,10 +1286,11 @@ const ContactSection = () => {
 
         {/* Social Links */}
         <motion.div
-          initial="hidden"
-          whileInView="visible"
+          className="flex flex-wrap justify-center items-center gap-8 mb-24"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="flex flex-wrap justify-center items-center gap-6"
         >
           {socialLinks.map((link, index) => (
             <SocialLink key={link.id} link={link} index={index} />
@@ -1259,24 +1301,22 @@ const ContactSection = () => {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
+          transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center mt-16"
+          className="text-center relative z-10"
         >
-          <MagneticButton>
-            <motion.a
-              href="/resume.pdf"
-              download
-              className="inline-flex items-center gap-3 px-8 py-4 bg-lime-DEFAULT text-surface-dark 
-                       font-medium rounded-full hover:bg-lime-light transition-colors duration-300
-                       group"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <FaFileDownload className="w-5 h-5 group-hover:animate-bounce" />
-              <span>Download Resume</span>
-            </motion.a>
-          </MagneticButton>
+          <motion.a
+            href="/resume.pdf"
+            download
+            className="inline-flex items-center gap-3 px-8 py-4 bg-lime-default text-surface-dark 
+                     font-medium rounded-full hover:bg-lime-light transition-colors duration-300
+                     shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <FaFileDownload className="w-5 h-5 animate-bounce" />
+            <span className="font-medium">Download Resume</span>
+          </motion.a>
         </motion.div>
       </div>
     </section>
@@ -1315,25 +1355,25 @@ const ProjectCard = ({
       icon: FaGlobe,
       url: project.links.live,
       label: "Visit Site",
-      bgColor: "bg-lime-DEFAULT hover:border-lime-light",
+      bgColor: "bg-lime-default hover:border-lime-light",
     },
     {
       icon: FaGithub,
       url: project.links.github,
       label: "View Code",
-      bgColor: "bg-yellow-DEFAULT hover:border-yellow-light",
+      bgColor: "bg-yellow-default hover:border-yellow-light",
     },
     {
       icon: FaGooglePlay,
       url: project.links.playStore,
       label: "Play Store",
-      bgColor: "bg-lime-DEFAULT hover:border-lime-light",
+      bgColor: "bg-lime-default hover:border-lime-light",
     },
     {
       icon: FaAppStore,
       url: project.links.appStore,
       label: "App Store",
-      bgColor: "bg-yellow-DEFAULT hover:border-yellow-light",
+      bgColor: "bg-yellow-default hover:border-yellow-light",
     },
   ].filter((link) => link.url);
 
@@ -1386,7 +1426,7 @@ const ProjectCard = ({
             <span
               key={tech}
               className="px-3 py-1 text-xs rounded-full bg-surface-dark 
-                       text-lime-light border border-lime-DEFAULT/20"
+                       text-lime-light border border-lime-default/20"
             >
               {tech}
             </span>
@@ -1406,10 +1446,8 @@ const ProjectCard = ({
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <link.icon className="w-4 h-4 text-white" />
-              <span className="text-sm font-medium text-white">
-                {link.label}
-              </span>
+              <link.icon className="w-4 h-4" />
+              <span className="text-sm font-medium">{link.label}</span>
             </motion.a>
           ))}
         </div>
@@ -1459,7 +1497,7 @@ const ProjectsSection = () => {
               className={`px-6 py-3 rounded-full text-sm font-medium transition-all duration-300
                        ${
                          activeCategory === category.id
-                           ? "bg-lime-DEFAULT text-surface-dark"
+                           ? "bg-lime-default text-surface-dark"
                            : "bg-surface-light text-gray-400 hover:text-white"
                        }`}
               whileHover={{ scale: 1.05 }}
@@ -1505,6 +1543,7 @@ import {
   MagneticButton,
 } from "@/components/common/animations";
 import { FaArrowDown } from "react-icons/fa";
+import { Link as ScrollLink } from "react-scroll";
 
 const Hero = () => {
   const containerRef = useRef(null);
@@ -1520,25 +1559,38 @@ const Hero = () => {
   return (
     <section
       ref={containerRef}
-      className="relative h-screen-dvh flex items-center justify-center overflow-hidden bg-surface-dark"
+      id="home"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-surface-dark pt-32 pb-48"
     >
       {/* Background grid pattern */}
       <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(255,255,255,.03)_1px,transparent_1px),linear-gradient(180deg,rgba(255,255,255,.03)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]" />
 
-      {/* Accent circle */}
-      <div className="absolute top-1/4 -right-1/4 w-[40vw] h-[40vw] rounded-full bg-lime-DEFAULT/10 blur-3xl" />
-      <div className="absolute -bottom-1/4 -left-1/4 w-[40vw] h-[40vw] rounded-full bg-yellow-DEFAULT/10 blur-3xl" />
+      {/* Accent circles */}
+      <div className="absolute top-1/4 -right-1/4 w-[40vw] h-[40vw] rounded-full bg-lime-default/10 blur-3xl" />
+      <div className="absolute -bottom-1/4 -left-1/4 w-[40vw] h-[40vw] rounded-full bg-yellow-default/10 blur-3xl" />
 
       <motion.div
         style={{ y, opacity }}
         className="relative z-10 container mx-auto px-6"
       >
         <div className="max-w-4xl mx-auto text-center">
-          {/* Eyebrow text */}
-          <motion.p
+          {/* Name with creative treatment */}
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
+            className="inline-block mb-8"
+          >
+            <h2 className="text-2xl md:text-3xl font-display bg-gradient-to-r from-lime-light via-yellow-light to-lime-light bg-clip-text text-transparent">
+              Kelvin Ng'eno
+            </h2>
+          </motion.div>
+
+          {/* Role/Position */}
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
             className="text-lime-light font-mono text-sm tracking-wider mb-6"
           >
             FULL STACK DEVELOPER & AI ENGINEER
@@ -1569,28 +1621,32 @@ const Hero = () => {
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
             <MagneticButton>
-              <motion.a
-                href="#work"
-                className="inline-flex items-center gap-2 px-8 py-4 bg-lime-DEFAULT text-surface-dark 
-                         font-medium rounded-full hover:bg-lime-light transition-colors duration-300"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+              <ScrollLink
+                to="projects"
+                spy={true}
+                smooth={true}
+                offset={-100}
+                duration={1000}
+                className="inline-flex items-center gap-2 px-8 py-4 bg-lime-default text-surface-dark 
+                         font-medium rounded-full hover:bg-lime-light transition-colors duration-300 cursor-pointer"
               >
                 View My Work
-              </motion.a>
+              </ScrollLink>
             </MagneticButton>
 
             <MagneticButton>
-              <motion.a
-                href="#contact"
-                className="inline-flex items-center gap-2 px-8 py-4 border border-lime-DEFAULT/30 
-                         text-lime-light font-medium rounded-full hover:bg-lime-DEFAULT/10 
-                         transition-colors duration-300"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+              <ScrollLink
+                to="contact"
+                spy={true}
+                smooth={true}
+                offset={-100}
+                duration={1000}
+                className="inline-flex items-center gap-2 px-8 py-4 border border-lime-default/30 
+                         text-lime-light font-medium rounded-full hover:bg-lime-default/10 
+                         transition-colors duration-300 cursor-pointer"
               >
                 Let's Connect
-              </motion.a>
+              </ScrollLink>
             </MagneticButton>
           </div>
         </div>
@@ -1601,14 +1657,15 @@ const Hero = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 cursor-pointer"
       >
         <span className="text-gray-400 text-sm">Scroll to explore</span>
         <motion.div
           animate={{ y: [0, 10, 0] }}
           transition={{ duration: 1.5, repeat: Infinity }}
+          className="text-lime-light"
         >
-          <FaArrowDown className="text-lime-light" />
+          <FaArrowDown size={20} />
         </motion.div>
       </motion.div>
     </section>
@@ -1626,21 +1683,26 @@ FULL PATH: /home/kelvin/coding/personal/Ngeno-Portfolio/components/sections/Skil
 ##########
 
 // File: components/sections/Skills.tsx
-import React, { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import React, { useRef, useState } from "react";
+import {
+  motion,
+  useScroll,
+  useTransform,
+  AnimatePresence,
+} from "framer-motion";
 import { SplitHeading } from "@/components/common/animations";
 import { skillCategories, skills } from "@/data/skills";
 
 const SkillsSection = () => {
+  const [selectedCategory, setSelectedCategory] = useState("all");
   const containerRef = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "end start"],
-  });
 
-  // Transform values for horizontal scroll effect
-  const x = useTransform(scrollYProgress, [0, 1], ["0%", "-75%"]);
-  // return <div></div>;
+  // Filter skills based on selected category
+  const filteredSkills =
+    selectedCategory === "all"
+      ? skills
+      : skills.filter((skill) => skill.category === selectedCategory);
+
   return (
     <section
       ref={containerRef}
@@ -1649,81 +1711,113 @@ const SkillsSection = () => {
     >
       {/* Background Elements */}
       <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-lime-DEFAULT/5 via-transparent to-transparent" />
-        <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-lime-DEFAULT/20 to-transparent" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-lime-default/5 via-transparent to-transparent" />
+        <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-lime-default/20 to-transparent" />
       </div>
 
       <div className="container mx-auto px-6">
         {/* Section Header */}
-        <div className="max-w-4xl mb-24">
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-lime-light font-mono text-sm tracking-wider mb-4"
-          >
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="max-w-4xl mb-24"
+        >
+          <p className="text-lime-light font-mono text-sm tracking-wider mb-4">
             EXPERTISE
-          </motion.p>
+          </p>
           <SplitHeading className="text-h1 font-display text-white mb-6">
             Technical Prowess &
             <br />
             Creative Innovation
           </SplitHeading>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-gray-400 text-body max-w-2xl"
-          >
+          <p className="text-gray-400 text-body max-w-2xl">
             Combining cutting-edge technologies with creative problem-solving to
             build scalable, user-centric solutions that make an impact.
-          </motion.p>
-        </div>
+          </p>
+        </motion.div>
 
-        {/* Horizontally Scrolling Skills */}
-        <div className="relative h-[40vh] mb-24">
-          <motion.div style={{ x }} className="absolute left-0 flex gap-8">
-            {skillCategories.map((category) => (
-              <motion.div
+        {/* Skill Categories */}
+        <div className="mb-16">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-8">
+            {[
+              { id: "all", title: "All Skills", icon: null },
+              ...skillCategories,
+            ].map((category) => (
+              <motion.button
                 key={category.id}
-                className="relative flex-none w-[300px] bg-surface-light rounded-xl p-6 border border-lime-DEFAULT/10
-                         hover:border-lime-DEFAULT/30 transition-colors duration-300"
-                whileHover={{ y: -10 }}
+                onClick={() => setSelectedCategory(category.id)}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                whileHover={{ y: -5 }}
+                className={`relative p-4 rounded-xl border transition-all duration-300
+                  ${
+                    selectedCategory === category.id
+                      ? "bg-lime-default/20 border-lime-default text-white"
+                      : "bg-surface-light border-lime-default/10 text-gray-400 hover:border-lime-default/30"
+                  }`}
               >
-                <category.icon className="w-12 h-12 text-lime-light mb-4" />
-                <h3 className="text-xl font-display text-white mb-2">
+                {category.icon && (
+                  <category.icon className="w-8 h-8 mx-auto mb-3 text-lime-light" />
+                )}
+                <p className="text-sm font-medium text-center">
                   {category.title}
-                </h3>
-                <p className="text-gray-400 text-sm">{category.description}</p>
-              </motion.div>
+                </p>
+              </motion.button>
             ))}
-          </motion.div>
+          </div>
         </div>
 
         {/* Skills Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-          {skills.map((skill, index) => (
-            <motion.div
-              key={skill.name}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="group relative bg-surface-light rounded-lg p-6 border border-lime-DEFAULT/10
-                       hover:border-lime-DEFAULT/30 transition-all duration-300"
-            >
-              {/* Hover effect */}
-              <div
-                className="absolute inset-0 bg-gradient-to-br from-lime-DEFAULT/10 to-transparent opacity-0 
-                           group-hover:opacity-100 transition-opacity duration-300 rounded-lg"
-              />
+        <motion.div
+          layout
+          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
+        >
+          <AnimatePresence mode="popLayout">
+            {filteredSkills.map((skill) => (
+              <motion.div
+                key={skill.name}
+                layout
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.8 }}
+                whileHover={{ y: -5 }}
+                transition={{ duration: 0.3 }}
+                className="group relative bg-surface-light rounded-lg p-6 border border-lime-default/10
+                        hover:border-lime-default/30 transition-all duration-300"
+              >
+                {/* Hover gradient */}
+                <div
+                  className="absolute inset-0 bg-gradient-to-br from-lime-default/10 to-transparent 
+                            opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg"
+                />
 
-              <div className="relative">
-                <skill.icon className="w-8 h-8 text-lime-light mb-3 group-hover:scale-110 transition-transform duration-300" />
-                <h4 className="text-white font-medium">{skill.name}</h4>
-              </div>
-            </motion.div>
-          ))}
-        </div>
+                <div className="relative">
+                  <h4 className="text-white font-medium mb-2">{skill.name}</h4>
+                  <p className="text-sm text-gray-400">
+                    {
+                      skillCategories.find((cat) => cat.id === skill.category)
+                        ?.title
+                    }
+                  </p>
+                </div>
+              </motion.div>
+            ))}
+          </AnimatePresence>
+        </motion.div>
+
+        {/* Empty state */}
+        {filteredSkills.length === 0 && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="text-center py-12 text-gray-400"
+          >
+            No skills found in this category.
+          </motion.div>
+        )}
       </div>
     </section>
   );
@@ -1760,9 +1854,9 @@ const ExperienceCard = ({ experience, index }) => {
     >
       {/* Timeline line with gradient */}
       <div className="absolute left-0 top-0 h-full w-px md:w-24">
-        <div className="h-full w-px md:h-px bg-gradient-to-r from-lime-DEFAULT to-yellow-DEFAULT opacity-20" />
+        <div className="h-full w-px md:h-px bg-gradient-to-r from-lime-default to-yellow-default opacity-20" />
         <motion.div
-          className="absolute left-0 top-0 h-full w-px md:h-px bg-gradient-to-r from-lime-DEFAULT to-yellow-DEFAULT"
+          className="absolute left-0 top-0 h-full w-px md:h-px bg-gradient-to-r from-lime-default to-yellow-default"
           initial={{ scaleY: 0, scaleX: 0 }}
           whileInView={{ scaleY: 1, scaleX: 1 }}
           viewport={{ once: true }}
@@ -1775,26 +1869,26 @@ const ExperienceCard = ({ experience, index }) => {
       <div className="absolute left-[-4px] md:left-24 top-0">
         <div className="relative w-2 h-2 md:w-3 md:h-3">
           <motion.div
-            className="absolute inset-0 bg-lime-DEFAULT rounded-full"
+            className="absolute inset-0 bg-lime-default rounded-full"
             initial={{ scale: 0 }}
             whileInView={{ scale: 1 }}
             viewport={{ once: true }}
           />
-          <div className="absolute inset-0 bg-lime-DEFAULT rounded-full animate-ping opacity-75" />
-          <div className="absolute inset-[-4px] bg-lime-DEFAULT rounded-full opacity-30 animate-pulse" />
+          <div className="absolute inset-0 bg-lime-default rounded-full animate-ping opacity-75" />
+          <div className="absolute inset-[-4px] bg-lime-default rounded-full opacity-30 animate-pulse" />
         </div>
       </div>
 
       {/* Content Card */}
       <motion.div
         layout
-        className="relative bg-surface-light rounded-xl p-6 md:p-8 border border-lime-DEFAULT/10 
-                 hover:border-lime-DEFAULT/30 transition-colors duration-300"
+        className="relative bg-surface-light rounded-xl p-6 md:p-8 border border-lime-default/10 
+                 hover:border-lime-default/30 transition-colors duration-300"
       >
         {/* Date pill */}
         <div
           className="absolute -top-3 left-6 px-4 py-1 bg-surface-dark rounded-full 
-                     border border-lime-DEFAULT/20 text-lime-light text-sm"
+                     border border-lime-default/20 text-lime-light text-sm"
         >
           {experience.duration}
         </div>
@@ -1813,7 +1907,7 @@ const ExperienceCard = ({ experience, index }) => {
                 href={experience.companyUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-lime-light hover:text-lime-DEFAULT transition-colors inline-flex items-center gap-1"
+                className="text-lime-light hover:text-lime-default transition-colors inline-flex items-center gap-1"
                 whileHover={{ x: 5 }}
               >
                 {experience.company}
@@ -1855,20 +1949,20 @@ const ExperienceCard = ({ experience, index }) => {
           {/* Expand/Collapse Button */}
           <motion.button
             onClick={() => setIsExpanded(!isExpanded)}
-            className="mt-6 text-sm text-lime-light hover:text-lime-DEFAULT transition-colors"
+            className="mt-6 text-sm text-lime-light hover:text-lime-default transition-colors"
             whileHover={{ x: 5 }}
           >
             {isExpanded ? "Show Less" : "Show More"}
           </motion.button>
 
           {/* Technologies */}
-          <div className="mt-6 pt-6 border-t border-lime-DEFAULT/10">
+          <div className="mt-6 pt-6 border-t border-lime-default/10">
             <div className="flex flex-wrap gap-2">
               {experience.technologies.map((tech) => (
                 <span
                   key={tech}
                   className="px-3 py-1 text-xs rounded-full bg-surface-dark
-                           text-lime-light border border-lime-DEFAULT/20"
+                           text-lime-light border border-lime-default/20"
                 >
                   {tech}
                 </span>
@@ -1902,7 +1996,7 @@ const ExperienceSection = () => {
         style={{ y }}
         className="absolute inset-0 pointer-events-none"
       >
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom,_var(--tw-gradient-stops))] from-lime-DEFAULT/5 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom,_var(--tw-gradient-stops))] from-lime-default/5 via-transparent to-transparent" />
       </motion.div>
 
       <div className="container mx-auto px-6 relative">
@@ -1948,6 +2042,74 @@ const ExperienceSection = () => {
 };
 
 export default ExperienceSection;
+
+
+==========
+
+##########
+FILE: hooks/useMouse.ts
+FULL PATH: /home/kelvin/coding/personal/Ngeno-Portfolio/hooks/useMouse.ts
+##########
+
+"use client";
+import { type RefObject, useLayoutEffect, useRef, useState } from "react";
+
+interface MouseState {
+  x: number | null;
+  y: number | null;
+  elementX: number | null;
+  elementY: number | null;
+  elementPositionX: number | null;
+  elementPositionY: number | null;
+}
+
+export function useMouse(): [MouseState, RefObject<HTMLDivElement>] {
+  const [state, setState] = useState<MouseState>({
+    x: null,
+    y: null,
+    elementX: null,
+    elementY: null,
+    elementPositionX: null,
+    elementPositionY: null,
+  });
+
+  const ref = useRef<HTMLDivElement | null>(null);
+
+  useLayoutEffect(() => {
+    const handleMouseMove = (event: MouseEvent) => {
+      const newState: Partial<MouseState> = {
+        x: event.pageX,
+        y: event.pageY,
+      };
+
+      if (ref.current instanceof Element) {
+        const { left, top } = ref.current.getBoundingClientRect();
+        const elementPositionX = left + window.scrollX;
+        const elementPositionY = top + window.scrollY;
+        const elementX = event.pageX - elementPositionX;
+        const elementY = event.pageY - elementPositionY;
+
+        newState.elementX = elementX;
+        newState.elementY = elementY;
+        newState.elementPositionX = elementPositionX;
+        newState.elementPositionY = elementPositionY;
+      }
+
+      setState((s) => ({
+        ...s,
+        ...newState,
+      }));
+    };
+
+    document.addEventListener("mousemove", handleMouseMove);
+
+    return () => {
+      document.removeEventListener("mousemove", handleMouseMove);
+    };
+  }, []);
+
+  return [state, ref];
+}
 
 
 ==========
@@ -2245,6 +2407,21 @@ export const useScrollReveal = (threshold = 0.1) => {
 ==========
 
 ##########
+FILE: lib/utils.ts
+FULL PATH: /home/kelvin/coding/personal/Ngeno-Portfolio/lib/utils.ts
+##########
+
+import { type ClassValue, clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+
+
+==========
+
+##########
 FILE: app/page.tsx
 FULL PATH: /home/kelvin/coding/personal/Ngeno-Portfolio/app/page.tsx
 ##########
@@ -2261,53 +2438,34 @@ import ExperienceSection from "@/components/sections/Experience";
 import ContactSection from "@/components/sections/Contact";
 import Footer from "@/components/Footer";
 import { useSmoothScroll } from "@/hooks/useScrollSmooth";
-import { DM_Sans, JetBrains_Mono } from "next/font/google";
+import { DM_Sans, JetBrains_Mono, Rethink_Sans } from "next/font/google";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { socialLinks } from "@/data/social";
 import localFont from "next/font/local";
 import CanvasCursor from "@/components/Cursor";
-
-// Preload fonts
-const fontSans = DM_Sans({
-  subsets: ["latin"],
-  variable: "--font-inter",
-});
-
-const fontDisplay = localFont({
-  src: "../public/fonts/MonumentExtended-Regular.otf",
-  variable: "--font-monument",
-});
-
-const fontMono = JetBrains_Mono({
-  subsets: ["latin"],
-  variable: "--font-mono",
-});
+import { useMouse } from "@/hooks/useMouse";
 
 export default function Home() {
   // Initialize smooth scrolling
   // useSmoothScroll();
+  // useMouse();
 
   return (
-    <main
-      className={`bg-surface-dark min-h-screen ${fontSans.variable} ${fontDisplay.variable} ${fontMono.variable}`}
-    >
-      <CanvasCursor />
+    <main className={`bg-surface-dark min-h-screen`}>
       {/* Navigation */}
       <Navigation />
+      <CanvasCursor />
 
       {/* Page Content */}
       <div className="relative">
         {/* Hero Section */}
-        <section className="relative min-h-screen">
-          <Hero />
-        </section>
+        <Hero />
 
         {/* Main Content */}
         <div className="relative">
           {/* Skills Section - Overlapping previous section */}
-          <div className="relative -mt-32 z-10">
-            <SkillsSection />
-          </div>
+
+          <SkillsSection />
 
           {/* Projects Section - Shifting up slightly */}
           <div className="relative -mt-16">
@@ -2352,7 +2510,7 @@ const SideElements = () => {
         >
           interstellarcg@gmail.com
         </a>
-        <div className="w-px h-24 bg-lime-DEFAULT/20" />
+        <div className="w-px h-24 bg-lime-default/20" />
       </motion.div>
 
       {/* Social links on left side */}
@@ -2376,12 +2534,12 @@ const SideElements = () => {
             </motion.a>
           ))}
         </div>
-        <div className="w-px h-24 bg-lime-DEFAULT/20" />
+        <div className="w-px h-24 bg-lime-default/20" />
       </motion.div>
 
       {/* Scroll progress indicator */}
       <motion.div
-        className="fixed top-0 left-0 w-full h-1 bg-lime-DEFAULT origin-left z-50"
+        className="fixed top-0 left-0 w-full h-1 bg-lime-default origin-left z-50"
         style={{
           scaleX: useTransform(useScroll().scrollYProgress, [0, 1], [0, 1]),
         }}
@@ -2439,7 +2597,12 @@ FILE: app/layout.tsx
 FULL PATH: /home/kelvin/coding/personal/Ngeno-Portfolio/app/layout.tsx
 ##########
 
-import { DM_Sans } from "next/font/google";
+import {
+  DM_Sans,
+  JetBrains_Mono,
+  Kodchasan,
+  Rethink_Sans,
+} from "next/font/google";
 import "./globals.css";
 import Layout from "@/components/Layout";
 
@@ -2457,19 +2620,46 @@ export const metadata = {
     "Software Engineer",
   ].join(", "),
 };
+
+import localFont from "next/font/local";
+
 // Preload fonts
-const fontSans = DM_Sans({
+const fontSans = Rethink_Sans({
   subsets: ["latin"],
+  variable: "--font-inter",
 });
 
+const kodchasan = Kodchasan({
+  weight: "200",
+  subsets: ["latin"],
+  variable: "--font-kodchasan",
+});
+
+const fontDisplay = localFont({
+  src: "../public/fonts/MonumentExtended-Regular.otf",
+  variable: "--font-monument",
+});
+
+const fontMono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-mono",
+});
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="scroll-smooth">
-      <body className={fontSans.className}>
+    <html style={fontSans.style} lang="en" className="scroll-smooth">
+      <head>
+        <style>
+          @import
+          url('https://fonts.googleapis.com/css2?family=Rethink+Sans:ital,wght@0,400..800;1,400..800&display=swap');
+        </style>
+      </head>
+      <body
+        className={` ${fontSans.variable} ${fontDisplay.variable} ${fontMono.variable}`}
+      >
         <Layout>{children}</Layout>
       </body>
     </html>

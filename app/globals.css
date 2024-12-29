@@ -9,7 +9,7 @@
 }
 * {
   box-sizing: border-box;
-  font-family: Kodchasan, sans-serif;
+  font-family: "Rethink Sans", sans-serif;
 }
 
 @media (prefers-color-scheme: dark) {

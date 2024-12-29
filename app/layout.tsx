@@ -1,4 +1,9 @@
-import { DM_Sans } from "next/font/google";
+import {
+  DM_Sans,
+  JetBrains_Mono,
+  Kodchasan,
+  Rethink_Sans,
+} from "next/font/google";
 import "./globals.css";
 import Layout from "@/components/Layout";
 
@@ -16,19 +21,46 @@ export const metadata = {
     "Software Engineer",
   ].join(", "),
 };
+
+import localFont from "next/font/local";
+
 // Preload fonts
-const fontSans = DM_Sans({
+const fontSans = Rethink_Sans({
   subsets: ["latin"],
+  variable: "--font-inter",
 });
 
+const kodchasan = Kodchasan({
+  weight: "200",
+  subsets: ["latin"],
+  variable: "--font-kodchasan",
+});
+
+const fontDisplay = localFont({
+  src: "../public/fonts/MonumentExtended-Regular.otf",
+  variable: "--font-monument",
+});
+
+const fontMono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-mono",
+});
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="scroll-smooth">
-      <body className={fontSans.className}>
+    <html style={fontSans.style} lang="en" className="scroll-smooth">
+      <head>
+        <style>
+          @import
+          url('https://fonts.googleapis.com/css2?family=Rethink+Sans:ital,wght@0,400..800;1,400..800&display=swap');
+        </style>
+      </head>
+      <body
+        className={` ${fontSans.variable} ${fontDisplay.variable} ${fontMono.variable}`}
+      >
         <Layout>{children}</Layout>
       </body>
     </html>

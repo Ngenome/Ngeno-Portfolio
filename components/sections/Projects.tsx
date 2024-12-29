@@ -20,25 +20,25 @@ const ProjectCard = ({
       icon: FaGlobe,
       url: project.links.live,
       label: "Visit Site",
-      bgColor: "bg-lime-DEFAULT hover:border-lime-light",
+      bgColor: "bg-lime-default hover:border-lime-light",
     },
     {
       icon: FaGithub,
       url: project.links.github,
       label: "View Code",
-      bgColor: "bg-yellow-DEFAULT hover:border-yellow-light",
+      bgColor: "bg-yellow-default hover:border-yellow-light",
     },
     {
       icon: FaGooglePlay,
       url: project.links.playStore,
       label: "Play Store",
-      bgColor: "bg-lime-DEFAULT hover:border-lime-light",
+      bgColor: "bg-lime-default hover:border-lime-light",
     },
     {
       icon: FaAppStore,
       url: project.links.appStore,
       label: "App Store",
-      bgColor: "bg-yellow-DEFAULT hover:border-yellow-light",
+      bgColor: "bg-yellow-default hover:border-yellow-light",
     },
   ].filter((link) => link.url);
 
@@ -91,7 +91,7 @@ const ProjectCard = ({
             <span
               key={tech}
               className="px-3 py-1 text-xs rounded-full bg-surface-dark 
-                       text-lime-light border border-lime-DEFAULT/20"
+                       text-lime-light border border-lime-default/20"
             >
               {tech}
             </span>
@@ -111,10 +111,8 @@ const ProjectCard = ({
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <link.icon className="w-4 h-4 text-white" />
-              <span className="text-sm font-medium text-white">
-                {link.label}
-              </span>
+              <link.icon className="w-4 h-4" />
+              <span className="text-sm font-medium">{link.label}</span>
             </motion.a>
           ))}
         </div>
@@ -164,7 +162,7 @@ const ProjectsSection = () => {
               className={`px-6 py-3 rounded-full text-sm font-medium transition-all duration-300
                        ${
                          activeCategory === category.id
-                           ? "bg-lime-DEFAULT text-surface-dark"
+                           ? "bg-lime-default text-surface-dark"
                            : "bg-surface-light text-gray-400 hover:text-white"
                        }`}
               whileHover={{ scale: 1.05 }}

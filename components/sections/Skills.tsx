@@ -27,8 +27,8 @@ const SkillsSection = () => {
     >
       {/* Background Elements */}
       <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-lime-DEFAULT/5 via-transparent to-transparent" />
-        <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-lime-DEFAULT/20 to-transparent" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-lime-default/5 via-transparent to-transparent" />
+        <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-lime-default/20 to-transparent" />
       </div>
 
       <div className="container mx-auto px-6">
@@ -71,8 +71,8 @@ const SkillsSection = () => {
                 className={`relative p-4 rounded-xl border transition-all duration-300
                   ${
                     selectedCategory === category.id
-                      ? "bg-lime-DEFAULT/20 border-lime-DEFAULT text-white"
-                      : "bg-surface-light border-lime-DEFAULT/10 text-gray-400 hover:border-lime-DEFAULT/30"
+                      ? "bg-lime-default/20 border-lime-default text-white"
+                      : "bg-surface-light border-lime-default/10 text-gray-400 hover:border-lime-default/30"
                   }`}
               >
                 {category.icon && (
@@ -101,12 +101,12 @@ const SkillsSection = () => {
                 exit={{ opacity: 0, scale: 0.8 }}
                 whileHover={{ y: -5 }}
                 transition={{ duration: 0.3 }}
-                className="group relative bg-surface-light rounded-lg p-6 border border-lime-DEFAULT/10
-                        hover:border-lime-DEFAULT/30 transition-all duration-300"
+                className="group relative bg-surface-light rounded-lg p-6 border border-lime-default/10
+                        hover:border-lime-default/30 transition-all duration-300"
               >
                 {/* Hover gradient */}
                 <div
-                  className="absolute inset-0 bg-gradient-to-br from-lime-DEFAULT/10 to-transparent 
+                  className="absolute inset-0 bg-gradient-to-br from-lime-default/10 to-transparent 
                             opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg"
                 />
 

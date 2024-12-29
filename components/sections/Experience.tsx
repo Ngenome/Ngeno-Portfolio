@@ -19,9 +19,9 @@ const ExperienceCard = ({ experience, index }) => {
     >
       {/* Timeline line with gradient */}
       <div className="absolute left-0 top-0 h-full w-px md:w-24">
-        <div className="h-full w-px md:h-px bg-gradient-to-r from-lime-DEFAULT to-yellow-DEFAULT opacity-20" />
+        <div className="h-full w-px md:h-px bg-gradient-to-r from-lime-default to-yellow-default opacity-20" />
         <motion.div
-          className="absolute left-0 top-0 h-full w-px md:h-px bg-gradient-to-r from-lime-DEFAULT to-yellow-DEFAULT"
+          className="absolute left-0 top-0 h-full w-px md:h-px bg-gradient-to-r from-lime-default to-yellow-default"
           initial={{ scaleY: 0, scaleX: 0 }}
           whileInView={{ scaleY: 1, scaleX: 1 }}
           viewport={{ once: true }}
@@ -34,26 +34,26 @@ const ExperienceCard = ({ experience, index }) => {
       <div className="absolute left-[-4px] md:left-24 top-0">
         <div className="relative w-2 h-2 md:w-3 md:h-3">
           <motion.div
-            className="absolute inset-0 bg-lime-DEFAULT rounded-full"
+            className="absolute inset-0 bg-lime-default rounded-full"
             initial={{ scale: 0 }}
             whileInView={{ scale: 1 }}
             viewport={{ once: true }}
           />
-          <div className="absolute inset-0 bg-lime-DEFAULT rounded-full animate-ping opacity-75" />
-          <div className="absolute inset-[-4px] bg-lime-DEFAULT rounded-full opacity-30 animate-pulse" />
+          <div className="absolute inset-0 bg-lime-default rounded-full animate-ping opacity-75" />
+          <div className="absolute inset-[-4px] bg-lime-default rounded-full opacity-30 animate-pulse" />
         </div>
       </div>
 
       {/* Content Card */}
       <motion.div
         layout
-        className="relative bg-surface-light rounded-xl p-6 md:p-8 border border-lime-DEFAULT/10 
-                 hover:border-lime-DEFAULT/30 transition-colors duration-300"
+        className="relative bg-surface-light rounded-xl p-6 md:p-8 border border-lime-default/10 
+                 hover:border-lime-default/30 transition-colors duration-300"
       >
         {/* Date pill */}
         <div
           className="absolute -top-3 left-6 px-4 py-1 bg-surface-dark rounded-full 
-                     border border-lime-DEFAULT/20 text-lime-light text-sm"
+                     border border-lime-default/20 text-lime-light text-sm"
         >
           {experience.duration}
         </div>
@@ -72,7 +72,7 @@ const ExperienceCard = ({ experience, index }) => {
                 href={experience.companyUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-lime-light hover:text-lime-DEFAULT transition-colors inline-flex items-center gap-1"
+                className="text-lime-light hover:text-lime-default transition-colors inline-flex items-center gap-1"
                 whileHover={{ x: 5 }}
               >
                 {experience.company}
@@ -114,20 +114,20 @@ const ExperienceCard = ({ experience, index }) => {
           {/* Expand/Collapse Button */}
           <motion.button
             onClick={() => setIsExpanded(!isExpanded)}
-            className="mt-6 text-sm text-lime-light hover:text-lime-DEFAULT transition-colors"
+            className="mt-6 text-sm text-lime-light hover:text-lime-default transition-colors"
             whileHover={{ x: 5 }}
           >
             {isExpanded ? "Show Less" : "Show More"}
           </motion.button>
 
           {/* Technologies */}
-          <div className="mt-6 pt-6 border-t border-lime-DEFAULT/10">
+          <div className="mt-6 pt-6 border-t border-lime-default/10">
             <div className="flex flex-wrap gap-2">
               {experience.technologies.map((tech) => (
                 <span
                   key={tech}
                   className="px-3 py-1 text-xs rounded-full bg-surface-dark
-                           text-lime-light border border-lime-DEFAULT/20"
+                           text-lime-light border border-lime-default/20"
                 >
                   {tech}
                 </span>
@@ -161,7 +161,7 @@ const ExperienceSection = () => {
         style={{ y }}
         className="absolute inset-0 pointer-events-none"
       >
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom,_var(--tw-gradient-stops))] from-lime-DEFAULT/5 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom,_var(--tw-gradient-stops))] from-lime-default/5 via-transparent to-transparent" />
       </motion.div>
 
       <div className="container mx-auto px-6 relative">

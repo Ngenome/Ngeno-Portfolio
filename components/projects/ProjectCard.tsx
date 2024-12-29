@@ -82,7 +82,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
                   href={link.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`p-3 rounded-full bg-${link.color}-DEFAULT hover:bg-${link.color}-light 
+                  className={`p-3 rounded-full bg-${link.color}-default hover:bg-${link.color}-light 
                             transition-all duration-300 text-surface-dark`}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{

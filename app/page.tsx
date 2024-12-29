@@ -10,28 +10,12 @@ import ExperienceSection from "@/components/sections/Experience";
 import ContactSection from "@/components/sections/Contact";
 import Footer from "@/components/Footer";
 import { useSmoothScroll } from "@/hooks/useScrollSmooth";
-import { DM_Sans, JetBrains_Mono } from "next/font/google";
+import { DM_Sans, JetBrains_Mono, Rethink_Sans } from "next/font/google";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { socialLinks } from "@/data/social";
 import localFont from "next/font/local";
 import CanvasCursor from "@/components/Cursor";
 import { useMouse } from "@/hooks/useMouse";
-
-// Preload fonts
-const fontSans = DM_Sans({
-  subsets: ["latin"],
-  variable: "--font-inter",
-});
-
-const fontDisplay = localFont({
-  src: "../public/fonts/MonumentExtended-Regular.otf",
-  variable: "--font-monument",
-});
-
-const fontMono = JetBrains_Mono({
-  subsets: ["latin"],
-  variable: "--font-mono",
-});
 
 export default function Home() {
   // Initialize smooth scrolling
@@ -39,9 +23,7 @@ export default function Home() {
   // useMouse();
 
   return (
-    <main
-      className={`bg-surface-dark min-h-screen ${fontSans.variable} ${fontDisplay.variable} ${fontMono.variable}`}
-    >
+    <main className={`bg-surface-dark min-h-screen`}>
       {/* Navigation */}
       <Navigation />
       <CanvasCursor />
@@ -49,16 +31,13 @@ export default function Home() {
       {/* Page Content */}
       <div className="relative">
         {/* Hero Section */}
-        <section className="relative min-h-screen">
-          <Hero />
-        </section>
+        <Hero />
 
         {/* Main Content */}
         <div className="relative">
           {/* Skills Section - Overlapping previous section */}
-          <div className="relative -mt-32 z-10">
-            <SkillsSection />
-          </div>
+
+          <SkillsSection />
 
           {/* Projects Section - Shifting up slightly */}
           <div className="relative -mt-16">
@@ -103,7 +82,7 @@ const SideElements = () => {
         >
           interstellarcg@gmail.com
         </a>
-        <div className="w-px h-24 bg-lime-DEFAULT/20" />
+        <div className="w-px h-24 bg-lime-default/20" />
       </motion.div>
 
       {/* Social links on left side */}
@@ -127,12 +106,12 @@ const SideElements = () => {
             </motion.a>
           ))}
         </div>
-        <div className="w-px h-24 bg-lime-DEFAULT/20" />
+        <div className="w-px h-24 bg-lime-default/20" />
       </motion.div>
 
       {/* Scroll progress indicator */}
       <motion.div
-        className="fixed top-0 left-0 w-full h-1 bg-lime-DEFAULT origin-left z-50"
+        className="fixed top-0 left-0 w-full h-1 bg-lime-default origin-left z-50"
         style={{
           scaleX: useTransform(useScroll().scrollYProgress, [0, 1], [0, 1]),
         }}

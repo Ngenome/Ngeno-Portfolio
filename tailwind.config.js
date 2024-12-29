@@ -19,17 +19,17 @@ module.exports = {
         },
         yellow: {
           light: "#FFE20B",
-          DEFAULT: "#F4FF00",
+          default: "#F4FF00",
           dark: "#FFE20B",
         },
         surface: {
           light: "#1A1A1A",
-          DEFAULT: "#121212",
+          default: "#121212",
           dark: "#0A0A0A",
         },
       },
       fontFamily: {
-        sans: ["var(--font-inter)", "system-ui"],
+        sans: ["var(--font-inter)", "Inter", "system-ui"],
         display: ["var(--font-monument)", "system-ui"],
         mono: ["var(--font-mono)", "monospace"],
       },

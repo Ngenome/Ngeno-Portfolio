@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 // Text that reveals character by character
 export const RevealText = ({ text, className = "" }) => {
   return (
-    <motion.span
+    <motion.div
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true }}
@@ -28,7 +28,7 @@ export const RevealText = ({ text, className = "" }) => {
           {char === " " ? "\u00A0" : char}
         </motion.span>
       ))}
-    </motion.span>
+    </motion.div>
   );
 };
 
