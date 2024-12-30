@@ -79,7 +79,7 @@ const ExperienceCard = ({ experience, index }) => {
                 <span className="text-xs">→</span>
               </motion.a>
             </div>
-            <span className="text-sm text-gray-400">{experience.mode}</span>
+            {/* <span className="text-sm text-gray-400">{experience.mode}</span> */}
           </div>
 
           {/* Description */}

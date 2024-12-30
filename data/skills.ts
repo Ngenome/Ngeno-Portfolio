@@ -241,6 +241,11 @@ export const skills: Skill[] = [
     category: "backend",
   },
   {
+    name: "Pytest",
+    icon: FaCode,
+    category: "backend",
+  },
+  {
     name: "CI/CD Pipelines",
     icon: FaCloud,
     category: "cloud",
@@ -257,6 +262,21 @@ export const skills: Skill[] = [
   },
   {
     name: "Jest Testing",
+    icon: FaCode,
+    category: "frontend",
+  },
+  {
+    name: "Cypress Testing",
+    icon: FaCode,
+    category: "frontend",
+  },
+  {
+    name: "Playwright Testing",
+    icon: FaCode,
+    category: "frontend",
+  },
+  {
+    name: "Storybook",
     icon: FaCode,
     category: "frontend",
   },

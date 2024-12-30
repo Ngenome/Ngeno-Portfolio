@@ -53,10 +53,16 @@ export default function RootLayout({
   return (
     <html style={fontSans.style} lang="en" className="scroll-smooth">
       <head>
-        <style>
-          @import
-          url('https://fonts.googleapis.com/css2?family=Rethink+Sans:ital,wght@0,400..800;1,400..800&display=swap');
-        </style>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Rethink+Sans:ital,wght@0,400..800;1,400..800&display=swap"
+          rel="stylesheet"
+        />
       </head>
       <body
         className={` ${fontSans.variable} ${fontDisplay.variable} ${fontMono.variable}`}

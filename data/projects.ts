@@ -3,27 +3,6 @@ import { Project } from "../types";
 
 export const projects: Project[] = [
   {
-    id: "mantice-ai",
-    title: "ManticeAI",
-    description:
-      "A comprehensive platform offering access to various generative AI tools through a pay-as-you-go model. Platform enables users to access a wide range of AI tools and capabilities.",
-    image: "images/projects/mantice-ai.png",
-    technologies: [
-      "Python",
-      "AI",
-      "LLMs",
-      "Machine Learning",
-      "API Integration",
-      "ClaudeAI",
-      "Paystack",
-    ],
-    links: {
-      live: "https://manticeai.com",
-    },
-    category: "ai",
-    featured: true,
-  },
-  {
     id: "talent-app",
     title: "Talent App (Jobzy Limited)",
     description:
@@ -96,6 +75,39 @@ export const projects: Project[] = [
     technologies: ["React", "TypeScript", "Tailwind CSS", "API Integration"],
     links: {
       live: "https://vendor.m-jenzi.com",
+    },
+    category: "web",
+    featured: true,
+  },
+  {
+    id: "mantice-ai",
+    title: "ManticeAI",
+    description:
+      "A comprehensive platform offering access to various generative AI tools through a pay-as-you-go model. Platform enables users to access a wide range of AI tools and capabilities.",
+    image: "images/projects/mantice-ai.png",
+    technologies: [
+      "Python",
+      "AI",
+      "LLMs",
+      "Machine Learning",
+      "API Integration",
+      "ClaudeAI",
+      "Paystack",
+    ],
+    links: {
+      live: "https://manticeai.com",
+    },
+    category: "ai",
+    featured: true,
+  },
+  {
+    id: "medialabs-agency",
+    title: "Media Labs Agency Page",
+    description: "A landing page for a marketing agency",
+    image: "/images/projects/medialabs.png",
+    technologies: ["Nextjs", "TypeScript", "Tailwind CSS"],
+    links: {
+      live: "https://www.medialabs.agency",
     },
     category: "web",
     featured: true,

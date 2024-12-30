@@ -1,4 +1,3 @@
-// src/data/experience.ts
 import { Experience } from "../types";
 
 export const experiences: Experience[] = [
@@ -12,6 +11,7 @@ export const experiences: Experience[] = [
     description:
       "Founded and leading a software company that builds custom solutions for clients. Specializing in web development, mobile apps, and AI integration.",
     achievements: [
+      "Launched ManticeAI.com, a generative AI platform with a pay-as-you-go model",
       "Developed comprehensive farm management software",
       "Built construction company website and mobile application",
       "Created job procurement platform",
@@ -21,14 +21,15 @@ export const experiences: Experience[] = [
   },
   {
     id: "mjenzi",
-    role: "Front End & Backend Engineer, Mobile App Developer",
+    role: "Full Stack Engineer & Mobile App Developer",
     company: "M-jenzi",
     companyUrl: "https://www.m-jenzi.com/",
-    duration: "Jan 2023 - March 2024",
+    duration: "January 2023 - March 2024",
     mode: "Freelance",
     description:
       "Led development of construction sector e-commerce platform connecting service providers with customers.",
     achievements: [
+      "Architected a multivendor e-commerce platform",
       "Developed Django backend API",
       "Created vendor dashboard for product management",
       "Built main website using React",
@@ -39,34 +40,28 @@ export const experiences: Experience[] = [
   },
   {
     id: "jobzy",
-    role: "Full Stack Developer",
-    company: "Jobzy",
+    role: "Full Stack Mobile App Developer",
+    company: "Jobzy Limited",
     companyUrl: "https://www.jobzy.africa/",
-    duration: "Nov 2022 - Present",
+    duration: "March 2023 - Present",
     mode: "Freelance",
     description:
-      "Developed a revolutionary platform for service procurement with separate apps for clients and service providers.",
+      "Developed multiple applications in the Jobzy ecosystem, focusing on seamless user experiences and AI integration.",
     achievements: [
-      "Built complete client and provider mobile applications",
-      "Developed backend API with Django",
-      "Implemented real-time features and notifications",
-      "Created admin dashboard for platform management",
-      "Integrated payment systems and service matching algorithms",
+      "Built the Talent Jobs App, enabling seamless job search across Web, iOS, and Android platforms",
+      "Developed Service Provider App for service listing and management",
+      "Created Client App for service procurement and provider interaction",
+      "Integrated AI capabilities for resume generation and job application automation",
+      "Maintained high user satisfaction ratings",
     ],
-    technologies: [
-      "React Native",
-      "Django",
-      "PostgreSQL",
-      "Redux",
-      "WebSocket",
-    ],
+    technologies: ["React Native", "Django", "PostgreSQL", "Azure", "AI"],
   },
   {
     id: "wera",
     role: "Full Stack Developer",
     company: "Wera",
     companyUrl: "https://wera.app",
-    duration: "June 2022 - Nov 2022",
+    duration: "June 2022 - November 2022",
     mode: "Freelance",
     description:
       "Developed a comprehensive service procurement and e-commerce platform.",
@@ -90,7 +85,7 @@ export const experiences: Experience[] = [
     role: "Mobile App Developer",
     company: "Snobole Software",
     companyUrl: "https://snobole.com",
-    duration: "Jan 2022 - June 2022",
+    duration: "January 2022 - June 2022",
     mode: "Freelance",
     description: "Developed mobile applications for various client projects.",
     achievements: [
