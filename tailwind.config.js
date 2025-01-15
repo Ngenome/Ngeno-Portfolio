@@ -39,12 +39,20 @@ module.exports = {
           "clamp(2.5rem, 8vw, 6rem)",
           { lineHeight: "1", letterSpacing: "-0.02em", fontWeight: "600" },
         ],
+        display2: [
+          "clamp(2rem, 6vw, 5rem)",
+          { lineHeight: "1.1", letterSpacing: "-0.02em", fontWeight: "600" },
+        ],
         h1: [
           "clamp(2rem, 5vw, 4rem)",
           { lineHeight: "1.1", letterSpacing: "-0.02em" },
         ],
         h2: [
           "clamp(1.5rem, 4vw, 3rem)",
+          { lineHeight: "1.2", letterSpacing: "-0.02em" },
+        ],
+        h3: [
+          "clamp(1.25rem, 3vw, 2.25rem)",
           { lineHeight: "1.2", letterSpacing: "-0.02em" },
         ],
         body: ["clamp(1rem, 1.2vw, 1.125rem)", { lineHeight: "1.5" }],

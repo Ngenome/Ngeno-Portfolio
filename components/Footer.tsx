@@ -70,8 +70,7 @@ const Footer = () => {
               KN
             </motion.a>
             <p className="text-gray-400 max-w-md">
-              Crafting digital experiences through innovative solutions in web
-              development, mobile applications, and artificial intelligence.
+              I was born to solve problems with technology.
             </p>
           </div>
 

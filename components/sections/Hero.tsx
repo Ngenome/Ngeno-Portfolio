@@ -62,11 +62,11 @@ const Hero = () => {
 
           {/* Main heading */}
           <div className="mb-8">
-            <SplitHeading className="font-display text-display text-balance leading-none text-white mb-4">
-              Crafting Digital Excellence
+            <SplitHeading className="font-display text-display2 text-balance leading-none text-white mb-4">
+              JUST BUILDING STUFF.
             </SplitHeading>
             <RevealText
-              text="Where Code Meets Creativity"
+              text="OBSESSED WITH SOLVING PROBLEMS."
               className="text-yellow-light font-display text-h2 text-balance"
             />
           </div>
@@ -78,8 +78,10 @@ const Hero = () => {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="text-gray-400 text-body max-w-2xl mx-auto mb-12"
           >
-            Building tomorrow's digital landscape with innovative solutions in
-            web development, mobile applications, and artificial intelligence.
+            The only thing I love more than building stuff is solving problems.
+            I love the power that technology gives me. I love finding out
+            problems - especially those I can solve with Technology. And there
+            are so many unsolved problems.
           </motion.p>
 
           {/* CTA Buttons */}

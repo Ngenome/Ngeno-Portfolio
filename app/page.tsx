@@ -10,7 +10,6 @@ import ExperienceSection from "@/components/sections/Experience";
 import ContactSection from "@/components/sections/Contact";
 import Footer from "@/components/Footer";
 import { useSmoothScroll } from "@/hooks/useScrollSmooth";
-import { DM_Sans, JetBrains_Mono, Rethink_Sans } from "next/font/google";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { socialLinks } from "@/data/social";
 import localFont from "next/font/local";
@@ -155,8 +154,3 @@ const MouseFollower = () => {
     </motion.div>
   );
 };
-
-// Add custom styles to global.css
-/*
-
-*/

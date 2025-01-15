@@ -44,9 +44,7 @@ const SkillsSection = () => {
             EXPERTISE
           </p>
           <SplitHeading className="text-h1 font-display text-white mb-6">
-            Technical Prowess &
-            <br />
-            Creative Innovation
+            TECHNICAL PROWESS
           </SplitHeading>
           <p className="text-gray-400 text-body max-w-2xl">
             Combining cutting-edge technologies with creative problem-solving to
