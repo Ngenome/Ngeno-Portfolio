@@ -68,7 +68,7 @@ export const projects: Project[] = [
   },
   {
     id: "m-jenzi-vendor",
-    title: "M-JENZI Vendor Dashboard",
+    title: "M-Jenzi Vendor Dashboard",
     description:
       "Comprehensive vendor management dashboard where vendors can register and manage their products. Complete e-commerce management solution.",
     image: "/mjenzi.png",
