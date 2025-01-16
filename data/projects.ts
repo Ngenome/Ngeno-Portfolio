@@ -113,6 +113,27 @@ export const projects: Project[] = [
     featured: true,
   },
   {
+    id: "claude-ai-chatbot-ui-and-backend",
+    title: "Claude AI Chatbot UI and Backend",
+    description:
+      "An open source feature rich, developer friendly, modifiable chatbot UI and backend for Claude AI.",
+    image: "images/projects/claude-amazon-bedrock-chatbot.png",
+    technologies: [
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "Django",
+      "ClaudeAI",
+      "Amazon Bedrock",
+    ],
+    links: {
+      github:
+        "https://github.com/Ngenome/anthropic-claude-aws-bedrock-chat-application-django-and-react/",
+    },
+    category: "ai",
+    featured: true,
+  },
+  {
     id: "audio-transcription",
     title: "Audio Transcription with OpenAI Whisper",
     description:
