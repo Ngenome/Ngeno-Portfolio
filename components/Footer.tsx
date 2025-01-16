@@ -70,7 +70,7 @@ const Footer = () => {
               KN
             </motion.a>
             <p className="text-gray-400 max-w-md">
-              I was born to solve problems with technology.
+              Born to solve problems with technology.
             </p>
           </div>
 
@@ -90,8 +90,8 @@ const Footer = () => {
                 <ContactLink href="tel:+254726299179">
                   +254 726 299 179
                 </ContactLink>
-                <ContactLink href="mailto:interstellarcg@gmail.com">
-                  interstellarcg@gmail.com
+                <ContactLink href="mailto:hello@ngenondumia.com">
+                  hello@ngenondumia.com
                 </ContactLink>
                 <ContactLink href="https://maps.google.com/?q=Nairobi,Kenya">
                   Nairobi, Kenya

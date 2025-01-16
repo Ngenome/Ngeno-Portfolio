@@ -77,8 +77,8 @@ const ContactSection = () => {
     {
       icon: FaEnvelope,
       label: "Email",
-      value: "interstellarcg@gmail.com",
-      href: "mailto:interstellarcg@gmail.com",
+      value: "hello@ngenondumia.com",
+      href: "mailto:hello@ngenondumia.com",
     },
     {
       icon: FaMapMarkerAlt,

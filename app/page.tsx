@@ -76,10 +76,10 @@ const SideElements = () => {
         className="fixed right-8 bottom-0 hidden lg:flex flex-col items-center gap-6 z-50"
       >
         <a
-          href="mailto:interstellarcg@gmail.com"
+          href="mailto:hello@ngenondumia.com"
           className="text-gray-400 hover:text-lime-light transition-colors duration-300 vertical-text"
         >
-          interstellarcg@gmail.com
+          hello@ngenondumia.com
         </a>
         <div className="w-px h-24 bg-lime-default/20" />
       </motion.div>

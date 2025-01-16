@@ -9,6 +9,7 @@ import {
   FaGlobe,
   FaTwitter,
 } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
 
 export const socialLinks: SocialLink[] = [
   {
@@ -31,9 +32,9 @@ export const socialLinks: SocialLink[] = [
   },
   {
     id: "twitter",
-    name: "Twitter",
-    url: "https://twitter.com/devngeno",
-    icon: FaTwitter,
+    name: "X",
+    url: "https://twitter.com/_ngenome",
+    icon: FaXTwitter,
   },
   {
     id: "company",
@@ -45,7 +46,7 @@ export const socialLinks: SocialLink[] = [
 
 export const contactInfo = {
   email: {
-    personal: "interstellarcg@gmail.com",
+    personal: "hello@ngenondumia.com",
     business: "kelvin@dissolvesoftware.com",
   },
   phone: {
@@ -53,8 +54,8 @@ export const contactInfo = {
     secondary: "+254 736 886 886",
   },
   location: "Nairobi, Kenya",
-  availability: "Open to new opportunities and collaborations",
-  preferredContact: "Email or LinkedIn",
+  availability: "Open to new opportunities & collaborations to solve problems",
+  preferredContact: "Email,LinkedIn",
   timeZone: "EAT (UTC+3)",
   languages: [
     {
@@ -75,7 +76,7 @@ export const resumeData = {
     profile: {
       title: "Professional Summary",
       content:
-        "Innovative and results-driven Full Stack Developer with over 3 years of experience in web and mobile app development, and 4 years in front-end development. Adept at designing scalable APIs, integrating backends with intuitive front-ends, and delivering user-centric digital solutions. Passionate about leveraging cutting-edge technologies to create impactful software.",
+        "Innovative and results-driven Full Stack Developer with over 3 years of experience in web and mobile app development, and 4 years in front-end development. Adept at designing scalable APIs, integrating backends with intuitive front-ends, and delivering user-centric digital solutions. Passionate about leveraging cutting-edge technologies to create impactful software that solves REAL problems.",
     },
     expertise: [
       "Full Stack Development",
