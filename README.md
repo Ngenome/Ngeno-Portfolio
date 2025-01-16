@@ -164,7 +164,7 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 Kelvin Ng'eno - hello@ngenondumia.com
 
-Project Link: [https://github.com/yourusername/portfolio](https://github.com/yourusername/portfolio)
+Project Link: [https://github.com/ngenome/Ngeno-Portfolio](https://github.com//ngenome/Ngeno-Portfolio)
 
 ## 🙏 Tools
 
