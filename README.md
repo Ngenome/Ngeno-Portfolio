@@ -1,4 +1,3 @@
-````markdown
 # Kelvin Ng'eno Portfolio
 
 A modern, interactive portfolio website built with Next.js, highlighting my work as a Full Stack Developer and AI Engineer. The site features smooth animations, responsive design, and optimal performance.
@@ -53,7 +52,6 @@ A modern, interactive portfolio website built with Next.js, highlighting my work
 ```bash
 git clone https://github.com/yourusername/portfolio.git
 ```
-````
 
 2. Install dependencies:
 
