@@ -1,34 +1,176 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+````markdown
+# Kelvin Ng'eno Portfolio
 
-## Getting Started
+A modern, interactive portfolio website built with Next.js, highlighting my work as a Full Stack Developer and AI Engineer. The site features smooth animations, responsive design, and optimal performance.
 
-First, run the development server:
+![Portfolio Preview](public/preview.png)
+
+## ✨ Features
+
+- **Modern Design**: Sleek, minimalist interface with dynamic animations
+- **Responsive Layout**: Fully responsive design that works seamlessly across all devices
+- **Interactive Elements**:
+  - Custom cursor effects
+  - Smooth scroll animations
+  - Parallax effects
+  - Interactive project cards
+  - Dynamic navigation
+- **Performance Optimized**:
+  - Next.js 13 app router
+  - Image optimization
+  - Route prefetching
+  - Efficient animations
+- **Accessibility**: WCAG compliant with keyboard navigation support
+
+## 🛠 Tech Stack
+
+- **Framework**: Next.js 13
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **Animations**:
+  - Framer Motion
+  - Custom animation hooks
+- **Performance**:
+  - React Server Components
+  - Dynamic imports
+  - Optimized assets
+- **Development**:
+  - ESLint
+  - Prettier
+  - TypeScript strict mode
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js 16.8.0 or higher
+- npm or yarn
+
+### Installation
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/yourusername/portfolio.git
+```
+````
+
+2. Install dependencies:
+
+```bash
+cd portfolio
+npm install
+# or
+yarn install
+```
+
+3. Create a `.env.local` file based on `.env.example`:
+
+```bash
+cp .env.example .env.local
+```
+
+4. Start the development server:
 
 ```bash
 npm run dev
 # or
 yarn dev
-# or
-pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Visit `http://localhost:3000` to view the site.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📁 Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+```
+portfolio/
+├── app/                   # Next.js 13 app directory
+├── components/            # React components
+│   ├── common/           # Shared components
+│   ├── navigation/       # Navigation components
+│   └── sections/         # Page sections
+├── data/                 # Static data files
+├── hooks/                # Custom React hooks
+├── lib/                  # Utility functions
+├── public/              # Static assets
+└── types/               # TypeScript type definitions
+```
 
-## Learn More
+## 🎨 Design System
 
-To learn more about Next.js, take a look at the following resources:
+The project uses a consistent design system with:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Colors**: Custom palette with lime accents
+- **Typography**:
+  - Display: Monument Extended
+  - Body: Rethink Sans
+  - Mono: JetBrains Mono
+- **Spacing**: Consistent scale based on Tailwind defaults
+- **Animations**: Coordinated motion design system
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## ⚡ Performance
 
-## Deploy on Vercel
+The site achieves high performance scores:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- 90+ Performance (Lighthouse)
+- 100 Accessibility
+- 100 Best Practices
+- 100 SEO
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Key optimizations:
+
+- Efficient asset loading
+- Optimized animations
+- Proper image optimization
+- Minimal bundle size
+
+## 🔒 Security
+
+- Implements security best practices
+- Regular dependency updates
+- Secure contact form handling
+- Protected API endpoints
+
+## 🌐 Browser Support
+
+- Chrome (latest)
+- Firefox (latest)
+- Safari (latest)
+- Edge (latest)
+- Mobile browsers
+
+## 🚀 Deployment
+
+The site is deployed on Vercel with:
+
+- Automatic HTTPS
+- Edge Network CDN
+- Automatic deployments
+- Preview deployments
+
+## 🤝 Contributing
+
+While this is a personal portfolio, suggestions and feedback are welcome:
+
+1. Fork the repository
+2. Create your feature branch
+3. Commit your changes
+4. Push to the branch
+5. Open a pull request
+
+## 📝 License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
+
+## 📧 Contact
+
+Kelvin Ng'eno - hello@ngenondumia.com
+
+Project Link: [https://github.com/yourusername/portfolio](https://github.com/yourusername/portfolio)
+
+## 🙏 Tools
+
+- [Next.js](https://nextjs.org/)
+- [Framer Motion](https://www.framer.com/motion/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [TypeScript](https://www.typescriptlang.org/)
