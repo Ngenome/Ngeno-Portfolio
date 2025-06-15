@@ -65,10 +65,6 @@ const Hero = () => {
             <SplitHeading className="font-display text-display2 text-balance leading-none text-white mb-4">
               JUST BUILDING STUFF.
             </SplitHeading>
-            <RevealText
-              text="OBSESSED WITH SOLVING PROBLEMS."
-              className="text-yellow-light font-display text-h2 text-balance"
-            />
           </div>
 
           {/* Description */}
@@ -139,3 +135,4 @@ const Hero = () => {
 };
 
 export default Hero;
+
