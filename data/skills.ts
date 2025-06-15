@@ -84,6 +84,26 @@ export const skills: Skill[] = [
     category: "ai",
   },
   {
+    name: "FastAPI",
+    icon: FaServer,
+    category: "ai",
+  },
+  {
+    name: "Alembic",
+    icon: FaDatabase,
+    category: "ai",
+  },
+  {
+    name: "SQLModel",
+    icon: FaDatabase,
+    category: "ai",
+  },
+  {
+    name: "SQLAlchemy",
+    icon: FaDatabase,
+    category: "ai",
+  },
+  {
     name: "Prompt Engineering",
     icon: FaRobot,
     category: "ai",
@@ -291,3 +311,4 @@ export const skills: Skill[] = [
     category: "backend",
   },
 ];
+
