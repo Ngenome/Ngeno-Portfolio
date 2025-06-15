@@ -199,8 +199,6 @@ export const skills: Skill[] = [
     icon: FaServer,
     category: "backend",
   },
-  {
-
   // Databases & Cloud
   {
     name: "PostgreSQL",
