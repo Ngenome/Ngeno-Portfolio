@@ -57,7 +57,7 @@ const Hero = () => {
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
             className="text-lime-light font-mono text-sm tracking-wider mb-6"
           >
-            FULL STACK DEV, AI , ML
+            FULL STACK DEVELOPER & AI ENGINEER
           </motion.p>
 
           {/* Main heading */}
@@ -135,3 +135,4 @@ const Hero = () => {
 };
 
 export default Hero;
+
