@@ -79,11 +79,6 @@ export const skills: Skill[] = [
     category: "ai",
   },
   {
-    name: "LangGraph",
-    icon: FaRobot,
-    category: "ai",
-  },
-  {
     name: "Prompt Engineering",
     icon: FaRobot,
     category: "ai",
