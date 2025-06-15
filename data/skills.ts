@@ -200,10 +200,6 @@ export const skills: Skill[] = [
     category: "backend",
   },
   {
-    name: "GraphQL",
-    icon: FaServer,
-    category: "backend",
-  },
 
   // Databases & Cloud
   {
