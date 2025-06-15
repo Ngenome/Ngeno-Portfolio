@@ -180,11 +180,6 @@ export const skills: Skill[] = [
     category: "backend",
   },
   {
-    name: "GraphQL",
-    icon: FaServer,
-    category: "backend",
-  },
-  {
     name: "FastAPI",
     icon: FaServer,
     category: "backend",
@@ -204,7 +199,6 @@ export const skills: Skill[] = [
     icon: FaDatabase,
     category: "backend",
   },
-
   // Databases & Cloud
   {
     name: "PostgreSQL",
