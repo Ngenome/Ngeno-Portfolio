@@ -70,7 +70,7 @@ const Footer = () => {
               KN
             </motion.a>
             <p className="text-gray-400 max-w-md">
-              Born to solve problems with technology.
+              Cracked, Founder mode engineer
             </p>
           </div>
 

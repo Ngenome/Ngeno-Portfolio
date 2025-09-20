@@ -3,6 +3,31 @@ import { Project } from "../types";
 
 export const projects: Project[] = [
   {
+    id: "navismart-ai",
+    title: "Navismart AI",
+    description:
+      "AI-powered immigration platform serving 2k+ users across 50+ countries. Features eligibility checks, smart form filling, AI guidance, multilingual support, and secure application tracking.",
+    image: "images/projects/navismart-ai.png",
+    technologies: [
+      "FastAPI",
+      "Python",
+      "AI",
+      "LLMs",
+      "Machine Learning",
+      "OpenAI Agents SDK",
+      "LangGraph",
+      "React",
+      "PostgreSQL",
+      "AWS",
+    ],
+    links: {
+      live: "https://navismartai.com",
+      github: "https://app.navismartai.com",
+    },
+    category: "ai",
+    featured: true,
+  },
+  {
     id: "talent-app",
     title: "Talent App (Jobzy Limited)",
     description:
@@ -77,27 +102,6 @@ export const projects: Project[] = [
       live: "https://vendor.m-jenzi.com",
     },
     category: "web",
-    featured: true,
-  },
-  {
-    id: "mantice-ai",
-    title: "ManticeAI",
-    description:
-      "A comprehensive platform offering access to various generative AI tools through a pay-as-you-go model. Platform enables users to access a wide range of AI tools and capabilities.",
-    image: "images/projects/mantice-ai.png",
-    technologies: [
-      "Python",
-      "AI",
-      "LLMs",
-      "Machine Learning",
-      "API Integration",
-      "ClaudeAI",
-      "Paystack",
-    ],
-    links: {
-      live: "https://manticeai.com",
-    },
-    category: "ai",
     featured: true,
   },
   {

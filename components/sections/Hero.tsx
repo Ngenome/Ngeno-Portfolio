@@ -16,119 +16,117 @@ const Hero = () => {
     offset: ["start start", "end start"],
   });
 
-  // Parallax effects
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
+  // Subtle parallax effects
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
   const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
 
   return (
     <section
       ref={containerRef}
       id="home"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-surface-dark pt-32 pb-48"
+      className="relative min-h-screen flex items-center justify-center bg-surface-dark pt-24 pb-32"
     >
-      {/* Background grid pattern */}
-      <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(255,255,255,.03)_1px,transparent_1px),linear-gradient(180deg,rgba(255,255,255,.03)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]" />
-
-      {/* Accent circles */}
-      <div className="absolute top-1/4 -right-1/4 w-[40vw] h-[40vw] rounded-full bg-lime-default/10 blur-3xl" />
-      <div className="absolute -bottom-1/4 -left-1/4 w-[40vw] h-[40vw] rounded-full bg-yellow-default/10 blur-3xl" />
+      {/* Minimal background accent */}
+      <div className="absolute inset-0">
+        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60vw] h-[30vh] rounded-full bg-lime-default/5 blur-3xl" />
+      </div>
 
       <motion.div
         style={{ y, opacity }}
         className="relative z-10 container mx-auto px-6"
       >
-        <div className="max-w-4xl mx-auto text-center">
-          {/* Name with creative treatment */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="inline-block mb-8"
-          >
-            <h2 className="text-2xl md:text-3xl font-display bg-gradient-to-r from-lime-light via-yellow-light to-lime-light bg-clip-text text-transparent">
-              Kelvin Ng'eno
-            </h2>
-          </motion.div>
+        <div className="max-w-5xl mx-auto">
+          {/* Clean, minimal layout */}
+          <div className="space-y-8">
+            {/* Name - Clean typography */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+            >
+              <h1 className="text-4xl md:text-6xl lg:text-7xl font-display text-white leading-none tracking-tight">
+                Kelvin Ng'eno
+              </h1>
+            </motion.div>
 
-          {/* Role/Position */}
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-            className="text-lime-light font-mono text-sm tracking-wider mb-6"
-          >
-            FULL STACK DEV, AI , ML
-          </motion.p>
+            {/* Role - Simplified */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
+              className="flex items-center gap-4"
+            >
+              <div className="w-8 h-px bg-lime-default" />
+              <p className="text-lg text-gray-200">
+                Full Stack Dev, AI Engineer, React Native Mobile App Developer
+              </p>
+            </motion.div>
 
-          {/* Main heading */}
-          <div className="mb-8">
-            <SplitHeading className="font-display text-display2 text-balance leading-none text-white mb-4">
-              JUST BUILDING STUFF.
-            </SplitHeading>
-          </div>
+            {/* Description - Clean and concise */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="max-w-3xl"
+            >
+              <p className="text-xl md:text-2xl text-gray-300 font-light leading-relaxed">
+                Cracked founder mode engineer.{" "}
+                <span className="text-white">Building scalable solutions</span> that solve real problems
+                with frontier technology.
+              </p>
+            </motion.div>
 
-          {/* Description */}
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-gray-400 text-body max-w-2xl mx-auto mb-12"
-          >
-            The only thing I love more than building stuff is solving problems.
-            I love the power that technology gives me. I love finding out
-            problems - especially those I can solve with Technology. And there
-            are so many unsolved problems.
-          </motion.p>
+            {/* CTA - Minimal buttons */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="flex flex-col sm:flex-row gap-4 pt-8"
+            >
+              <MagneticButton>
+                <ScrollLink
+                  to="projects"
+                  spy={true}
+                  smooth={true}
+                  offset={-100}
+                  duration={1000}
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-lime-default text-surface-dark
+                           font-medium hover:bg-lime-light transition-colors duration-300 cursor-pointer"
+                >
+                  View Work
+                </ScrollLink>
+              </MagneticButton>
 
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-            <MagneticButton>
-              <ScrollLink
-                to="projects"
-                spy={true}
-                smooth={true}
-                offset={-100}
-                duration={1000}
-                className="inline-flex items-center gap-2 px-8 py-4 bg-lime-default text-surface-dark 
-                         font-medium rounded-full hover:bg-lime-light transition-colors duration-300 cursor-pointer"
-              >
-                View My Work
-              </ScrollLink>
-            </MagneticButton>
-
-            <MagneticButton>
-              <ScrollLink
-                to="contact"
-                spy={true}
-                smooth={true}
-                offset={-100}
-                duration={1000}
-                className="inline-flex items-center gap-2 px-8 py-4 border border-lime-default/30 
-                         text-lime-light font-medium rounded-full hover:bg-lime-default/10 
-                         transition-colors duration-300 cursor-pointer"
-              >
-                Let's Connect
-              </ScrollLink>
-            </MagneticButton>
+              <MagneticButton>
+                <ScrollLink
+                  to="contact"
+                  spy={true}
+                  smooth={true}
+                  offset={-100}
+                  duration={1000}
+                  className="inline-flex items-center gap-2 px-6 py-3 border-b border-lime-default/50
+                           text-lime-light hover:border-lime-light transition-colors duration-300 cursor-pointer"
+                >
+                  Get In Touch
+                </ScrollLink>
+              </MagneticButton>
+            </motion.div>
           </div>
         </div>
       </motion.div>
 
-      {/* Scroll indicator */}
+      {/* Minimal scroll indicator */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 cursor-pointer"
+        transition={{ delay: 0.8 }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2"
       >
-        <span className="text-gray-400 text-sm">Scroll to explore</span>
         <motion.div
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 1.5, repeat: Infinity }}
-          className="text-lime-light"
-        >
-          <FaArrowDown size={20} />
-        </motion.div>
+          animate={{ y: [0, 8, 0] }}
+          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+          className="w-px h-12 bg-gradient-to-b from-transparent via-lime-default to-transparent"
+        />
       </motion.div>
     </section>
   );

@@ -84,7 +84,17 @@ export const skills: Skill[] = [
     category: "ai",
   },
   {
-    name: "Prompt Engineering",
+    name: "CrewAI",
+    icon: FaRobot,
+    category: "ai",
+  },
+  {
+    name: "Browser Use",
+    icon: FaRobot,
+    category: "ai",
+  },
+  {
+    name: "OpenAI Agents SDK",
     icon: FaRobot,
     category: "ai",
   },
@@ -152,6 +162,11 @@ export const skills: Skill[] = [
     icon: FaMobile,
     category: "mobile",
   },
+  {
+    name: "Maestro",
+    icon: FaMobile,
+    category: "mobile",
+  },
 
   // Backend Development
   {
@@ -185,6 +200,11 @@ export const skills: Skill[] = [
     category: "backend",
   },
   {
+    name: "Fastify",
+    icon: FaServer,
+    category: "backend",
+  },
+  {
     name: "Alembic",
     icon: FaDatabase,
     category: "backend",
@@ -198,6 +218,26 @@ export const skills: Skill[] = [
     name: "SQLAlchemy",
     icon: FaDatabase,
     category: "backend",
+  },
+  {
+    name: "SQLite",
+    icon: FaDatabase,
+    category: "backend",
+  },
+  {
+    name: "Make",
+    icon: FaServer,
+    category: "backend",
+  },
+  {
+    name: "Linux/Unix",
+    icon: FaCloud,
+    category: "cloud",
+  },
+  {
+    name: "Bash",
+    icon: FaCloud,
+    category: "cloud",
   },
   // Databases & Cloud
   {
