@@ -339,11 +339,6 @@ export const skills: Skill[] = [
     icon: FaCode,
     category: "frontend",
   },
-  {
-    name: "Performance Optimization",
-    icon: FaCode,
-    category: "backend",
-  },
 ];
 
 
