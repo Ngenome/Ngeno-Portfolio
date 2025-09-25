@@ -19,6 +19,21 @@ export const experiences: Experience[] = [
     technologies: ["FastAPI", "Python", "OpenAI Agents SDK", "LangGraph", "React", "PostgreSQL", "AWS"],
   },
   {
+    id: "jobzy-limited",
+    role: "Full Stack Mobile Developer",
+    company: "Jobzy Limited",
+    companyUrl: "https://talanta.ai",
+    duration: "Mar 2024 - Mar 2025",
+    mode: "Full-time",
+    description:
+      "Built three apps in the Jobzy ecosystem (Talanta AI App, Service Provider App, Client App).",
+    achievements: [
+      "Scaled Talanta AI App to 20k+ active users across web, iOS, and Android",
+      "Added AI-powered resume and cover letter generation, improving user engagement",
+    ],
+    technologies: ["React Native", "Django", "PostgreSQL", "Azure", "AI"],
+  },
+  {
     id: "dissolve-software",
     role: "Founder",
     company: "Dissolve Software",
