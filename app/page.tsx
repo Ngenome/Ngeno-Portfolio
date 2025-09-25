@@ -56,7 +56,7 @@ const CompactPortfolio = () => {
               Full Stack Dev • AI Engineer • Mobile App Developer
             </p>
             <p className="text-gray-300 text-base leading-relaxed max-w-2xl">
-              Cracked founder mode engineer building scalable solutions that solve real problems with frontier technology. 5+ years experience serving tens of thousands of users.
+              Founder mode engineer building scalable solutions that solve real problems with frontier technology. 5+ years experience serving tens of thousands of users.
             </p>
           </div>
 
