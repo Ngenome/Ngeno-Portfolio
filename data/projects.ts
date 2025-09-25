@@ -43,7 +43,7 @@ export const projects: Project[] = [
       "OpenAI",
     ],
     links: {
-      live: "https://app.talent.jobzy.africa/",
+      live: "https://talanta.ai",
       playStore:
         "https://play.google.com/store/apps/details?id=com.enochk.jobzy_talent",
       appStore: "https://apps.apple.com/us/app/talent-by-jobzy/id6479216045",
