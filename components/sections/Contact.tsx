@@ -17,7 +17,7 @@ const ContactLink = ({ icon: Icon, label, value, href, delay = 0 }) => (
     whileInView={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.8, delay }}
     viewport={{ once: true }}
-    className="group relative flex items-start gap-4 p-6 rounded-xl bg-surface-light border border-lime-default/10
+    className="group relative flex items-start gap-3 p-4 rounded-lg bg-surface-light border border-lime-default/10
                hover:border-lime-default/30 transition-all duration-300"
   >
     <div
@@ -91,7 +91,7 @@ const ContactSection = () => {
   return (
     <section
       id="contact"
-      className="relative py-section bg-surface-dark overflow-hidden"
+      className="relative py-section-compact bg-surface-dark overflow-hidden"
     >
       {/* Background Elements */}
       <div className="absolute inset-0">
@@ -106,7 +106,7 @@ const ContactSection = () => {
       </div>
 
       <div className="container mx-auto px-6 relative">
-        <div className="max-w-4xl mx-auto text-center mb-24">
+        <div className="max-w-4xl mx-auto text-center mb-12">
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -132,7 +132,7 @@ const ContactSection = () => {
         </div>
 
         {/* Contact Info Grid */}
-        <div className="grid md:grid-cols-3 gap-6 mb-24">
+        <div className="grid md:grid-cols-3 gap-4 mb-12">
           {contactInfo.map((info, index) => (
             <ContactLink key={info.label} {...info} delay={index * 0.2} />
           ))}
@@ -140,7 +140,7 @@ const ContactSection = () => {
 
         {/* Social Links */}
         <motion.div
-          className="flex flex-wrap justify-center items-center gap-8 mb-24"
+          className="flex flex-wrap justify-center items-center gap-6 mb-8"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}

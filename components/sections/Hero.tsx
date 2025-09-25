@@ -24,7 +24,7 @@ const Hero = () => {
     <section
       ref={containerRef}
       id="home"
-      className="relative min-h-screen flex items-center justify-center bg-surface-dark pt-24 pb-32"
+      className="relative min-h-[70vh] flex items-center justify-center bg-surface-dark pt-20 pb-12"
     >
       {/* Minimal background accent */}
       <div className="absolute inset-0">
@@ -67,9 +67,9 @@ const Hero = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="max-w-3xl"
+              className="max-w-2xl"
             >
-              <p className="text-xl md:text-2xl text-gray-300 font-light leading-relaxed">
+              <p className="text-lg md:text-xl text-gray-300 font-light leading-relaxed">
                 Cracked founder mode engineer.{" "}
                 <span className="text-white">Building scalable solutions</span> that solve real problems
                 with frontier technology.
@@ -81,7 +81,7 @@ const Hero = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="flex flex-col sm:flex-row gap-4 pt-8"
+              className="flex flex-col sm:flex-row gap-4 pt-6"
             >
               <MagneticButton>
                 <ScrollLink

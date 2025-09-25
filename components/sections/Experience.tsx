@@ -29,7 +29,7 @@ const ExperienceCard = ({ experience, index }) => {
       </div>
 
       {/* Content */}
-      <div className="flex-1 pb-12">
+      <div className="flex-1 pb-8">
         {/* Header */}
         <div className="mb-4">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2 mb-2">
@@ -54,12 +54,12 @@ const ExperienceCard = ({ experience, index }) => {
         </div>
 
         {/* Description */}
-        <p className="text-gray-400 mb-4 leading-relaxed">
+        <p className="text-gray-400 mb-3 leading-relaxed text-sm">
           {experience.description}
         </p>
 
         {/* Key Achievements - Always visible */}
-        <ul className="space-y-2 mb-4">
+        <ul className="space-y-1 mb-3">
           {topAchievements.map((achievement, i) => (
             <li key={i} className="flex items-start gap-2 text-gray-300">
               <span className="text-lime-default mt-1.5 text-xs">•</span>
@@ -89,11 +89,11 @@ const ExperienceSection = () => {
   return (
     <section
       id="experience"
-      className="relative py-section bg-surface-dark"
+      className="relative py-section-compact bg-surface-dark"
     >
       <div className="container mx-auto px-6">
         {/* Section Header */}
-        <div className="max-w-4xl mb-16">
+        <div className="max-w-4xl mb-8">
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}

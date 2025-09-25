@@ -14,7 +14,7 @@ const SkillsSection = () => {
   return (
     <section
       id="skills"
-      className="relative py-section bg-surface-dark"
+      className="relative py-section-compact bg-surface-dark"
     >
       <div className="container mx-auto px-6">
         {/* Section Header */}
@@ -23,7 +23,7 @@ const SkillsSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="max-w-4xl mb-12"
+          className="max-w-4xl mb-8"
         >
           <p className="text-lime-light font-mono text-sm tracking-wider mb-4">
             EXPERTISE
@@ -38,7 +38,7 @@ const SkillsSection = () => {
         </motion.div>
 
         {/* Skills Grid - Clean & Minimal */}
-        <div className="space-y-10">
+        <div className="space-y-6">
           {skillCategories.map((category, categoryIndex) => (
             <motion.div
               key={category.id}
@@ -49,7 +49,7 @@ const SkillsSection = () => {
               className="group"
             >
               {/* Category Title */}
-              <div className="flex items-center gap-4 mb-5">
+              <div className="flex items-center gap-4 mb-3">
                 <div className="text-lime-light">
                   <category.icon className="w-5 h-5" />
                 </div>
@@ -60,7 +60,7 @@ const SkillsSection = () => {
               </div>
 
               {/* Skills List */}
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
                 {groupedSkills[category.id]?.map((skill, skillIndex) => (
                   <motion.div
                     key={skill.name}

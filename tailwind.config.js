@@ -58,7 +58,8 @@ module.exports = {
         body: ["clamp(1rem, 1.2vw, 1.125rem)", { lineHeight: "1.5" }],
       },
       spacing: {
-        section: "clamp(4rem, 10vw, 8rem)",
+        section: "clamp(2rem, 4vw, 3rem)",
+        "section-compact": "clamp(1.5rem, 3vw, 2rem)",
       },
       height: {
         "screen-dvh": "100dvh",

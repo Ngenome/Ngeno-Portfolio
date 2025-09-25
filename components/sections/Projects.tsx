@@ -78,15 +78,15 @@ const ProjectCard = ({
       </div>
 
       {/* Content */}
-      <div className="p-6">
+      <div className="p-4">
         <h3
-          className="text-xl font-display text-white mb-3 group-hover:text-lime-light 
+          className="text-lg font-display text-white mb-2 group-hover:text-lime-light
                      transition-colors duration-300"
         >
           {project.title}
         </h3>
 
-        <div className="flex flex-wrap gap-2 mb-6">
+        <div className="flex flex-wrap gap-2 mb-4">
           {project.technologies.map((tech) => (
             <span
               key={tech}
@@ -99,7 +99,7 @@ const ProjectCard = ({
         </div>
 
         {/* Project Links - Always visible */}
-        <div className="flex flex-wrap gap-3">
+        <div className="flex flex-wrap gap-2">
           {links.map((link, i) => (
             <motion.a
               key={link.url}
@@ -137,10 +137,10 @@ const ProjectsSection = () => {
       : projects.filter((p) => p.category === activeCategory);
 
   return (
-    <section id="projects" className="relative py-section bg-surface-dark">
+    <section id="projects" className="relative py-section-compact bg-surface-dark">
       <div className="container mx-auto px-6">
         {/* Section Header */}
-        <div className="max-w-4xl mb-16">
+        <div className="max-w-4xl mb-8">
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -154,7 +154,7 @@ const ProjectsSection = () => {
         </div>
 
         {/* Category Filter */}
-        <div className="flex flex-wrap justify-start gap-3 mb-12">
+        <div className="flex flex-wrap justify-start gap-3 mb-8">
           {categories.map((category) => (
             <motion.button
               key={category.id}
@@ -176,7 +176,7 @@ const ProjectsSection = () => {
         {/* Projects Grid */}
         <motion.div
           layout
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
         >
           <AnimatePresence mode="popLayout">
             {filteredProjects.map((project, index) => (

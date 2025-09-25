@@ -39,7 +39,7 @@ export default function Home() {
           <SkillsSection />
 
           {/* Projects Section - Shifting up slightly */}
-          <div className="relative -mt-16">
+          <div className="relative -mt-8">
             <ProjectsSection />
           </div>
 
@@ -49,7 +49,7 @@ export default function Home() {
           </div>
 
           {/* Contact Section - Overlapping previous section */}
-          <div className="relative -mt-32 z-20">
+          <div className="relative -mt-16 z-20">
             <ContactSection />
           </div>
         </div>
