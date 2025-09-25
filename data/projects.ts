@@ -29,7 +29,7 @@ export const projects: Project[] = [
   },
   {
     id: "talent-app",
-    title: "Talent App (Jobzy Limited)",
+    title: "Talanta AI App (Jobzy Limited)",
     description:
       "An AI Powered Job Search React Native mobile app for iOS, Android, and Huawei devices, enabling seamless job searches with advanced filters, personalized job alerts, and intuitive navigation. You can use AI to generate Resumes, CVs, and Cover Letters as well as job application emails.",
     image: "images/projects/talent-app.png",
