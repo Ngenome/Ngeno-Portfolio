@@ -152,20 +152,6 @@ export const projects: Project[] = [
     featured: true,
   },
   {
-    id: "stability-ai",
-    title: "Stability AI Models Integration",
-    description:
-      "Implementation and integration of various Stability AI models for image generation and processing.",
-    image: "images/projects/sd3-api.png",
-    technologies: ["Python", "Stability AI", "Machine Learning"],
-    links: {
-      github:
-        "https://colab.research.google.com/drive/1AkFQuHCYmMGCJfG9HzhBohzir-sty7We",
-    },
-    category: "ai",
-    featured: true,
-  },
-  {
     id: "tortoise-tts",
     title: "Text to Speech with Tortoise TTS",
     description:
