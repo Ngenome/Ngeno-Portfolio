@@ -106,7 +106,7 @@ const CompactPortfolio = () => {
                 Experience
               </h2>
               <div className="space-y-4">
-                {experiences.slice(0, 3).map((exp, index) => (
+                {experiences.map((exp, index) => (
                   <div key={exp.id} className="border-l-2 border-lime-default/30 pl-4">
                     <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-1">
                       <h3 className="font-semibold text-white">{exp.role}</h3>
