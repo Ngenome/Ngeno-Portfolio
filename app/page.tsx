@@ -40,56 +40,209 @@ const CompactPortfolio = () => {
         </div>
       </nav>
 
-      <div className="max-w-7xl mx-auto p-4">
-        {/* Header Section - Compact */}
-        <motion.section
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="grid lg:grid-cols-3 gap-8 mb-8"
-        >
-          {/* Left: Name & Title */}
-          <div className="lg:col-span-2">
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-2">
-              Kelvin Ng'eno
-            </h1>
-            <p className="text-xl text-lime-light mb-3">
-              Full Stack Dev • AI Engineer • Mobile App Developer
-            </p>
-            <p className="text-gray-300 text-base leading-relaxed max-w-2xl">
-              Founder mode engineer building scalable solutions that solve real problems with frontier technology. 5+ years experience serving tens of thousands of users.
-            </p>
+      {/* Hero Section - Creative & Visual */}
+      <div className="relative min-h-[85vh] flex items-center justify-center overflow-hidden">
+        {/* Background Elements */}
+        <div className="absolute inset-0">
+          {/* Animated Grid Background */}
+          <div className="absolute inset-0 opacity-5">
+            <div className="h-full w-full"
+              style={{
+                backgroundImage: `
+                  linear-gradient(rgba(134, 239, 172, 0.1) 1px, transparent 1px),
+                  linear-gradient(90deg, rgba(134, 239, 172, 0.1) 1px, transparent 1px)
+                `,
+                backgroundSize: '40px 40px'
+              }}
+            />
           </div>
 
-          {/* Right: Contact Info */}
-          <div className="space-y-2 text-sm">
-            <div className="flex items-center gap-2 text-gray-300">
-              <FaEnvelope className="w-4 h-4 text-lime-light" />
-              <a href="mailto:hello@ngenondumia.com" className="hover:text-lime-light transition-colors">
-                hello@ngenondumia.com
-              </a>
-            </div>
-            <div className="flex items-center gap-2 text-gray-300">
-              <FaPhone className="w-4 h-4 text-lime-light" />
-              <a href="tel:+254726299179" className="hover:text-lime-light transition-colors">
-                +254 726 299 179
-              </a>
-            </div>
-            <div className="flex items-center gap-2 text-gray-300">
-              <FaMapMarkerAlt className="w-4 h-4 text-lime-light" />
-              <span>Nairobi, Kenya</span>
-            </div>
+          {/* Floating Geometric Shapes */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.5, duration: 1 }}
+            className="absolute inset-0"
+          >
+            <div className="absolute top-20 left-10 w-20 h-20 bg-lime-default/10 rounded-full blur-xl"></div>
+            <div className="absolute top-40 right-20 w-32 h-32 bg-lime-light/5 rotate-45 blur-lg"></div>
+            <div className="absolute bottom-32 left-1/4 w-16 h-16 bg-lime-default/15 rounded-lg rotate-12 blur-sm"></div>
+            <div className="absolute bottom-20 right-1/3 w-24 h-24 bg-lime-light/8 rounded-full blur-xl"></div>
+          </motion.div>
+        </div>
 
-            {/* Social Links - All of them */}
-            <div className="flex gap-3 pt-2">
-              {socialLinks.map((link) => (
-                <a key={link.id} href={link.url} target="_blank" rel="noopener noreferrer"
-                  className="text-gray-400 hover:text-lime-light transition-colors">
-                  <link.icon className="w-5 h-5" />
+        <div className="max-w-7xl mx-auto px-4 relative z-10">
+          <div className="grid lg:grid-cols-5 gap-8 items-center">
+
+            {/* Main Content - Left */}
+            <div className="lg:col-span-3 text-center lg:text-left">
+
+              {/* Animated Greeting */}
+              <motion.div
+                initial={{ opacity: 0, x: -30 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.2 }}
+                className="flex items-center justify-center lg:justify-start gap-2 mb-4"
+              >
+                <div className="w-2 h-2 bg-lime-default rounded-full animate-pulse"></div>
+                <span className="text-lime-light font-mono text-sm">Hello, I'm</span>
+              </motion.div>
+
+              {/* Name with Gradient */}
+              <motion.h1
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 }}
+                className="text-5xl md:text-7xl lg:text-8xl font-black mb-4"
+              >
+                <span className="bg-gradient-to-r from-white via-lime-light to-lime-default bg-clip-text text-transparent">
+                  Kelvin
+                </span>
+                <br />
+                <span className="text-white">Ng'eno</span>
+              </motion.h1>
+
+              {/* Animated Roles */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5 }}
+                className="mb-6"
+              >
+                <div className="text-xl md:text-2xl text-lime-light font-light tracking-wide">
+                  <span className="font-mono text-lime-default/80">&lt;</span>
+                  <motion.span
+                    key="role"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    className="mx-2"
+                  >
+                    Full Stack Developer
+                  </motion.span>
+                  <span className="font-mono text-lime-default/80">/&gt;</span>
+                </div>
+                <div className="flex items-center justify-center lg:justify-start gap-3 mt-2 text-gray-400 text-sm">
+                  <span>AI Engineer</span>
+                  <div className="w-1 h-1 bg-lime-default rounded-full"></div>
+                  <span>Mobile Developer</span>
+                  <div className="w-1 h-1 bg-lime-default rounded-full"></div>
+                  <span>Tech Lead</span>
+                </div>
+              </motion.div>
+
+              {/* Description */}
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.7 }}
+                className="text-gray-300 text-lg leading-relaxed max-w-2xl mb-8"
+              >
+                Founder mode engineer building{" "}
+                <span className="text-lime-light font-medium">scalable solutions</span> that solve real problems with{" "}
+                <span className="text-lime-light font-medium">frontier technology</span>.{" "}
+                <span className="text-white font-semibold">5+ years</span> experience serving{" "}
+                <span className="text-white font-semibold">tens of thousands</span> of users.
+              </motion.p>
+
+              {/* CTA Buttons */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.9 }}
+                className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
+              >
+                <a href="mailto:hello@ngenondumia.com"
+                  className="group px-8 py-4 bg-lime-default text-surface-dark font-semibold rounded-lg hover:bg-lime-light transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-lime-default/25">
+                  <span className="flex items-center gap-2">
+                    Let's Build Something
+                    <motion.span
+                      animate={{ x: [0, 5, 0] }}
+                      transition={{ repeat: Infinity, duration: 1.5 }}
+                    >
+                      →
+                    </motion.span>
+                  </span>
                 </a>
-              ))}
+                <a href="/resume.pdf" download
+                  className="group px-8 py-4 border-2 border-lime-default/50 text-lime-light font-semibold rounded-lg hover:border-lime-default hover:bg-lime-default/10 transition-all duration-300">
+                  <span className="flex items-center gap-2">
+                    <FaFileDownload className="w-4 h-4 group-hover:animate-bounce" />
+                    Download Resume
+                  </span>
+                </a>
+              </motion.div>
             </div>
+
+            {/* Right Side - Contact Card */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.8 }}
+              className="lg:col-span-2"
+            >
+              <div className="relative">
+                {/* Glowing Border Effect */}
+                <div className="absolute -inset-1 bg-gradient-to-r from-lime-default to-lime-light rounded-2xl blur opacity-25 group-hover:opacity-75 transition duration-1000"></div>
+
+                <div className="relative bg-surface-light/50 backdrop-blur-sm border border-lime-default/20 rounded-2xl p-6 space-y-4">
+                  <h3 className="text-white font-semibold text-lg mb-4 flex items-center gap-2">
+                    <div className="w-2 h-2 bg-lime-default rounded-full animate-pulse"></div>
+                    Get In Touch
+                  </h3>
+
+                  <div className="space-y-3">
+                    <a href="mailto:hello@ngenondumia.com"
+                      className="flex items-center gap-3 text-gray-300 hover:text-lime-light transition-colors group p-2 rounded-lg hover:bg-lime-default/5">
+                      <div className="p-2 bg-lime-default/10 rounded-lg group-hover:bg-lime-default/20 transition-colors">
+                        <FaEnvelope className="w-4 h-4 text-lime-light" />
+                      </div>
+                      <span className="text-sm">hello@ngenondumia.com</span>
+                    </a>
+
+                    <a href="tel:+254726299179"
+                      className="flex items-center gap-3 text-gray-300 hover:text-lime-light transition-colors group p-2 rounded-lg hover:bg-lime-default/5">
+                      <div className="p-2 bg-lime-default/10 rounded-lg group-hover:bg-lime-default/20 transition-colors">
+                        <FaPhone className="w-4 h-4 text-lime-light" />
+                      </div>
+                      <span className="text-sm">+254 726 299 179</span>
+                    </a>
+
+                    <div className="flex items-center gap-3 text-gray-300 p-2">
+                      <div className="p-2 bg-lime-default/10 rounded-lg">
+                        <FaMapMarkerAlt className="w-4 h-4 text-lime-light" />
+                      </div>
+                      <span className="text-sm">Nairobi, Kenya</span>
+                    </div>
+                  </div>
+
+                  {/* Social Links */}
+                  <div className="pt-4 border-t border-lime-default/20">
+                    <p className="text-gray-400 text-xs mb-3">Connect with me</p>
+                    <div className="flex gap-3">
+                      {socialLinks.map((link, index) => (
+                        <motion.a
+                          key={link.id}
+                          href={link.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          initial={{ opacity: 0, y: 20 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ delay: 1.0 + index * 0.1 }}
+                          className="p-2 bg-surface-dark/50 rounded-lg text-gray-400 hover:text-lime-light hover:bg-lime-default/10 transition-all duration-300 hover:scale-110"
+                        >
+                          <link.icon className="w-5 h-5" />
+                        </motion.a>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
           </div>
-        </motion.section>
+        </div>
+      </div>
+
+      <div className="max-w-7xl mx-auto p-4">
 
         {/* Main Content Grid */}
         <div className="grid lg:grid-cols-3 gap-8">
