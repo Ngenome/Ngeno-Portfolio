@@ -99,7 +99,7 @@ const Portfolio = () => {
       <section className="max-w-5xl mx-auto px-6 py-20">
         <div className="space-y-6">
           <div>
-            <h2 className={`text-5xl md:text-6xl font-bold mb-4 ${isDark ? 'text-white' : 'text-gray-900'}`}>
+            <h2 className={`text-4xl md:text-6xl font-bold mb-4 ${isDark ? 'text-white' : 'text-gray-900'}`}>
               Kelvin Ng'eno
             </h2>
             <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2 text-xl">
