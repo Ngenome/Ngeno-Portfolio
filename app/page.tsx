@@ -194,7 +194,8 @@ const Portfolio = () => {
           <p>
             My journey started with frontend development, but I quickly expanded into backend systems, mobile apps,
             and eventually AI/ML engineering. I love working at the intersection of these technologies, building
-            intelligent systems that solve real-world problems.
+            intelligent systems that solve real-world problems. I'm passionate about building startups and creating
+            solutions that make a real impact.
           </p>
           <p>
             Currently, I'm focused on AI agents, LLM integration, and building platforms that leverage cutting-edge
