@@ -21,6 +21,7 @@ const extractDomain = (url: string) => {
 
 const Portfolio = () => {
   const [isDark, setIsDark] = useState(true);
+  const [activeRole, setActiveRole] = useState<string | null>(null);
 
   useEffect(() => {
     const savedTheme = localStorage.getItem('theme');
@@ -34,6 +35,12 @@ const Portfolio = () => {
   }, [isDark]);
 
   const toggleTheme = () => setIsDark(!isDark);
+
+  const roleDescriptions: { [key: string]: string } = {
+    'Full Stack Developer': 'Building complete web applications from frontend to backend, handling databases, APIs, and deployment.',
+    'AI Engineer': 'Developing intelligent systems using machine learning, LLMs, and AI agents to solve complex problems.',
+    'Mobile Developer': 'Creating native and cross-platform mobile applications for iOS and Android with React Native.'
+  };
 
   return (
     <div className={`min-h-screen transition-colors duration-300 relative ${isDark ? 'bg-surface-dark text-white' : 'bg-white text-gray-900'}`}>
@@ -95,9 +102,40 @@ const Portfolio = () => {
             <h2 className={`text-5xl md:text-6xl font-bold mb-4 ${isDark ? 'text-white' : 'text-gray-900'}`}>
               Kelvin Ng'eno
             </h2>
-            <p className={`text-xl ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
-              Full Stack Developer · AI Engineer · Mobile Developer
-            </p>
+            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2 text-xl">
+              {['Full Stack Developer', 'AI Engineer', 'Mobile Developer'].map((role, index) => (
+                <div key={role} className="relative inline-block">
+                  <button
+                    onClick={() => setActiveRole(activeRole === role ? null : role)}
+                    className={`transition-colors hover:text-white ${isDark ? 'text-gray-400' : 'text-gray-600 hover:text-gray-900'}`}
+                  >
+                    {role}
+                  </button>
+                  {activeRole === role && (
+                    <>
+                      {/* Backdrop to close popover */}
+                      <div
+                        className="fixed inset-0 z-40"
+                        onClick={() => setActiveRole(null)}
+                      />
+                      {/* Popover */}
+                      <div className={`absolute top-full left-1/2 transform -translate-x-1/2 mt-2 w-64 sm:w-80 p-4 rounded-lg shadow-lg z-50 ${
+                        isDark ? 'bg-surface-light border border-white/10' : 'bg-white border border-gray-200'
+                      }`}>
+                        <div className={`text-sm leading-relaxed ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
+                          {roleDescriptions[role]}
+                        </div>
+                        {/* Arrow */}
+                        <div className={`absolute -top-2 left-1/2 transform -translate-x-1/2 w-4 h-4 rotate-45 ${
+                          isDark ? 'bg-surface-light border-t border-l border-white/10' : 'bg-white border-t border-l border-gray-200'
+                        }`} />
+                      </div>
+                    </>
+                  )}
+                  {index < 2 && <span className={`mx-2 ${isDark ? 'text-gray-600' : 'text-gray-400'}`}>·</span>}
+                </div>
+              ))}
+            </div>
           </div>
 
           <p className={`text-lg max-w-2xl leading-relaxed ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
