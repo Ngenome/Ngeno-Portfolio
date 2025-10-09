@@ -301,21 +301,6 @@ const Portfolio = () => {
         </div>
       </section>
 
-      {/* Languages Section */}
-      <section className="max-w-5xl mx-auto px-6 py-8">
-        <h2 className={`text-3xl font-bold mb-6 ${isDark ? 'text-white' : 'text-gray-900'}`}>Languages</h2>
-        <div className="flex gap-8">
-          <div className={`px-4 py-2 rounded-lg ${isDark ? 'bg-white/5' : 'bg-gray-100'}`}>
-            <span className={`font-medium ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>English</span>
-            <span className={`ml-2 text-sm ${isDark ? 'text-gray-500' : 'text-gray-500'}`}>(Fluent)</span>
-          </div>
-          <div className={`px-4 py-2 rounded-lg ${isDark ? 'bg-white/5' : 'bg-gray-100'}`}>
-            <span className={`font-medium ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>Kiswahili</span>
-            <span className={`ml-2 text-sm ${isDark ? 'text-gray-500' : 'text-gray-500'}`}>(Fluent)</span>
-          </div>
-        </div>
-      </section>
-
       {/* Skills Section */}
       <section className="max-w-5xl mx-auto px-6 py-16">
         <h2 className={`text-3xl font-bold mb-8 ${isDark ? 'text-white' : 'text-gray-900'}`}>Skills & Technologies</h2>
