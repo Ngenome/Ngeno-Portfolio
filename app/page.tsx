@@ -37,16 +37,25 @@ const Portfolio = () => {
 
   return (
     <div className={`min-h-screen transition-colors duration-300 relative ${isDark ? 'bg-surface-dark text-white' : 'bg-white text-gray-900'}`}>
-      {/* Subtle Grid Background */}
-      <div className="fixed inset-0 pointer-events-none"
-        style={{
-          backgroundImage: `
-            linear-gradient(${isDark ? 'rgba(255, 255, 255, 0.05)' : 'rgba(0, 0, 0, 0.05)'} 1px, transparent 1px),
-            linear-gradient(90deg, ${isDark ? 'rgba(255, 255, 255, 0.05)' : 'rgba(0, 0, 0, 0.05)'} 1px, transparent 1px)
-          `,
-          backgroundSize: '40px 40px'
-        }}
-      />
+      {/* Network Mesh Background - Left Side Only */}
+      <div className="fixed inset-y-0 left-0 w-[10%] pointer-events-none">
+        <div className="absolute inset-0"
+          style={{
+            backgroundImage: `
+              linear-gradient(${isDark ? 'rgba(255, 255, 255, 0.03)' : 'rgba(0, 0, 0, 0.03)'} 1px, transparent 1px),
+              linear-gradient(90deg, ${isDark ? 'rgba(255, 255, 255, 0.03)' : 'rgba(0, 0, 0, 0.03)'} 1px, transparent 1px),
+              radial-gradient(circle at 20px 20px, ${isDark ? 'rgba(255, 255, 255, 0.04)' : 'rgba(0, 0, 0, 0.04)'} 2px, transparent 2px)
+            `,
+            backgroundSize: '40px 40px, 40px 40px, 40px 40px'
+          }}
+        />
+        {/* Gradient fade to right */}
+        <div className="absolute inset-0"
+          style={{
+            background: `linear-gradient(to right, transparent 0%, ${isDark ? '#1a1a1a' : '#ffffff'} 100%)`
+          }}
+        />
+      </div>
 
       {/* Content */}
       <div className="relative z-10">
