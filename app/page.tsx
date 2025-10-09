@@ -38,13 +38,13 @@ const Portfolio = () => {
   return (
     <div className={`min-h-screen transition-colors duration-300 relative ${isDark ? 'bg-surface-dark text-white' : 'bg-white text-gray-900'}`}>
       {/* Network Mesh Background - Left Side Only */}
-      <div className="fixed inset-y-0 left-0 w-[15%] pointer-events-none">
+      <div className="fixed inset-y-0 left-0 w-[25%] pointer-events-none">
         <div className="absolute inset-0"
           style={{
             backgroundImage: `
-              linear-gradient(${isDark ? 'rgba(255, 255, 255, 0.03)' : 'rgba(0, 0, 0, 0.03)'} 1px, transparent 1px),
-              linear-gradient(90deg, ${isDark ? 'rgba(255, 255, 255, 0.03)' : 'rgba(0, 0, 0, 0.03)'} 1px, transparent 1px),
-              radial-gradient(circle at 20px 20px, ${isDark ? 'rgba(255, 255, 255, 0.04)' : 'rgba(0, 0, 0, 0.04)'} 2px, transparent 2px)
+              linear-gradient(${isDark ? 'rgba(255, 255, 255, 0.08)' : 'rgba(0, 0, 0, 0.08)'} 1px, transparent 1px),
+              linear-gradient(90deg, ${isDark ? 'rgba(255, 255, 255, 0.08)' : 'rgba(0, 0, 0, 0.08)'} 1px, transparent 1px),
+              radial-gradient(circle at 20px 20px, ${isDark ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)'} 2px, transparent 2px)
             `,
             backgroundSize: '40px 40px, 40px 40px, 40px 40px',
             maskImage: 'linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%)',
