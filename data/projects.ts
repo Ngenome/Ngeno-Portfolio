@@ -7,7 +7,7 @@ export const projects: Project[] = [
     title: "Navismart AI",
     description:
       "AI-powered immigration platform serving 2k+ users across 50+ countries. Features eligibility checks, smart form filling, AI guidance, multilingual support, and secure application tracking.",
-    image: "images/projects/navismart-ai.png",
+    image: "/images/projects/navismart-ai.png",
     technologies: [
       "FastAPI",
       "Python",
@@ -32,7 +32,7 @@ export const projects: Project[] = [
     title: "Talanta AI App (Jobzy Limited)",
     description:
       "An AI Powered Job Search React Native mobile app for iOS, Android, and Huawei devices, enabling seamless job searches with advanced filters, personalized job alerts, and intuitive navigation. You can use AI to generate Resumes, CVs, and Cover Letters as well as job application emails.",
-    image: "images/projects/talent-app.png",
+    image: "/images/projects/talent-app.png",
     technologies: [
       "React Native",
       "Expo",
@@ -121,7 +121,7 @@ export const projects: Project[] = [
     title: "Claude AI Chatbot UI and Backend",
     description:
       "An open source feature rich, developer friendly, modifiable chatbot UI and backend for Claude AI. Supports projects.",
-    image: "images/projects/claude-amazon-bedrock-chatbot.png",
+    image: "/images/projects/claude-amazon-bedrock-chatbot.png",
     technologies: [
       "React",
       "TypeScript",
@@ -142,7 +142,7 @@ export const projects: Project[] = [
     title: "Audio Transcription with OpenAI Whisper",
     description:
       "Implementation of OpenAI's open source Whisper model for audio transcription using PyTorch.",
-    image: "images/projects/openai-whisper.png",
+    image: "/images/projects/openai-whisper.png",
     technologies: ["PyTorch", "Python", "OpenAI", "Machine Learning"],
     links: {
       github:
@@ -156,7 +156,7 @@ export const projects: Project[] = [
     title: "Text to Speech with Tortoise TTS",
     description:
       "Implementation of Tortoise TTS for high-quality text-to-speech conversion.",
-    image: "images/projects/tortoise-tts.png",
+    image: "/images/projects/tortoise-tts.png",
     technologies: ["Python", "TTS", "Machine Learning"],
     links: {
       github:
@@ -170,7 +170,7 @@ export const projects: Project[] = [
     title: "FashionGAN",
     description:
       "Implementation of Generative Adversarial Network for fashion image generation.",
-    image: "images/projects/fashion-gan.png",
+    image: "/images/projects/fashion-gan.png",
     technologies: ["Python", "GAN", "PyTorch", "Machine Learning"],
     links: {
       github:

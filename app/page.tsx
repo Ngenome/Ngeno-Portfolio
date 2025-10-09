@@ -220,40 +220,48 @@ const Portfolio = () => {
                 </p>
 
               {/* Project Links */}
-              <div className="flex flex-wrap gap-3 mb-4">
+              <div className="flex flex-wrap gap-2 mb-4">
                 {project.links.live && (
                   <a href={project.links.live} target="_blank" rel="noopener noreferrer"
-                    className={`flex items-center gap-2 text-sm transition-colors ${
-                      isDark ? 'text-gray-300 hover:text-white' : 'text-gray-600 hover:text-gray-900'
+                    className={`flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-lg transition-all hover:scale-105 ${
+                      isDark
+                        ? 'bg-blue-500/20 text-blue-400 hover:bg-blue-500/30 border border-blue-500/30'
+                        : 'bg-blue-50 text-blue-600 hover:bg-blue-100 border border-blue-200'
                     }`}>
-                    <FaExternalLinkAlt className="w-3 h-3" />
-                    <span>{extractDomain(project.links.live)}</span>
+                    <FaExternalLinkAlt className="w-4 h-4" />
+                    <span>Visit Site</span>
                   </a>
                 )}
                 {project.links.github && (
                   <a href={project.links.github} target="_blank" rel="noopener noreferrer"
-                    className={`flex items-center gap-2 text-sm transition-colors ${
-                      isDark ? 'text-gray-300 hover:text-white' : 'text-gray-600 hover:text-gray-900'
+                    className={`flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-lg transition-all hover:scale-105 ${
+                      isDark
+                        ? 'bg-gray-500/20 text-gray-300 hover:bg-gray-500/30 border border-gray-500/30'
+                        : 'bg-gray-50 text-gray-700 hover:bg-gray-100 border border-gray-200'
                     }`}>
-                    <FaGithub className="w-3 h-3" />
-                    <span>Code</span>
+                    <FaGithub className="w-4 h-4" />
+                    <span>View Code</span>
                   </a>
                 )}
                 {project.links.playStore && (
                   <a href={project.links.playStore} target="_blank" rel="noopener noreferrer"
-                    className={`flex items-center gap-2 text-sm transition-colors ${
-                      isDark ? 'text-gray-300 hover:text-white' : 'text-gray-600 hover:text-gray-900'
+                    className={`flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-lg transition-all hover:scale-105 ${
+                      isDark
+                        ? 'bg-green-500/20 text-green-400 hover:bg-green-500/30 border border-green-500/30'
+                        : 'bg-green-50 text-green-600 hover:bg-green-100 border border-green-200'
                     }`}>
-                    <FaGooglePlay className="w-3 h-3" />
+                    <FaGooglePlay className="w-4 h-4" />
                     <span>Play Store</span>
                   </a>
                 )}
                 {project.links.appStore && (
                   <a href={project.links.appStore} target="_blank" rel="noopener noreferrer"
-                    className={`flex items-center gap-2 text-sm transition-colors ${
-                      isDark ? 'text-gray-300 hover:text-white' : 'text-gray-600 hover:text-gray-900'
+                    className={`flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-lg transition-all hover:scale-105 ${
+                      isDark
+                        ? 'bg-blue-500/20 text-blue-400 hover:bg-blue-500/30 border border-blue-500/30'
+                        : 'bg-blue-50 text-blue-600 hover:bg-blue-100 border border-blue-200'
                     }`}>
-                    <FaAppStore className="w-3 h-3" />
+                    <FaAppStore className="w-4 h-4" />
                     <span>App Store</span>
                   </a>
                 )}
