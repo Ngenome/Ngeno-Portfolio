@@ -198,13 +198,26 @@ const Portfolio = () => {
         <h2 className={`text-3xl font-bold mb-8 ${isDark ? 'text-white' : 'text-gray-900'}`}>Projects</h2>
         <div className="grid md:grid-cols-2 gap-6">
           {projects.map((project) => (
-            <div key={project.id} className={`rounded-lg p-6 transition-colors ${
+            <div key={project.id} className={`rounded-lg overflow-hidden transition-colors ${
               isDark ? 'bg-white/5 hover:bg-white/10' : 'bg-gray-50 hover:bg-gray-100'
             }`}>
-              <h3 className={`text-xl font-semibold mb-2 ${isDark ? 'text-white' : 'text-gray-900'}`}>{project.title}</h3>
-              <p className={`mb-4 leading-relaxed text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
-                {project.description}
-              </p>
+              {/* Project Image */}
+              {project.image && (
+                <div className="relative h-48 w-full">
+                  <Image
+                    src={project.image}
+                    alt={project.title}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+              )}
+
+              <div className="p-6">
+                <h3 className={`text-xl font-semibold mb-2 ${isDark ? 'text-white' : 'text-gray-900'}`}>{project.title}</h3>
+                <p className={`mb-4 leading-relaxed text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+                  {project.description}
+                </p>
 
               {/* Project Links */}
               <div className="flex flex-wrap gap-3 mb-4">
@@ -256,6 +269,7 @@ const Portfolio = () => {
                   </span>
                 ))}
               </div>
+              </div>
             </div>
           ))}
         </div>
@@ -265,18 +279,30 @@ const Portfolio = () => {
       <section className="max-w-5xl mx-auto px-6 py-16">
         <h2 className={`text-3xl font-bold mb-8 ${isDark ? 'text-white' : 'text-gray-900'}`}>Skills & Technologies</h2>
         <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-8">
-          {["Frontend", "Backend", "Mobile", "AI/ML"].map((category) => {
+          {[
+            { name: "Frontend", color: "blue" },
+            { name: "Backend", color: "green" },
+            { name: "Mobile", color: "purple" },
+            { name: "AI/ML", color: "orange" }
+          ].map((category) => {
             const categorySkills = skills.filter(skill => {
-              if (category === "Frontend") return ["React", "Next.js", "TypeScript", "Tailwind CSS", "Vue.js", "Redux"].includes(skill.name);
-              if (category === "Backend") return ["Node.js", "Python", "PostgreSQL", "MongoDB", "Express", "Django"].includes(skill.name);
-              if (category === "Mobile") return ["React Native", "Flutter", "Swift", "Kotlin"].includes(skill.name);
-              if (category === "AI/ML") return ["TensorFlow", "PyTorch", "OpenAI", "Langchain", "Scikit-learn", "Pandas"].includes(skill.name);
+              if (category.name === "Frontend") return ["React", "Next.js", "TypeScript", "Tailwind CSS", "Vue.js", "Redux"].includes(skill.name);
+              if (category.name === "Backend") return ["Node.js", "Python", "PostgreSQL", "MongoDB", "Express", "Django"].includes(skill.name);
+              if (category.name === "Mobile") return ["React Native", "Flutter", "Swift", "Kotlin"].includes(skill.name);
+              if (category.name === "AI/ML") return ["TensorFlow", "PyTorch", "OpenAI", "Langchain", "Scikit-learn", "Pandas"].includes(skill.name);
               return false;
             });
 
+            const colorClasses = {
+              blue: isDark ? 'text-blue-400 border-blue-400/30' : 'text-blue-600 border-blue-600/30',
+              green: isDark ? 'text-green-400 border-green-400/30' : 'text-green-600 border-green-600/30',
+              purple: isDark ? 'text-purple-400 border-purple-400/30' : 'text-purple-600 border-purple-600/30',
+              orange: isDark ? 'text-orange-400 border-orange-400/30' : 'text-orange-600 border-orange-600/30'
+            };
+
             return (
-              <div key={category}>
-                <h3 className={`font-semibold mb-4 ${isDark ? 'text-white' : 'text-gray-900'}`}>{category}</h3>
+              <div key={category.name} className={`border-l-2 pl-4 ${colorClasses[category.color as keyof typeof colorClasses]}`}>
+                <h3 className={`font-semibold mb-4 ${colorClasses[category.color as keyof typeof colorClasses].split(' ')[0]}`}>{category.name}</h3>
                 <ul className="space-y-2">
                   {categorySkills.map((skill) => (
                     <li key={skill.name} className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>

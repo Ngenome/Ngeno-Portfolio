@@ -91,6 +91,7 @@ export const experiences: Experience[] = [
     companyUrl: "https://www.jobzy.africa/",
     duration: "Mar 2024 - Mar 2025",
     mode: "Freelance",
+    logo: "/images/companies/jobzy.png",
     description:
       "Built three apps in the Jobzy ecosystem (Talanta AI App, Service Provider App, Client App).",
     achievements: [
@@ -127,6 +128,7 @@ export const experiences: Experience[] = [
     companyUrl: "https://snobole.com",
     duration: "Jan 2022 – Jun 2022",
     mode: "Freelance",
+    logo: "/images/companies/snobole.png",
     description: "Built a laundry service app using React Native and Expo.",
     achievements: [
       "Converted UI/UX designs from Adobe XD to code",
