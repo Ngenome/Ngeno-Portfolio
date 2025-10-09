@@ -138,7 +138,7 @@ const Portfolio = () => {
                 <div className="flex items-start gap-4 flex-1">
                   {exp.logo && (
                     <div className={`flex-shrink-0 w-12 h-12 relative rounded ${
-                      exp.id === 'mjenzi' ? 'bg-white p-1' : ''
+                      (exp.id === 'mjenzi' || exp.id === 'jobzy' || exp.id === 'jobzy-limited') ? 'bg-white p-1' : ''
                     }`}>
                       <Image
                         src={exp.logo}
