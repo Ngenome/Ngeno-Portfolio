@@ -36,7 +36,20 @@ const Portfolio = () => {
   const toggleTheme = () => setIsDark(!isDark);
 
   return (
-    <div className={`min-h-screen transition-colors duration-300 ${isDark ? 'bg-surface-dark text-white' : 'bg-white text-gray-900'}`}>
+    <div className={`min-h-screen transition-colors duration-300 relative ${isDark ? 'bg-surface-dark text-white' : 'bg-white text-gray-900'}`}>
+      {/* Subtle Grid Background */}
+      <div className="fixed inset-0 pointer-events-none opacity-[0.03]"
+        style={{
+          backgroundImage: `
+            linear-gradient(${isDark ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)'} 1px, transparent 1px),
+            linear-gradient(90deg, ${isDark ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)'} 1px, transparent 1px)
+          `,
+          backgroundSize: '50px 50px'
+        }}
+      />
+
+      {/* Content */}
+      <div className="relative z-10">
       {/* Simple Header */}
       <header className={`sticky top-0 z-50 backdrop-blur-sm border-b transition-colors duration-300 ${
         isDark ? 'bg-surface-dark/95 border-white/10' : 'bg-white/95 border-gray-200'
@@ -332,6 +345,7 @@ const Portfolio = () => {
           </p>
         </div>
       </footer>
+      </div>
     </div>
   );
 };
