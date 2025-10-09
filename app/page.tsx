@@ -130,9 +130,10 @@ const Portfolio = () => {
       {/* Experience Section */}
       <section className="max-w-5xl mx-auto px-6 py-16">
         <h2 className={`text-3xl font-bold mb-8 ${isDark ? 'text-white' : 'text-gray-900'}`}>Experience</h2>
-        <div className="space-y-10">
-          {experiences.map((exp) => (
-            <div key={exp.id} className={`border-l-2 pl-6 ${isDark ? 'border-white/20' : 'border-gray-300'}`}>
+        <div className="space-y-8">
+          {experiences.map((exp, index) => (
+            <div key={exp.id}>
+              <div className="pb-8">
               <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-4 mb-2">
                 <div className="flex items-start gap-4 flex-1">
                   {exp.logo && (
@@ -183,6 +184,10 @@ const Portfolio = () => {
                   </span>
                 ))}
               </div>
+              </div>
+              {index < experiences.length - 1 && (
+                <hr className={`border-t ${isDark ? 'border-white/10' : 'border-gray-200'}`} />
+              )}
             </div>
           ))}
         </div>
