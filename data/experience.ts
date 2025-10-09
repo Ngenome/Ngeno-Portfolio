@@ -111,12 +111,15 @@ export const experiences: Experience[] = [
     mode: "Freelance",
     logo: "/images/companies/wera.png",
     description:
-      "Developed a service procurement platform with a React Native mobile app and Django backend.",
+      "Built a service procurement platform end-to-end, covering both web and mobile.",
     achievements: [
-      "Built real-time chat with web sockets for better in app buyer-seller communication",
+      "Developed the React Native mobile app for service providers, published on both Google Play and App Store",
+      "Created the landing page and web portal using Next.js for SEO and fast performance",
+      "Built real-time chat with web sockets for better in-app buyer-seller communication",
     ],
     technologies: [
       "React Native",
+      "Next.js",
       "Django",
       "PostgreSQL",
       "WebSockets",
@@ -136,6 +139,34 @@ export const experiences: Experience[] = [
       "Integrated Stripe payments for seamless user checkout",
     ],
     technologies: ["React Native", "Expo", "Stripe", "Adobe XD"],
+  },
+  {
+    id: "united-states-of-africa",
+    role: "Frontend Developer",
+    company: "United States of Africa",
+    companyUrl: "#",
+    duration: "Feb 2022 - Oct 2022",
+    mode: "Part-time",
+    description: "Contributed to Zumaridi, a video conferencing platform.",
+    achievements: [
+      "Converted Figma designs into responsive, production-ready interfaces using React.js and Tailwind CSS",
+      "Delivered clean, maintainable front-end code with proper user experience",
+    ],
+    technologies: ["React", "Tailwind CSS", "Figma"],
+  },
+  {
+    id: "interstellar-code",
+    role: "Frontend Developer",
+    company: "Interstellar Code",
+    companyUrl: "#",
+    duration: "Apr 2020 – Dec 2021",
+    mode: "Freelance",
+    description: "Implemented solutions using React, React Native, HTML, CSS, and SCSS, applying modern frontend practices.",
+    achievements: [
+      "Developed and deployed the official website for Jipas Tentsail with React and SCSS, hosted on Netlify",
+      "Implemented an Android app for Mangu High School using React Native",
+    ],
+    technologies: ["React", "React Native", "HTML", "CSS", "SCSS", "Netlify"],
   },
   {
     id: "ai-research",

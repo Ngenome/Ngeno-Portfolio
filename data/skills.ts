@@ -103,6 +103,11 @@ export const skills: Skill[] = [
     icon: FaBrain,
     category: "ai",
   },
+  {
+    name: "Numpy",
+    icon: FaBrain,
+    category: "ai",
+  },
 
   // Frontend Development
   {
