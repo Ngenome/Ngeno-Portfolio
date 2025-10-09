@@ -108,6 +108,11 @@ export const skills: Skill[] = [
     icon: FaBrain,
     category: "ai",
   },
+  {
+    name: "Scikit-learn",
+    icon: FaBrain,
+    category: "ai",
+  },
 
   // Frontend Development
   {
