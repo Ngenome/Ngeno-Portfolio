@@ -67,7 +67,7 @@ const Portfolio = () => {
         isDark ? 'bg-surface-dark/95 border-white/10' : 'bg-white/95 border-gray-200'
       }`}>
         <div className="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center">
-          <h1 className={`text-xl font-semibold ${isDark ? 'text-white' : 'text-gray-900'}`}>Kelvin Ng'eno</h1>
+          <h1 className={`text-base md:text-xl font-semibold ${isDark ? 'text-white' : 'text-gray-900'}`}>Kelvin Ng'eno</h1>
           <div className="flex items-center gap-4">
             <button
               onClick={toggleTheme}
