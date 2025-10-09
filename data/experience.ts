@@ -109,6 +109,7 @@ export const experiences: Experience[] = [
     companyUrl: "https://wera.app",
     duration: "Jun 2022 – Nov 2022",
     mode: "Freelance",
+    logo: "/images/companies/wera.png",
     description:
       "Developed a service procurement platform with a React Native mobile app and Django backend.",
     achievements: [
