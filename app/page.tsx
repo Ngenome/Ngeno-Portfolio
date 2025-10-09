@@ -141,7 +141,7 @@ const Portfolio = () => {
                       (exp.id === 'mjenzi' || exp.id === 'jobzy' || exp.id === 'jobzy-limited') ? 'bg-white p-1' : ''
                     }`}>
                       <Image
-                        src={exp.logo}
+                        src={exp.id === 'navismart-ai' && !isDark ? '/images/companies/navismart-dark.svg' : exp.logo}
                         alt={`${exp.company} logo`}
                         fill
                         className="object-contain"
