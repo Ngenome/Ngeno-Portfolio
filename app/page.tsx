@@ -183,6 +183,31 @@ const Portfolio = () => {
         </div>
       </section>
 
+      {/* About Me Section */}
+      <section className="max-w-5xl mx-auto px-6 py-16">
+        <h2 className={`text-3xl font-bold mb-6 ${isDark ? 'text-white' : 'text-gray-900'}`}>About Me</h2>
+        <div className={`text-lg leading-relaxed space-y-4 ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
+          <p>
+            I'm a full stack developer with a deep passion for AI and machine learning. Over the past 5+ years,
+            I've built and scaled applications serving tens of thousands of users across web and mobile platforms.
+          </p>
+          <p>
+            My journey started with frontend development, but I quickly expanded into backend systems, mobile apps,
+            and eventually AI/ML engineering. I love working at the intersection of these technologies, building
+            intelligent systems that solve real-world problems.
+          </p>
+          <p>
+            Currently, I'm focused on AI agents, LLM integration, and building platforms that leverage cutting-edge
+            AI to deliver exceptional user experiences. I'm also the founder of Dissolve Software, where I help
+            businesses bring their ideas to life through custom software solutions.
+          </p>
+          <p>
+            When I'm not coding, I'm exploring new technologies, contributing to open source, or learning about
+            the latest developments in AI and software engineering.
+          </p>
+        </div>
+      </section>
+
       {/* Experience Section */}
       <section className="max-w-5xl mx-auto px-6 py-16">
         <h2 className={`text-3xl font-bold mb-8 ${isDark ? 'text-white' : 'text-gray-900'}`}>Experience</h2>
