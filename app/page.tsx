@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import { FaGithub, FaLinkedin, FaEnvelope, FaPhone, FaMapMarkerAlt, FaGooglePlay, FaAppStore, FaFileDownload, FaExternalLinkAlt } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { skills } from "@/data/skills";
@@ -96,16 +97,28 @@ const Portfolio = () => {
         <div className="space-y-10">
           {experiences.map((exp) => (
             <div key={exp.id} className="border-l-2 border-white/20 pl-6">
-              <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-2 mb-2">
-                <div>
-                  <h3 className="text-xl font-semibold text-white">{exp.role}</h3>
-                  <p className="text-gray-400">
-                    <a href={exp.companyUrl} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
-                      {exp.company}
-                    </a>
-                  </p>
+              <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-4 mb-2">
+                <div className="flex items-start gap-4 flex-1">
+                  {exp.logo && (
+                    <div className="flex-shrink-0 w-12 h-12 relative">
+                      <Image
+                        src={exp.logo}
+                        alt={`${exp.company} logo`}
+                        fill
+                        className="object-contain"
+                      />
+                    </div>
+                  )}
+                  <div>
+                    <h3 className="text-xl font-semibold text-white">{exp.role}</h3>
+                    <p className="text-gray-400">
+                      <a href={exp.companyUrl} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
+                        {exp.company}
+                      </a>
+                    </p>
+                  </div>
                 </div>
-                <span className="text-sm text-gray-500 font-mono">{exp.duration}</span>
+                <span className="text-sm text-gray-500 font-mono flex-shrink-0">{exp.duration}</span>
               </div>
 
               <p className="text-gray-300 mb-4 leading-relaxed">{exp.description}</p>

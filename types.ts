@@ -23,6 +23,7 @@ export interface Experience {
   companyUrl?: string;
   duration: string;
   mode: string;
+  logo?: string;
   description: string;
   achievements: string[];
   technologies: string[];

@@ -8,6 +8,7 @@ export const experiences: Experience[] = [
     companyUrl: "https://navismartai.com",
     duration: "Feb 2025 - Present",
     mode: "Full-time",
+    logo: "/images/companies/navismart.svg",
     description:
       "Leading a team to build navismartai.com, an AI-powered immigration platform for individuals and agencies.",
     achievements: [
@@ -25,6 +26,7 @@ export const experiences: Experience[] = [
     companyUrl: "https://talanta.ai",
     duration: "Mar 2024 - Mar 2025",
     mode: "Full-time",
+    logo: "/images/companies/jobzy.png",
     description:
       "Built three apps in the Jobzy ecosystem (Talanta AI App, Service Provider App, Client App).",
     achievements: [
@@ -40,6 +42,7 @@ export const experiences: Experience[] = [
     companyUrl: "https://www.dissolvesoftware.com/",
     duration: "2024 – Present",
     mode: "Full-time",
+    logo: "/images/companies/dissolve.png",
     description:
       "Founded a software consultancy delivering custom solutions for web and mobile apps.",
     achievements: [
@@ -70,6 +73,7 @@ export const experiences: Experience[] = [
     companyUrl: "https://www.m-jenzi.com/",
     duration: "Jan 2023 - Mar 2024",
     mode: "Freelance",
+    logo: "/images/companies/mjenzi.png",
     description:
       "Built award-winning multivendor e-commerce platform for construction materials (1st place Kenya E-commerce Award).",
     achievements: [
