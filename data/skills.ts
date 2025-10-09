@@ -54,17 +54,17 @@ export const skillCategories: SkillCategory[] = [
 export const skills: Skill[] = [
   // AI & Machine Learning
   {
-    name: "TensorFlow",
-    icon: FaBrain,
-    category: "ai",
-  },
-  {
     name: "PyTorch",
     icon: FaBrain,
     category: "ai",
   },
   {
     name: "Neural Networks",
+    icon: FaBrain,
+    category: "ai",
+  },
+  {
+    name: "TensorFlow",
     icon: FaBrain,
     category: "ai",
   },
