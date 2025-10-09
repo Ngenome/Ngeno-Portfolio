@@ -1,8 +1,8 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import { FaGithub, FaLinkedin, FaEnvelope, FaPhone, FaMapMarkerAlt, FaGooglePlay, FaAppStore, FaFileDownload, FaExternalLinkAlt } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaEnvelope, FaPhone, FaMapMarkerAlt, FaGooglePlay, FaAppStore, FaFileDownload, FaExternalLinkAlt, FaMoon, FaSun } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { skills } from "@/data/skills";
 import { projects } from "@/data/projects";
@@ -20,19 +20,49 @@ const extractDomain = (url: string) => {
 };
 
 const Portfolio = () => {
+  const [isDark, setIsDark] = useState(true);
+
+  useEffect(() => {
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'light') {
+      setIsDark(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+  }, [isDark]);
+
+  const toggleTheme = () => setIsDark(!isDark);
+
   return (
-    <div className="min-h-screen bg-surface-dark text-white">
+    <div className={`min-h-screen transition-colors duration-300 ${isDark ? 'bg-surface-dark text-white' : 'bg-white text-gray-900'}`}>
       {/* Simple Header */}
-      <header className="sticky top-0 z-50 bg-surface-dark/95 backdrop-blur-sm border-b border-white/10">
+      <header className={`sticky top-0 z-50 backdrop-blur-sm border-b transition-colors duration-300 ${
+        isDark ? 'bg-surface-dark/95 border-white/10' : 'bg-white/95 border-gray-200'
+      }`}>
         <div className="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center">
-          <h1 className="text-xl font-semibold text-white">Kelvin Ng'eno</h1>
+          <h1 className={`text-xl font-semibold ${isDark ? 'text-white' : 'text-gray-900'}`}>Kelvin Ng'eno</h1>
           <div className="flex items-center gap-4">
+            <button
+              onClick={toggleTheme}
+              className={`p-2 rounded-lg transition-colors ${
+                isDark ? 'hover:bg-white/10 text-gray-300' : 'hover:bg-gray-100 text-gray-600'
+              }`}
+              aria-label="Toggle theme"
+            >
+              {isDark ? <FaSun className="w-4 h-4" /> : <FaMoon className="w-4 h-4" />}
+            </button>
             <a href="mailto:hello@ngenondumia.com"
-              className="text-sm text-gray-300 hover:text-white transition-colors">
+              className={`text-sm transition-colors ${
+                isDark ? 'text-gray-300 hover:text-white' : 'text-gray-600 hover:text-gray-900'
+              }`}>
               Contact
             </a>
             <a href="/resume.pdf" download
-              className="flex items-center gap-2 px-4 py-2 text-sm bg-white/10 hover:bg-white/20 rounded transition-colors">
+              className={`flex items-center gap-2 px-4 py-2 text-sm rounded transition-colors ${
+                isDark ? 'bg-white/10 hover:bg-white/20' : 'bg-gray-100 hover:bg-gray-200'
+              }`}>
               <FaFileDownload className="w-3 h-3" />
               Resume
             </a>
@@ -44,30 +74,34 @@ const Portfolio = () => {
       <section className="max-w-5xl mx-auto px-6 py-20">
         <div className="space-y-6">
           <div>
-            <h2 className="text-5xl md:text-6xl font-bold text-white mb-4">
+            <h2 className={`text-5xl md:text-6xl font-bold mb-4 ${isDark ? 'text-white' : 'text-gray-900'}`}>
               Kelvin Ng'eno
             </h2>
-            <p className="text-xl text-gray-400">
+            <p className={`text-xl ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
               Full Stack Developer · AI Engineer · Mobile Developer
             </p>
           </div>
 
-          <p className="text-lg text-gray-300 max-w-2xl leading-relaxed">
+          <p className={`text-lg max-w-2xl leading-relaxed ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
             Building scalable solutions that solve real problems with frontier technology.
             5+ years experience serving tens of thousands of users.
           </p>
 
           {/* Contact Info */}
           <div className="flex flex-wrap gap-6 pt-4">
-            <a href="mailto:hello@ngenondumia.com" className="flex items-center gap-2 text-gray-300 hover:text-white transition-colors">
+            <a href="mailto:hello@ngenondumia.com" className={`flex items-center gap-2 transition-colors ${
+              isDark ? 'text-gray-300 hover:text-white' : 'text-gray-600 hover:text-gray-900'
+            }`}>
               <FaEnvelope className="w-4 h-4" />
               <span className="text-sm">hello@ngenondumia.com</span>
             </a>
-            <a href="tel:+254726299179" className="flex items-center gap-2 text-gray-300 hover:text-white transition-colors">
+            <a href="tel:+254726299179" className={`flex items-center gap-2 transition-colors ${
+              isDark ? 'text-gray-300 hover:text-white' : 'text-gray-600 hover:text-gray-900'
+            }`}>
               <FaPhone className="w-4 h-4" />
               <span className="text-sm">+254 726 299 179</span>
             </a>
-            <div className="flex items-center gap-2 text-gray-300">
+            <div className={`flex items-center gap-2 ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
               <FaMapMarkerAlt className="w-4 h-4" />
               <span className="text-sm">Nairobi, Kenya</span>
             </div>
@@ -81,7 +115,9 @@ const Portfolio = () => {
                 href={link.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2 text-gray-400 hover:text-white transition-colors"
+                className={`p-2 transition-colors ${
+                  isDark ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'
+                }`}
                 aria-label={link.id}
               >
                 <link.icon className="w-5 h-5" />
@@ -93,14 +129,16 @@ const Portfolio = () => {
 
       {/* Experience Section */}
       <section className="max-w-5xl mx-auto px-6 py-16">
-        <h2 className="text-3xl font-bold text-white mb-8">Experience</h2>
+        <h2 className={`text-3xl font-bold mb-8 ${isDark ? 'text-white' : 'text-gray-900'}`}>Experience</h2>
         <div className="space-y-10">
           {experiences.map((exp) => (
-            <div key={exp.id} className="border-l-2 border-white/20 pl-6">
+            <div key={exp.id} className={`border-l-2 pl-6 ${isDark ? 'border-white/20' : 'border-gray-300'}`}>
               <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-4 mb-2">
                 <div className="flex items-start gap-4 flex-1">
                   {exp.logo && (
-                    <div className="flex-shrink-0 w-12 h-12 relative">
+                    <div className={`flex-shrink-0 w-12 h-12 relative rounded ${
+                      exp.id === 'mjenzi' ? 'bg-white p-1' : ''
+                    }`}>
                       <Image
                         src={exp.logo}
                         alt={`${exp.company} logo`}
@@ -110,24 +148,26 @@ const Portfolio = () => {
                     </div>
                   )}
                   <div>
-                    <h3 className="text-xl font-semibold text-white">{exp.role}</h3>
-                    <p className="text-gray-400">
-                      <a href={exp.companyUrl} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
+                    <h3 className={`text-xl font-semibold ${isDark ? 'text-white' : 'text-gray-900'}`}>{exp.role}</h3>
+                    <p className={isDark ? 'text-gray-400' : 'text-gray-600'}>
+                      <a href={exp.companyUrl} target="_blank" rel="noopener noreferrer" className={`transition-colors ${
+                        isDark ? 'hover:text-white' : 'hover:text-gray-900'
+                      }`}>
                         {exp.company}
                       </a>
                     </p>
                   </div>
                 </div>
-                <span className="text-sm text-gray-500 font-mono flex-shrink-0">{exp.duration}</span>
+                <span className={`text-sm font-mono flex-shrink-0 ${isDark ? 'text-gray-500' : 'text-gray-500'}`}>{exp.duration}</span>
               </div>
 
-              <p className="text-gray-300 mb-4 leading-relaxed">{exp.description}</p>
+              <p className={`mb-4 leading-relaxed ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>{exp.description}</p>
 
               {/* Key achievements */}
               <ul className="space-y-2 mb-4">
                 {exp.achievements.slice(0, 3).map((achievement, i) => (
-                  <li key={i} className="flex items-start gap-3 text-gray-400">
-                    <span className="text-white/50 mt-1">•</span>
+                  <li key={i} className={`flex items-start gap-3 ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+                    <span className={`mt-1 ${isDark ? 'text-white/50' : 'text-gray-400'}`}>•</span>
                     <span>{achievement}</span>
                   </li>
                 ))}
@@ -136,7 +176,9 @@ const Portfolio = () => {
               {/* Technologies */}
               <div className="flex flex-wrap gap-2">
                 {exp.technologies.map((tech) => (
-                  <span key={tech} className="px-3 py-1 text-xs bg-white/5 text-gray-300 rounded-full">
+                  <span key={tech} className={`px-3 py-1 text-xs rounded-full ${
+                    isDark ? 'bg-white/5 text-gray-300' : 'bg-gray-100 text-gray-700'
+                  }`}>
                     {tech}
                   </span>
                 ))}
@@ -148,12 +190,14 @@ const Portfolio = () => {
 
       {/* Projects Section */}
       <section className="max-w-5xl mx-auto px-6 py-16">
-        <h2 className="text-3xl font-bold text-white mb-8">Projects</h2>
+        <h2 className={`text-3xl font-bold mb-8 ${isDark ? 'text-white' : 'text-gray-900'}`}>Projects</h2>
         <div className="grid md:grid-cols-2 gap-6">
           {projects.map((project) => (
-            <div key={project.id} className="bg-white/5 rounded-lg p-6 hover:bg-white/10 transition-colors">
-              <h3 className="text-xl font-semibold text-white mb-2">{project.title}</h3>
-              <p className="text-gray-400 mb-4 leading-relaxed text-sm">
+            <div key={project.id} className={`rounded-lg p-6 transition-colors ${
+              isDark ? 'bg-white/5 hover:bg-white/10' : 'bg-gray-50 hover:bg-gray-100'
+            }`}>
+              <h3 className={`text-xl font-semibold mb-2 ${isDark ? 'text-white' : 'text-gray-900'}`}>{project.title}</h3>
+              <p className={`mb-4 leading-relaxed text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
                 {project.description}
               </p>
 
@@ -161,28 +205,36 @@ const Portfolio = () => {
               <div className="flex flex-wrap gap-3 mb-4">
                 {project.links.live && (
                   <a href={project.links.live} target="_blank" rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-sm text-gray-300 hover:text-white transition-colors">
+                    className={`flex items-center gap-2 text-sm transition-colors ${
+                      isDark ? 'text-gray-300 hover:text-white' : 'text-gray-600 hover:text-gray-900'
+                    }`}>
                     <FaExternalLinkAlt className="w-3 h-3" />
                     <span>{extractDomain(project.links.live)}</span>
                   </a>
                 )}
                 {project.links.github && (
                   <a href={project.links.github} target="_blank" rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-sm text-gray-300 hover:text-white transition-colors">
+                    className={`flex items-center gap-2 text-sm transition-colors ${
+                      isDark ? 'text-gray-300 hover:text-white' : 'text-gray-600 hover:text-gray-900'
+                    }`}>
                     <FaGithub className="w-3 h-3" />
                     <span>Code</span>
                   </a>
                 )}
                 {project.links.playStore && (
                   <a href={project.links.playStore} target="_blank" rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-sm text-gray-300 hover:text-white transition-colors">
+                    className={`flex items-center gap-2 text-sm transition-colors ${
+                      isDark ? 'text-gray-300 hover:text-white' : 'text-gray-600 hover:text-gray-900'
+                    }`}>
                     <FaGooglePlay className="w-3 h-3" />
                     <span>Play Store</span>
                   </a>
                 )}
                 {project.links.appStore && (
                   <a href={project.links.appStore} target="_blank" rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-sm text-gray-300 hover:text-white transition-colors">
+                    className={`flex items-center gap-2 text-sm transition-colors ${
+                      isDark ? 'text-gray-300 hover:text-white' : 'text-gray-600 hover:text-gray-900'
+                    }`}>
                     <FaAppStore className="w-3 h-3" />
                     <span>App Store</span>
                   </a>
@@ -192,7 +244,9 @@ const Portfolio = () => {
               {/* Technologies */}
               <div className="flex flex-wrap gap-2">
                 {project.technologies.map((tech) => (
-                  <span key={tech} className="px-2 py-1 text-xs bg-white/5 text-gray-300 rounded">
+                  <span key={tech} className={`px-2 py-1 text-xs rounded ${
+                    isDark ? 'bg-white/5 text-gray-300' : 'bg-gray-200 text-gray-700'
+                  }`}>
                     {tech}
                   </span>
                 ))}
@@ -204,7 +258,7 @@ const Portfolio = () => {
 
       {/* Skills Section */}
       <section className="max-w-5xl mx-auto px-6 py-16">
-        <h2 className="text-3xl font-bold text-white mb-8">Skills & Technologies</h2>
+        <h2 className={`text-3xl font-bold mb-8 ${isDark ? 'text-white' : 'text-gray-900'}`}>Skills & Technologies</h2>
         <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-8">
           {["Frontend", "Backend", "Mobile", "AI/ML"].map((category) => {
             const categorySkills = skills.filter(skill => {
@@ -217,10 +271,10 @@ const Portfolio = () => {
 
             return (
               <div key={category}>
-                <h3 className="text-white font-semibold mb-4">{category}</h3>
+                <h3 className={`font-semibold mb-4 ${isDark ? 'text-white' : 'text-gray-900'}`}>{category}</h3>
                 <ul className="space-y-2">
                   {categorySkills.map((skill) => (
-                    <li key={skill.name} className="text-sm text-gray-400">
+                    <li key={skill.name} className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
                       {skill.name}
                     </li>
                   ))}
@@ -232,9 +286,9 @@ const Portfolio = () => {
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-white/10 mt-20">
+      <footer className={`border-t mt-20 ${isDark ? 'border-white/10' : 'border-gray-200'}`}>
         <div className="max-w-5xl mx-auto px-6 py-8">
-          <p className="text-center text-sm text-gray-500">
+          <p className={`text-center text-sm ${isDark ? 'text-gray-500' : 'text-gray-500'}`}>
             © {new Date().getFullYear()} Kelvin Ng'eno. All rights reserved.
           </p>
         </div>
