@@ -59,7 +59,7 @@ const Portfolio = () => {
               }`}>
               Contact
             </a>
-            <a href="/resume.pdf" download
+            <a href="https://docs.google.com/document/d/1MySvsINyYvUlBZZWAD6rRAUzhaXeXyVnSp6zZeVJy6E/edit?usp=sharing" target="_blank" rel="noopener noreferrer"
               className={`flex items-center gap-2 px-4 py-2 text-sm rounded transition-colors ${
                 isDark ? 'bg-white/10 hover:bg-white/20' : 'bg-gray-100 hover:bg-gray-200'
               }`}>
