@@ -52,6 +52,48 @@ export const projects: Project[] = [
     featured: true,
   },
   {
+    id: "task-forge",
+    title: "TaskForge - Elixir OTP Task Scheduler",
+    description:
+      "A concurrent task scheduling and execution system built with Elixir/OTP patterns. Features GenServer-based task management, ETS-backed high-performance storage, DynamicSupervisor for worker processes, and fault-tolerant supervision trees with automatic retries.",
+    image: "/images/projects/task-forge.png",
+    technologies: [
+      "Elixir",
+      "OTP",
+      "GenServer",
+      "Supervisor",
+      "ETS",
+      "DynamicSupervisor",
+      "ExUnit",
+    ],
+    links: {
+      github: "https://github.com/Ngenome/task_forge",
+    },
+    category: "backend",
+    featured: true,
+  },
+  {
+    id: "task-forge-web",
+    title: "TaskForgeWeb - Phoenix Real-time API",
+    description:
+      "A real-time task management API built with Phoenix Framework. Features RESTful JSON API, Phoenix Channels for WebSocket-based live updates, Ecto changesets for validation, and a complete task lifecycle management system.",
+    image: "/images/projects/task-forge-web.png",
+    technologies: [
+      "Elixir",
+      "Phoenix",
+      "Channels",
+      "WebSockets",
+      "REST API",
+      "Ecto",
+      "JSON API",
+    ],
+    links: {
+      github: "https://github.com/Ngenome/task_forge_web",
+    },
+    category: "backend",
+    featured: true,
+  },
+  {
     id: "m-farmz",
     title: "M-Farmz",
     description:

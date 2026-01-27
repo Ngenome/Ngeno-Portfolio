@@ -12,7 +12,7 @@ export interface Project {
     playStore?: string;
     appStore?: string;
   };
-  category: "ai" | "web" | "mobile" | "all" | "design";
+  category: "ai" | "web" | "mobile" | "all" | "design" | "backend";
   featured: boolean;
 }
 

@@ -180,6 +180,21 @@ export const skills: Skill[] = [
 
   // Backend Development
   {
+    name: "Elixir",
+    icon: FaServer,
+    category: "backend",
+  },
+  {
+    name: "Phoenix Framework",
+    icon: FaServer,
+    category: "backend",
+  },
+  {
+    name: "OTP/GenServer",
+    icon: FaServer,
+    category: "backend",
+  },
+  {
     name: "Django",
     icon: FaServer,
     category: "backend",
