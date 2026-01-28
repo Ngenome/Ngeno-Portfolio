@@ -377,7 +377,7 @@ const Portfolio = () => {
           ].map((category) => {
             const categorySkills = skills.filter(skill => {
               if (category.name === "Frontend") return ["React", "Next.js", "TypeScript", "Tailwind CSS", "Vue.js", "Redux"].includes(skill.name);
-              if (category.name === "Backend") return ["Node.js", "Python", "PostgreSQL", "MongoDB", "Express", "Django"].includes(skill.name);
+              if (category.name === "Backend") return ["Elixir", "Phoenix Framework", "Node.js", "Python", "PostgreSQL", "MongoDB", "Express", "Django"].includes(skill.name);
               if (category.name === "Mobile") return ["React Native", "Flutter", "Swift", "Kotlin"].includes(skill.name);
               if (category.name === "AI/ML") return ["PyTorch", "Neural Networks", "TensorFlow", "OpenAI Agents SDK", "LangGraph", "Scikit-learn", "Numpy"].includes(skill.name);
               return false;
