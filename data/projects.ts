@@ -3,6 +3,30 @@ import { Project } from "../types";
 
 export const projects: Project[] = [
   {
+    id: "kikuyu-translator",
+    title: "Kikuyu Translator (English ↔ Gĩkũyũ)",
+    description:
+      "A fine-tuned Gemma 3 4B translation model for bidirectional English-Kikuyu translation. Trained through 4 progressive stages over 55+ hours on 141k translation pairs including Bible, FLORES-200, Bloom Library, agricultural terminology, and synthetic data. Features LoRA fine-tuning achieving 0.746 final loss.",
+    image: "/images/projects/kikuyu-translator.png",
+    technologies: [
+      "Python",
+      "PyTorch",
+      "Unsloth",
+      "LoRA",
+      "Gemma 3",
+      "Hugging Face",
+      "NLP",
+      "Machine Learning",
+      "Low-Resource Languages",
+    ],
+    links: {
+      live: "https://huggingface.co/InterstellarCG/kikuyu-translator-final",
+      github: "https://huggingface.co/datasets/InterstellarCG/kikuyu-translation-data",
+    },
+    category: "ai",
+    featured: true,
+  },
+  {
     id: "navismart-ai",
     title: "Navismart AI",
     description:
