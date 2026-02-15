@@ -1,0 +1,108 @@
+---
+title: "The State of AI Coding in 2026"
+description: "A working developer's honest assessment of where AI-assisted development actually stands — what works, what doesn't, and what most people get wrong."
+tags: ["ai", "coding", "llm"]
+---
+
+Most people talking about AI coding online are either selling you something or haven't shipped anything with it. I've been building production software with LLMs since the early API days, and the gap between the hype and the reality is worth documenting honestly.
+
+Here's where we actually are.
+
+## How We Got Here
+
+The story starts in 2020 when OpenAI launched GPT-3 and put up an API. A small group of developers started experimenting — mostly generating HTML snippets and watching Twitter lose its mind. "Wait, I told it to make a button and it made a functioning button?" That was the vibe. Tech influencers posted threads about Codex. It was exciting, but limited. If OpenAI had launched a ChatGPT-style interface in 2020 instead of just an API, the whole timeline would have accelerated by two years.
+
+But they didn't. So from 2020 to late 2022, LLM-assisted coding stayed niche — API-only, mostly hobbyists and researchers.
+
+Then ChatGPT launched, and everything shifted. Suddenly millions of people could ask a model to write code, and it would produce something that mostly worked. In 2023, you could use it as a decent assistant — ask a development question, generate some unit tests, scaffold a component. It wasn't replacing anyone, but it was genuinely useful for the first time.
+
+GPT-4 pushed things further by introducing vision. You could screenshot a design and get working HTML back. "How is it understanding this?" was the common reaction. But the code quality was still inconsistent. You'd get something close, then spend an hour fixing the details the model missed.
+
+**The real inflection point was June 2024.** Anthropic released Claude 3.5 Sonnet, and it was the first model that could genuinely do software engineering work. Not just write snippets — it could reason through architecture, handle complex refactors, and produce code that actually ran correctly on the first try, consistently. That model is what made startups like Replit's AI features, Lovable, and Bolt viable. They found product-market fit because the underlying model was finally good enough.
+
+Then Claude Code launched in 2025, giving developers an agentic coding workflow in the terminal — not just chat-based assistance, but a tool that could read your codebase, plan changes across files, run tests, and iterate. That was another step change. And here we are.
+
+## The Current Landscape
+
+### Closed Source
+
+Two models lead the field right now.
+
+**Claude Opus 4.5** from Anthropic is the best all-around coding model. It handles frontend, backend, systems programming, refactoring, and architectural reasoning at a level that no other model matches across the board. If you can only use one model, this is it.
+
+**GPT 5.3 Codex** from OpenAI is the other contender. After years of playing catch-up — GPT 4.1, various fine-tuned variants, none of which really threatened Anthropic's lead — OpenAI finally closed the gap with the 5.x Codex series. It's competitive, and in some areas (particularly frontend design taste), arguably better.
+
+Anthropic maintained a clear lead from Claude 3.5 Sonnet through Claude 4, 4.5 Sonnet, and the Opus series. It's only with GPT 5.1, 5.2, and 5.3 that OpenAI genuinely caught up.
+
+### Open Source
+
+This is where 2026 gets interesting. Until recently, open-source coding models were noticeably worse than closed-source. DeepSeek was decent but never matched Claude 3.5 Sonnet.
+
+Now we have:
+- **Kimi K2.5 Thinking** — genuinely impressive reasoning and code generation
+- **GLM 5.0** — strong across general coding tasks
+- **MiniMax 2.5** — surprisingly capable for its size
+
+These models aren't better than Opus 4.5 or GPT 5.3 Codex. But they're *almost there*, and they're dramatically cheaper. For teams that need to run inference at scale or want to self-host, the open-source options have crossed the viability threshold.
+
+### Which Model for What
+
+Not all models are created equal across tasks.
+
+**General coding**: Opus 4.5 remains the most reliable. It handles Rust, Python, TypeScript, Go — whatever you throw at it — with consistent quality.
+
+**Frontend design**: GPT Codex has slightly better design taste out of the box. But with Claude Code's skill system (more on this below), Opus 4.5 surpasses it when you provide the right context. Gemini 3 Pro is also surprisingly good at frontend — it generates visually polished components — but its backend output is poor. Don't use Gemini for API design or systems work.
+
+**Long-running autonomous work**: Cursor's research found that GPT 5.2 outperformed other models for extended multi-agent sessions, with better instruction-following and less drift over time.
+
+## What These Models Can Actually Do Now
+
+Two recent projects illustrate the current ceiling.
+
+**Anthropic built a C compiler using Opus 4.6.** Sixteen parallel Claude instances worked autonomously on a shared Rust codebase — no human intervention. The result: [100,000 lines of Rust](https://www.anthropic.com/engineering/building-c-compiler) that passes 99% of GCC's torture test suite and can compile Linux, QEMU, FFmpeg, PostgreSQL, and Doom. It consumed nearly 2,000 Claude Code sessions, 2 billion input tokens, and cost about $20,000. The compiler still delegates some phases to GCC and generates less efficient code than GCC with optimizations off — but 100k lines of working compiler code with no human in the loop is a statement.
+
+**Cursor built a web browser from scratch using GPT 5.2.** Their [hierarchical multi-agent system](https://cursor.com/blog/scaling-agents) — planners, workers, and a judge agent — produced roughly 1 million lines of code across 1,000 files in under a week. They also used the system for a Solid-to-React migration (266k additions, 193k deletions over three weeks) and achieved a 25x performance improvement on a video rendering pipeline by rewriting it in Rust.
+
+Both projects hit the same wall: the models can produce enormous amounts of functional code, but they struggle with coherence at scale. New features break existing ones. Agents need periodic fresh starts to combat drift and tunnel vision. The code works, but it's not what a senior engineer would write if they had the time.
+
+## How to Actually Use Them
+
+Here's what I've learned from using these tools daily on production codebases.
+
+### They Won't Do Everything for You
+
+This is the most common misconception. People expect to describe an app and get a working product. That's not how it works, even with the best models. What they *will* do is execute a well-defined plan with high fidelity. The difference between a frustrating AI coding session and a productive one is almost always the quality of the plan you provide.
+
+If you lay out a clear, well-explained plan — what needs to change, why, what the constraints are, what patterns to follow — these models can one-shot complex features. But if you give them a vague prompt and expect them to figure out the architecture, you'll get vague, generic output.
+
+### The Continual Learning Problem
+
+The models don't know about things that happened in the last few months. New framework versions, API changes, recently introduced libraries — they either don't know about them or hallucinate outdated patterns. Even when the information exists on the internet, the models don't consistently pick it up.
+
+This is a real problem in frontend development, where the ecosystem moves fast. The model might generate code for an older version of a library, or use deprecated patterns, and you won't notice unless you know the current API yourself.
+
+### The Solution: Skill Files and Project Context
+
+This is where the workflow gets genuinely powerful.
+
+Claude Code introduced **skill files** — markdown documents (`.md` files) that provide persistent context to the model. A `CLAUDE.md` file in your project root tells the model about your architecture, conventions, design tokens, component patterns, testing standards, and anything else it needs to generate code that matches your project.
+
+The concept extends to community-maintained skill files. Vercel publishes React and Next.js best practices as skill files. There are similar ones for Tailwind, testing libraries, and other tools. You can pull these into your project and the model immediately generates code that follows current best practices instead of whatever it learned during training.
+
+This is the single biggest productivity lever in AI-assisted development: **encode your decisions once, and every interaction inherits them.** Without a CLAUDE.md, every prompt is a cold start. With one, the model already knows your design system, your naming conventions, your component patterns, and your accessibility requirements before you ask for anything.
+
+I maintain CLAUDE.md files for every project I work on. The frontend-focused ones define design tokens, component APIs, state management patterns, and interaction conventions. The full-stack ones add API contracts, database patterns, and deployment context. The model's output quality is noticeably different — it goes from "generic React component" to "component that looks like it was written by someone on my team."
+
+### Use Them as Thinking Partners
+
+The models are excellent for brainstorming and planning. Before writing code, I'll describe what I'm trying to build and ask the model to identify edge cases, suggest architectural approaches, or poke holes in my plan. This is often more valuable than the code generation itself.
+
+They're also good at explaining unfamiliar codebases. Point them at a file and ask "what does this do and why?" — you'll get a better explanation than most documentation.
+
+## Where This Is Going
+
+The trajectory is clear: models are getting better at sustained autonomous work, multi-agent coordination is improving, and the gap between open-source and closed-source is narrowing. The cost of inference is dropping.
+
+But the fundamental dynamic isn't changing. These are tools that amplify what you already know. If you understand software architecture, the models make you dramatically faster. If you don't, they give you code that looks right but breaks in ways you can't diagnose.
+
+The developers who will benefit most from this wave aren't the ones who learn to write better prompts. They're the ones who understand software deeply enough to evaluate, direct, and refine what the models produce. The skill ceiling hasn't gone down. The floor has come up.

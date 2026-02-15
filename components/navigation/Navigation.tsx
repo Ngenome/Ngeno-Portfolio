@@ -7,6 +7,7 @@ import {
   useTransform,
 } from "framer-motion";
 import { Link as ScrollLink } from "react-scroll";
+import Link from "next/link";
 import { FaBars } from "react-icons/fa";
 import { IoClose } from "react-icons/io5";
 
@@ -170,7 +171,7 @@ const Navigation = () => {
                   smooth={true}
                   offset={-100}
                   duration={1000}
-                  className={`relative px-4 py-2 text-sm tracking-wider cursor-pointer 
+                  className={`relative px-4 py-2 text-sm tracking-wider cursor-pointer
                             transition-colors duration-300
                             ${
                               activeSection === item.id
@@ -192,6 +193,12 @@ const Navigation = () => {
                   )}
                 </ScrollLink>
               ))}
+              <Link
+                href="/blog"
+                className="relative px-4 py-2 text-sm tracking-wider cursor-pointer transition-colors duration-300 text-gray-400 hover:text-white"
+              >
+                BLOG
+              </Link>
             </div>
 
             {/* Mobile Menu Button */}
@@ -247,6 +254,40 @@ const Navigation = () => {
                   <MobileMenuItem key={item.id} item={item} index={index} />
                 ))}
               </div>
+
+              {/* Blog Link */}
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.3, delay: navItems.length * 0.1 }}
+              >
+                <Link
+                  href="/blog"
+                  className="block relative"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  <div className="group flex items-center gap-4 p-4 rounded-xl transition-all duration-300 text-gray-400 hover:text-white">
+                    <motion.div
+                      initial={false}
+                      animate={{ scale: 0, opacity: 0 }}
+                      className="w-2 h-2 rounded-full bg-lime-light"
+                    />
+                    <div className="flex-1">
+                      <p className="font-display text-lg">BLOG</p>
+                      <p className="text-sm text-gray-500 group-hover:text-gray-400 transition-colors">
+                        Thoughts & Writing
+                      </p>
+                    </div>
+                    <motion.span
+                      className="text-lime-light opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                      initial={{ x: -10 }}
+                      animate={{ x: 0 }}
+                    >
+                      &rarr;
+                    </motion.span>
+                  </div>
+                </Link>
+              </motion.div>
 
               {/* Additional Menu Content */}
               <motion.div

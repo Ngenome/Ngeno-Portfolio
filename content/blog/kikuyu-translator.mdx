@@ -1,0 +1,137 @@
+---
+title: "Fine-Tuning Gemma 3 for Kikuyu Translation"
+description: "How I trained a bidirectional English-Kikuyu translation model using LoRA, progressive fine-tuning, and 141K parallel translations — for a language spoken by 8 million people with almost no AI tools."
+tags: ["ml", "nlp", "african-languages"]
+---
+
+Kikuyu (Gĩkũyũ) is spoken by over 8 million people in Kenya. It has almost no digital language tools. Google Translate doesn't support it. There are no commercial translation APIs. If you want to translate between English and Kikuyu, your options are: find a human translator, or nothing.
+
+I built a bidirectional translation model that handles both directions — English to Kikuyu and Kikuyu to English — using Google's Gemma 3 4B as the base model, LoRA fine-tuning via Unsloth, and about $50 in compute on a single NVIDIA A10G GPU.
+
+The model is live on [HuggingFace](https://huggingface.co/InterstellarCG/kikuyu-translator-final).
+
+This post covers what worked, what didn't, and the specific problems that come with training on a low-resource language.
+
+## The Data Problem
+
+Low-resource language training is fundamentally a data problem. For Kikuyu, the available parallel corpora are heavily skewed toward religious texts — Bible translations and Jehovah's Witness publications make up the vast majority of aligned English-Kikuyu text that exists digitally.
+
+This creates an immediate problem: if you train on religious text alone, the model outputs everything in biblical register. Ask it to translate "The government announced new policies" and you'll get something that sounds like it belongs in Genesis.
+
+The data sources I collected:
+
+| Source | Pairs | Domain |
+|--------|-------|--------|
+| Bible translations | ~15,500 | Religious |
+| MT560 JW corpus | ~40,000 | Religious |
+| FLORES-200 | 2,009 | News, diverse |
+| Bloom Library | 632 | Children's stories, health |
+| Custom agricultural dataset | 420 | Farming, land management |
+| Gemini-generated synthetic | 10 | Modern topics |
+
+The imbalance is obvious. Religious text dominates by volume, but the non-religious sources are where the model learns to handle contemporary language.
+
+## The Training Pipeline
+
+A single training pass on all this data produces a mediocre model. The religious text drowns out everything else. I needed a progressive approach — four stages, each addressing a specific problem.
+
+### Stage 1: Foundation (~24 hours)
+
+Combined the Bible, FLORES-200, and Bloom Library datasets. This gave the model its initial understanding of Kikuyu grammar, vocabulary, and the mapping between the two languages.
+
+Loss dropped to **1.2**. The model could translate, but everything came out in formal, biblical Kikuyu. "How are you?" would produce something closer to "How art thou?"
+
+### Stage 2: Diversification (~6 hours)
+
+Trained on non-religious content only — FLORES, Bloom, agricultural data, and synthetic examples. The goal was to pull the model away from religious register without destroying its grammatical foundation.
+
+Loss reached **0.95**. The biblical tone faded. General translations started sounding more natural.
+
+### Stage 3: Scale (~10 hours)
+
+Added the MT560 JW corpus — 188,000 translation pairs. This was a calculated risk: more data should improve general translation quality, but the JW corpus is religious text, which could undo Stage 2's progress.
+
+Loss dropped to **0.82**. Translation quality improved across the board, but religious bias crept back in. The model was better, but its default register was still too formal.
+
+### Stage 4: Balance (~15 hours)
+
+The final stage used a carefully balanced mix of 141K pairs:
+- Bible: ~50% of the mix (grammatically rich, preserves linguistic structure)
+- MT560 JW: ~30% (additional translation patterns)
+- Diverse sources: ~20% (5x upsampled to compensate for smaller volume)
+
+The 5x upsampling was critical. Without it, the diverse sources would be statistically invisible against the religious corpus. With it, the model saw enough contemporary language to generalize beyond biblical register.
+
+Final loss: **0.746**.
+
+## Technical Setup
+
+**Base model**: Google Gemma 3 4B — small enough to train on a single A10G, large enough to learn genuine translation patterns.
+
+**Fine-tuning method**: LoRA (Low-Rank Adaptation) with r=16, alpha=16. This keeps the parameter count manageable and prevents catastrophic forgetting of the base model's language understanding.
+
+**Framework**: Unsloth for efficient LoRA fine-tuning. It handles quantization (4-bit), gradient checkpointing, and memory optimization so the whole pipeline fits in 24GB of VRAM.
+
+**Training config**:
+- Learning rate: 2e-5 with cosine schedule
+- Max sequence length: 2048 tokens
+- 4-bit quantization via Unsloth
+- Peak VRAM: ~18GB
+
+**Compute**: NVIDIA A10G. Total training time across all four stages: approximately 55 hours. Total cost: roughly $50.
+
+## What Worked
+
+**Progressive training beats single-pass.** Each stage served a distinct purpose. Stage 1 built the foundation. Stage 2 corrected the register. Stage 3 added volume. Stage 4 balanced everything. A single pass on all the data would have produced a worse model.
+
+**Upsampling non-religious data 5x was the key decision.** Equal representation sounds fair, but when your diverse corpus is 3,000 pairs and your religious corpus is 55,000, "equal" means the model barely sees the diverse data. Aggressive upsampling forces the model to learn contemporary patterns.
+
+**Don't throw out religious text.** Bible translations are grammatically meticulous. They contain complex sentence structures, formal agreements, and vocabulary that other sources don't cover. The problem isn't the religious text itself — it's the *lack* of non-religious text to balance it.
+
+**Synthetic data fills real gaps.** The 10 Gemini-generated translation pairs (modern topics like technology, climate change) were a tiny fraction of the dataset, but they gave the model exposure to vocabulary that simply doesn't exist in any available Kikuyu corpus.
+
+## What the Model Produces
+
+Short phrases work well:
+
+> **English**: "How are you?"
+> **Kikuyu**: "Wĩ haha wega?"
+
+> **English**: "I love you"
+> **Kikuyu**: "Nĩ ngwendete"
+
+> **English**: "What is your name?"
+> **Kikuyu**: "Wĩtagwo atĩa?"
+
+Medium-length sentences hold up:
+
+> **English**: "The doctor said I should drink more water and eat healthy food every day."
+> **Kikuyu**: "Mũrigitani ũcio akĩnjĩra nyue maudaya na ndĩe irio njega o mũthenya."
+
+> **English**: "Technology is changing how people communicate and do business in Kenya and across Africa."
+> **Kikuyu**: "Mabũki nĩ igeragĩrĩra njĩra cia andũ kũhunjia na gwĩka maũndũ ma biacara Kenya na Africa guothe."
+
+The Kikuyu-to-English direction also works:
+
+> **Kikuyu**: "Thirikari ya Kenya nĩ ĩraheanire watho mwerũ wa gũteithia arĩmi."
+> **English**: "The Kenyan government has introduced a new policy aimed at supporting farmers."
+
+Long paragraphs (60+ words) are where quality starts to degrade. The model can still translate them, but coherence drops and it occasionally produces garbled output or switches to uppercase characters. This is a known limitation of the sequence length and model size.
+
+Diacritics are preserved correctly throughout — ĩ, ũ, and other Kikuyu-specific characters render properly, which is a common failure point for models not specifically trained on the language.
+
+## What Didn't Work
+
+**Long-form translation degrades.** Paragraphs above ~50 words see noticeable quality drops. The model's 2048 token context window and 4B parameter count aren't enough for sustained coherent translation at paragraph scale. Larger base models would help here.
+
+**Some translations are stilted.** "Good morning" translated to "Nĩ ũkohaanda kahinda rĩngĩ?" — which is grammatically valid but not how a native speaker would say it. The model learned the *structure* of Kikuyu better than the *idiom*. This is a direct consequence of the training data being predominantly written, formal text rather than conversational language.
+
+**Training on AWS was painful.** Instance availability, spot interruptions, session timeouts — the infrastructure overhead consumed more time than the actual ML work. A local high-VRAM GPU would have been significantly less friction.
+
+## What This Means
+
+A single developer with $50 in compute and publicly available data can build a translation model for a language that 8 million people speak. The model isn't perfect — it struggles with long text and some idiomatic expressions — but it's functional, it's open-source, and it didn't exist before.
+
+The bottleneck for low-resource language AI isn't compute or algorithms. It's data. If more parallel text existed for Kikuyu — conversational data, news articles, government documents, technical manuals — the same training pipeline would produce a dramatically better model.
+
+The model is available on [HuggingFace](https://huggingface.co/InterstellarCG/kikuyu-translator-final) under CC-BY-NC-4.0. If you work with Kikuyu or other Bantu languages, I'd welcome feedback on translation quality and contributions to the training data.
