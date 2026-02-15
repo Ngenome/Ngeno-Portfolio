@@ -162,4 +162,115 @@ export const projects: Project[] = [
     category: "web",
     featured: true,
   },
+  {
+    id: "task-forge",
+    title: "TaskForge - Elixir OTP Task Scheduler",
+    description:
+      "A concurrent task scheduling and execution system built with Elixir/OTP patterns. Features GenServer-based task management, ETS-backed high-performance storage, DynamicSupervisor for worker processes, and fault-tolerant supervision trees with automatic retries.",
+    image: "/images/projects/task-forge.png",
+    technologies: [
+      "Elixir",
+      "OTP",
+      "GenServer",
+      "Supervisor",
+      "ETS",
+      "DynamicSupervisor",
+      "ExUnit",
+    ],
+    links: {
+      github: "https://github.com/Ngenome/task_forge",
+    },
+    category: "backend",
+    featured: true,
+    hidden: true,
+  },
+  {
+    id: "task-forge-web",
+    title: "TaskForgeWeb - Phoenix Real-time API",
+    description:
+      "A real-time task management API built with Phoenix Framework. Features RESTful JSON API, Phoenix Channels for WebSocket-based live updates, Ecto changesets for validation, and a complete task lifecycle management system.",
+    image: "/images/projects/task-forge-web.png",
+    technologies: [
+      "Elixir",
+      "Phoenix",
+      "Channels",
+      "WebSockets",
+      "REST API",
+      "Ecto",
+      "JSON API",
+    ],
+    links: {
+      github: "https://github.com/Ngenome/task_forge_web",
+    },
+    category: "backend",
+    featured: true,
+    hidden: true,
+  },
+  {
+    id: "claude-ai-chatbot-ui-and-backend",
+    title: "Claude AI Chatbot UI and Backend",
+    description:
+      "An open source feature rich, developer friendly, modifiable chatbot UI and backend for Claude AI. Supports projects.",
+    image: "/images/projects/claude-amazon-bedrock-chatbot.png",
+    technologies: [
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "Django",
+      "ClaudeAI",
+      "Amazon Bedrock",
+    ],
+    links: {
+      github:
+        "https://github.com/Ngenome/anthropic-claude-aws-bedrock-chat-application-django-and-react/",
+    },
+    category: "ai",
+    featured: true,
+    hidden: true,
+  },
+  {
+    id: "audio-transcription",
+    title: "Audio Transcription with OpenAI Whisper",
+    description:
+      "Implementation of OpenAI's open source Whisper model for audio transcription using PyTorch.",
+    image: "/images/projects/openai-whisper.png",
+    technologies: ["PyTorch", "Python", "OpenAI", "Machine Learning"],
+    links: {
+      github:
+        "https://colab.research.google.com/drive/1UgeKSqfoBGmpA4UtNHFBKqZtcyXuMx-1",
+    },
+    category: "ai",
+    featured: true,
+    hidden: true,
+  },
+  {
+    id: "tortoise-tts",
+    title: "Text to Speech with Tortoise TTS",
+    description:
+      "Implementation of Tortoise TTS for high-quality text-to-speech conversion.",
+    image: "/images/projects/tortoise-tts.png",
+    technologies: ["Python", "TTS", "Machine Learning"],
+    links: {
+      github:
+        "https://colab.research.google.com/drive/1z6Dr0dWameD37dZt5tkGFEFisg6f1XdW",
+    },
+    category: "ai",
+    featured: true,
+    hidden: true,
+  },
+  {
+    id: "fashion-gan",
+    title: "FashionGAN",
+    description:
+      "Implementation of Generative Adversarial Network for fashion image generation.",
+    image: "/images/projects/fashion-gan.png",
+    technologies: ["Python", "GAN", "PyTorch", "Machine Learning"],
+    links: {
+      github:
+        "https://colab.research.google.com/drive/1PTd9tmu3MFIPpRq4hRfzsQVJbj7uBtsW",
+    },
+    category: "ai",
+    featured: true,
+    hidden: true,
+  },
 ];

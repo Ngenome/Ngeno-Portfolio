@@ -14,6 +14,7 @@ export interface Project {
   };
   category: "ai" | "web" | "mobile" | "all" | "design" | "backend";
   featured: boolean;
+  hidden?: boolean;
 }
 
 export interface Experience {

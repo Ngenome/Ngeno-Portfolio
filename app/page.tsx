@@ -286,7 +286,7 @@ const Portfolio = () => {
       <section className="max-w-5xl mx-auto px-6 py-16">
         <h2 className={`text-3xl font-bold mb-8 ${isDark ? 'text-white' : 'text-gray-900'}`}>Projects</h2>
         <div className="grid md:grid-cols-2 gap-6">
-          {projects.map((project) => (
+          {projects.filter((p) => !p.hidden).map((project) => (
             <div key={project.id} className={`rounded-lg overflow-hidden transition-colors ${
               isDark ? 'bg-white/5 hover:bg-white/10' : 'bg-gray-50 hover:bg-gray-100'
             }`}>
