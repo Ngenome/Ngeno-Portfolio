@@ -2,7 +2,8 @@
 
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import { FaGithub, FaLinkedin, FaEnvelope, FaPhone, FaMapMarkerAlt, FaGooglePlay, FaAppStore, FaFileDownload, FaExternalLinkAlt, FaMoon, FaSun } from "react-icons/fa";
+import Link from "next/link";
+import { FaGithub, FaLinkedin, FaEnvelope, FaPhone, FaMapMarkerAlt, FaGooglePlay, FaAppStore, FaFileDownload, FaExternalLinkAlt, FaMoon, FaSun, FaArrowRight } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { skills } from "@/data/skills";
 import { projects } from "@/data/projects";
@@ -78,6 +79,12 @@ const Portfolio = () => {
             >
               {isDark ? <FaSun className="w-4 h-4" /> : <FaMoon className="w-4 h-4" />}
             </button>
+            <Link href="/blog"
+              className={`text-sm transition-colors ${
+                isDark ? 'text-gray-300 hover:text-white' : 'text-gray-600 hover:text-gray-900'
+              }`}>
+              Blog
+            </Link>
             <a href="mailto:hello@ngenondumia.com"
               className={`text-sm transition-colors ${
                 isDark ? 'text-gray-300 hover:text-white' : 'text-gray-600 hover:text-gray-900'
@@ -403,6 +410,66 @@ const Portfolio = () => {
               </div>
             );
           })}
+        </div>
+      </section>
+
+      {/* Writing Section */}
+      <section className="max-w-5xl mx-auto px-6 py-16">
+        <div className="flex items-center justify-between mb-8">
+          <h2 className={`text-3xl font-bold ${isDark ? 'text-white' : 'text-gray-900'}`}>Writing</h2>
+          <Link href="/blog" className={`flex items-center gap-2 text-sm transition-colors ${
+            isDark ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'
+          }`}>
+            All posts <FaArrowRight className="w-3 h-3" />
+          </Link>
+        </div>
+        <div className="space-y-6">
+          {[
+            {
+              title: "The State of AI Coding in 2026",
+              description: "A working developer's honest assessment of where AI-assisted development actually stands — what works, what doesn't, and what most people get wrong.",
+              slug: "ai-coding-2026",
+              tags: ["ai", "coding", "llm"],
+              readingTime: "10 min read",
+            },
+            {
+              title: "Fine-Tuning Gemma 3 for Kikuyu Translation",
+              description: "How I trained a bidirectional English-Kikuyu translation model using LoRA, progressive fine-tuning, and 141K parallel translations.",
+              slug: "kikuyu-translator",
+              tags: ["ml", "nlp", "african-languages"],
+              readingTime: "8 min read",
+            },
+          ].map((post) => (
+            <Link key={post.slug} href={`/blog/${post.slug}`} className="group block">
+              <div className={`p-6 rounded-lg transition-colors ${
+                isDark ? 'bg-white/5 hover:bg-white/10' : 'bg-gray-50 hover:bg-gray-100'
+              }`}>
+                <h3 className={`text-xl font-semibold mb-2 group-hover:translate-x-1 transition-transform ${
+                  isDark ? 'text-white' : 'text-gray-900'
+                }`}>
+                  {post.title}
+                </h3>
+                <p className={`leading-relaxed text-sm mb-3 ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+                  {post.description}
+                </p>
+                <div className="flex items-center gap-3">
+                  <span className={`text-xs ${isDark ? 'text-gray-500' : 'text-gray-500'}`}>
+                    {post.readingTime}
+                  </span>
+                  <span className={isDark ? 'text-gray-700' : 'text-gray-300'}>&middot;</span>
+                  <div className="flex gap-2">
+                    {post.tags.map((tag) => (
+                      <span key={tag} className={`text-xs px-2 py-0.5 rounded-full ${
+                        isDark ? 'bg-white/5 text-gray-400' : 'bg-gray-200 text-gray-600'
+                      }`}>
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </Link>
+          ))}
         </div>
       </section>
 

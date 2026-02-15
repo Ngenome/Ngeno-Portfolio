@@ -89,55 +89,57 @@ body {
 .prose-blog {
   --tw-prose-body: #d1d5db;
   --tw-prose-headings: #ffffff;
-  --tw-prose-links: #C0FF02;
+  --tw-prose-links: #ffffff;
   --tw-prose-bold: #ffffff;
-  --tw-prose-code: #C0FF02;
-  --tw-prose-pre-bg: #1A1A1A;
+  --tw-prose-code: #e5e7eb;
+  --tw-prose-pre-bg: #111111;
   --tw-prose-pre-code: #d1d5db;
   --tw-prose-quotes: #9ca3af;
-  --tw-prose-quote-borders: #32CC32;
+  --tw-prose-quote-borders: #374151;
   --tw-prose-counters: #9ca3af;
-  --tw-prose-bullets: #32CC32;
-  --tw-prose-hr: #374151;
+  --tw-prose-bullets: #6b7280;
+  --tw-prose-hr: #1f2937;
   --tw-prose-th-borders: #374151;
   --tw-prose-td-borders: #1f2937;
 }
 
 .prose-blog h2 {
-  font-family: var(--font-monument), system-ui;
   margin-top: 2.5em;
+  letter-spacing: -0.02em;
 }
 
 .prose-blog h3 {
-  font-family: var(--font-monument), system-ui;
   margin-top: 2em;
+  letter-spacing: -0.01em;
 }
 
 .prose-blog a {
   text-decoration: none;
-  border-bottom: 1px solid #32CC32;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
   transition: border-color 0.2s;
 }
 
 .prose-blog a:hover {
-  border-color: #C0FF02;
+  border-color: #ffffff;
 }
 
 .prose-blog pre {
-  border: 1px solid rgba(50, 204, 50, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: 0.75rem;
 }
 
 .prose-blog code:not(pre code) {
-  background: rgba(50, 204, 50, 0.1);
+  background: rgba(255, 255, 255, 0.08);
   padding: 0.15em 0.4em;
   border-radius: 0.25rem;
   font-size: 0.875em;
+  font-family: var(--font-mono), monospace;
 }
 
 .prose-blog blockquote {
   border-left-width: 3px;
   font-style: normal;
+  border-color: rgba(255, 255, 255, 0.15);
 }
 
 .prose-blog table {

@@ -6,7 +6,7 @@ interface LayoutProps {
 
 const Layout = ({ children }: LayoutProps) => {
   return (
-    <div className="min-h-screen bg-gray-900 text-white">
+    <div className="min-h-screen bg-surface-dark text-white">
       {/* Add any global styles or components here */}
       <div className="flex flex-col min-h-screen">{children}</div>
     </div>

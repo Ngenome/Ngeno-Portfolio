@@ -1,6 +1,7 @@
 import { getAllPosts } from "@/lib/blog";
 import Link from "next/link";
 import { Metadata } from "next";
+import { FaFileDownload } from "react-icons/fa";
 
 export const metadata: Metadata = {
   title: "Blog — Kelvin Ng'eno",
@@ -12,63 +13,109 @@ export default function BlogPage() {
   const posts = getAllPosts();
 
   return (
-    <main className="min-h-screen pt-28 pb-20">
-      <div className="container mx-auto px-6 max-w-3xl">
-        {/* Header */}
-        <div className="mb-16">
-          <Link
-            href="/"
-            className="text-sm text-gray-500 hover:text-lime-light transition-colors mb-8 inline-block"
-          >
-            &larr; Back
+    <div className="min-h-screen bg-surface-dark text-white">
+      {/* Header */}
+      <header className="sticky top-0 z-50 backdrop-blur-sm border-b bg-surface-dark/95 border-white/10">
+        <div className="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center">
+          <Link href="/" className="text-base md:text-xl font-semibold text-white">
+            Kelvin Ng&apos;eno
           </Link>
-          <h1 className="text-h1 font-display text-white mt-4">Blog</h1>
-          <p className="text-gray-400 text-body mt-4 max-w-xl">
-            On AI-assisted development, frontend architecture, and building
-            software.
+          <div className="flex items-center gap-4">
+            <Link
+              href="/blog"
+              className="text-sm text-white transition-colors"
+            >
+              Blog
+            </Link>
+            <a
+              href="mailto:hello@ngenondumia.com"
+              className="text-sm text-gray-300 hover:text-white transition-colors"
+            >
+              Contact
+            </a>
+            <a
+              href="https://docs.google.com/document/d/1MySvsINyYvUlBZZWAD6rRAUzhaXeXyVnSp6zZeVJy6E/edit?usp=sharing"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 px-4 py-2 text-sm rounded bg-white/10 hover:bg-white/20 transition-colors"
+            >
+              <FaFileDownload className="w-3 h-3" />
+              Resume
+            </a>
+          </div>
+        </div>
+      </header>
+
+      <main className="pt-16 pb-20">
+        <div className="max-w-3xl mx-auto px-6">
+          {/* Page Header */}
+          <div className="mb-16">
+            <Link
+              href="/"
+              className="text-sm text-gray-500 hover:text-white transition-colors mb-8 inline-block"
+            >
+              &larr; Back
+            </Link>
+            <h1 className="text-4xl md:text-5xl font-bold text-white mt-4">
+              Blog
+            </h1>
+            <p className="text-gray-400 text-lg mt-4 max-w-xl">
+              On AI-assisted development, frontend architecture, and building
+              software.
+            </p>
+          </div>
+
+          {/* Posts */}
+          {posts.length === 0 ? (
+            <p className="text-gray-500">No posts yet.</p>
+          ) : (
+            <div className="space-y-12">
+              {posts.map((post) => (
+                <article key={post.slug}>
+                  <Link href={`/blog/${post.slug}`} className="group block">
+                    <h2 className="text-2xl font-bold text-white group-hover:text-gray-300 transition-colors">
+                      {post.title}
+                    </h2>
+                    <p className="text-gray-400 mt-2 text-lg leading-relaxed">
+                      {post.description}
+                    </p>
+                    <div className="flex items-center gap-3 mt-4">
+                      <span className="text-sm text-gray-500">
+                        {post.readingTime}
+                      </span>
+                      {post.tags.length > 0 && (
+                        <>
+                          <span className="text-gray-700">&middot;</span>
+                          <div className="flex gap-2">
+                            {post.tags.map((tag) => (
+                              <span
+                                key={tag}
+                                className="text-xs px-2 py-0.5 rounded-full bg-white/5 border border-white/10 text-gray-400"
+                              >
+                                {tag}
+                              </span>
+                            ))}
+                          </div>
+                        </>
+                      )}
+                    </div>
+                  </Link>
+                </article>
+              ))}
+            </div>
+          )}
+        </div>
+      </main>
+
+      {/* Footer */}
+      <footer className="border-t border-white/10">
+        <div className="max-w-5xl mx-auto px-6 py-8">
+          <p className="text-center text-sm text-gray-500">
+            &copy; {new Date().getFullYear()} Kelvin Ng&apos;eno. All rights
+            reserved.
           </p>
         </div>
-
-        {/* Posts */}
-        {posts.length === 0 ? (
-          <p className="text-gray-500">No posts yet.</p>
-        ) : (
-          <div className="space-y-12">
-            {posts.map((post) => (
-              <article key={post.slug}>
-                <Link href={`/blog/${post.slug}`} className="group block">
-                  <h2 className="text-h3 font-display text-white group-hover:text-lime-light transition-colors">
-                    {post.title}
-                  </h2>
-                  <p className="text-gray-400 mt-2 text-body leading-relaxed">
-                    {post.description}
-                  </p>
-                  <div className="flex items-center gap-3 mt-4">
-                    <span className="text-sm text-gray-500">
-                      {post.readingTime}
-                    </span>
-                    {post.tags.length > 0 && (
-                      <>
-                        <span className="text-gray-700">&middot;</span>
-                        <div className="flex gap-2">
-                          {post.tags.map((tag) => (
-                            <span
-                              key={tag}
-                              className="text-xs px-2 py-0.5 rounded-full bg-surface-light border border-lime-default/10 text-gray-400"
-                            >
-                              {tag}
-                            </span>
-                          ))}
-                        </div>
-                      </>
-                    )}
-                  </div>
-                </Link>
-              </article>
-            ))}
-          </div>
-        )}
-      </div>
-    </main>
+      </footer>
+    </div>
   );
 }
