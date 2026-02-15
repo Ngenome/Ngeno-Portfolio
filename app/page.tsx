@@ -38,7 +38,7 @@ const Portfolio = () => {
   const toggleTheme = () => setIsDark(!isDark);
 
   const roleDescriptions: { [key: string]: string } = {
-    'Full Stack Developer': 'Building complete web applications from frontend to backend, handling databases, APIs, and deployment.',
+    'Senior Full Stack Engineer': 'Building complete web applications from frontend to backend, handling databases, APIs, and deployment.',
     'AI Engineer': 'Developing intelligent systems using machine learning, LLMs, and AI agents to solve complex problems.',
     'Mobile Developer': 'Creating native and cross-platform mobile applications for iOS and Android with React Native.'
   };
@@ -110,7 +110,7 @@ const Portfolio = () => {
               Kelvin Ng'eno
             </h2>
             <div className="flex flex-wrap items-center justify-start gap-2 text-xl">
-              {['Full Stack Developer', 'AI Engineer', 'Mobile Developer'].map((role, index) => (
+              {['Senior Full Stack Engineer', 'AI Engineer', 'Mobile Developer'].map((role, index) => (
                 <div key={role} className="relative inline-block">
                   <button
                     onClick={() => setActiveRole(activeRole === role ? null : role)}
