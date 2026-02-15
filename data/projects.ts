@@ -3,6 +3,31 @@ import { Project } from "../types";
 
 export const projects: Project[] = [
   {
+    id: "navismart-ai",
+    title: "Navismart AI",
+    description:
+      "AI-powered immigration platform serving 2k+ users across 50+ countries. Features eligibility checks, smart form filling, AI guidance, multilingual support, and secure application tracking.",
+    image: "/images/projects/navismart-ai.png",
+    technologies: [
+      "FastAPI",
+      "Python",
+      "AI",
+      "LLMs",
+      "Machine Learning",
+      "OpenAI Agents SDK",
+      "LangGraph",
+      "React",
+      "PostgreSQL",
+      "AWS",
+    ],
+    links: {
+      live: "https://navismartai.com",
+      github: "https://app.navismartai.com",
+    },
+    category: "ai",
+    featured: true,
+  },
+  {
     id: "galexia",
     title: "Galexia (In Development)",
     description:
@@ -20,6 +45,7 @@ export const projects: Project[] = [
       "Tailwind CSS",
     ],
     links: {
+      live: "https://galexia.ai",
       github: "https://github.com/Ngenome/cognex-ai",
     },
     category: "ai",
@@ -45,31 +71,6 @@ export const projects: Project[] = [
     links: {
       live: "https://huggingface.co/InterstellarCG/kikuyu-translator-final",
       github: "https://huggingface.co/datasets/InterstellarCG/kikuyu-translation-data",
-    },
-    category: "ai",
-    featured: true,
-  },
-  {
-    id: "navismart-ai",
-    title: "Navismart AI",
-    description:
-      "AI-powered immigration platform serving 2k+ users across 50+ countries. Features eligibility checks, smart form filling, AI guidance, multilingual support, and secure application tracking.",
-    image: "/images/projects/navismart-ai.png",
-    technologies: [
-      "FastAPI",
-      "Python",
-      "AI",
-      "LLMs",
-      "Machine Learning",
-      "OpenAI Agents SDK",
-      "LangGraph",
-      "React",
-      "PostgreSQL",
-      "AWS",
-    ],
-    links: {
-      live: "https://navismartai.com",
-      github: "https://app.navismartai.com",
     },
     category: "ai",
     featured: true,
