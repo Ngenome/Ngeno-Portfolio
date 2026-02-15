@@ -7,6 +7,7 @@ export const projects: Project[] = [
     title: "Galexia (In Development)",
     description:
       "AI-powered educational platform that transforms questions into interactive visualizations. 13 visualization types including flowcharts, timelines, concept maps, 3D molecules, and animated canvases. Uses AI to dynamically generate the right visualization for any topic.",
+    image: "/images/projects/galexia.png",
     technologies: [
       "Next.js",
       "React",
@@ -182,7 +183,7 @@ export const projects: Project[] = [
     },
     category: "backend",
     featured: true,
-    hidden: true,
+    hidden: false,
   },
   {
     id: "task-forge-web",
@@ -204,7 +205,7 @@ export const projects: Project[] = [
     },
     category: "backend",
     featured: true,
-    hidden: true,
+    hidden: false,
   },
   {
     id: "claude-ai-chatbot-ui-and-backend",
@@ -226,7 +227,7 @@ export const projects: Project[] = [
     },
     category: "ai",
     featured: true,
-    hidden: true,
+    hidden: false,
   },
   {
     id: "audio-transcription",
@@ -241,7 +242,7 @@ export const projects: Project[] = [
     },
     category: "ai",
     featured: true,
-    hidden: true,
+    hidden: false,
   },
   {
     id: "tortoise-tts",
@@ -256,7 +257,7 @@ export const projects: Project[] = [
     },
     category: "ai",
     featured: true,
-    hidden: true,
+    hidden: false,
   },
   {
     id: "fashion-gan",
@@ -271,6 +272,6 @@ export const projects: Project[] = [
     },
     category: "ai",
     featured: true,
-    hidden: true,
+    hidden: false,
   },
 ];
