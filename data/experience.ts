@@ -159,7 +159,7 @@ export const experiences: Experience[] = [
     role: "Frontend Developer",
     company: "Interstellar Code",
     companyUrl: "#",
-    duration: "Apr 2020 – Dec 2021",
+    duration: "2019 – Dec 2021",
     mode: "Freelance",
     description: "Implemented solutions using React, React Native, HTML, CSS, and SCSS, applying modern frontend practices.",
     achievements: [
