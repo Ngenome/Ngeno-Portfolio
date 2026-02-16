@@ -195,23 +195,24 @@ const Portfolio = () => {
         <h2 className={`text-3xl font-bold mb-6 ${isDark ? 'text-white' : 'text-gray-900'}`}>About Me</h2>
         <div className={`text-lg leading-relaxed space-y-4 ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
           <p>
-            I'm a full stack developer with a deep passion for AI and machine learning. Over the past 5+ years,
-            I've built and scaled applications serving tens of thousands of users across web and mobile platforms.
+            I started building frontends in 2019 and haven't stopped shipping since. Over 6+ years I've gone from
+            React and React Native apps to full-stack systems with FastAPI, Django, and PostgreSQL — and more recently
+            into AI/ML, fine-tuning models and building agent workflows.
           </p>
           <p>
-            My journey started with frontend development, but I quickly expanded into backend systems, mobile apps,
-            and eventually AI/ML engineering. I love working at the intersection of these technologies, building
-            intelligent systems that solve real-world problems. I'm passionate about building startups and creating
-            solutions that make a real impact.
+            Right now I'm CTO at Navismart AI, building an immigration platform that uses AI agents to guide users
+            through complex application processes. I'm also building Galexia, an educational platform that turns
+            questions into interactive visualizations — flowcharts, 3D molecules, animated canvases, 13 types in total.
           </p>
           <p>
-            Currently, I'm focused on AI agents, LLM integration, and building platforms that leverage cutting-edge
-            AI to deliver exceptional user experiences. I'm also the founder of Dissolve Software, where I help
-            businesses bring their ideas to life through custom software solutions.
+            Most of my work has been for East African businesses and users. I've helped SMEs go digital for the first
+            time and built consumer apps used by 20k+ people on networks where every kilobyte matters. That shapes
+            how I think about performance, UX, and what "good enough" actually means.
           </p>
           <p>
-            When I'm not coding, I'm exploring new technologies, contributing to open source, or learning about
-            the latest developments in AI and software engineering.
+            I use AI tooling daily — Claude Code, Google Antigravity, GitHub Copilot — and I think seriously about
+            where these tools help and where they don't. I also fine-tuned a Gemma 3 model for Kikuyu-English translation,
+            a language spoken by 8M+ people with almost no AI tooling. I build what's missing.
           </p>
         </div>
       </section>
