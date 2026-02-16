@@ -147,7 +147,7 @@ const Portfolio = () => {
 
           <p className={`text-lg max-w-2xl leading-relaxed ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
             Building scalable solutions that solve real problems with frontier technology.
-            5+ years experience serving tens of thousands of users.
+            6+ years experience serving tens of thousands of users.
           </p>
 
           {/* Contact Info */}
