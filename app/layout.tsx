@@ -8,17 +8,17 @@ import "./globals.css";
 import Layout from "@/components/Layout";
 
 export const metadata = {
-  title: "Kelvin Ng'eno - Full Stack Developer & AI Engineer",
+  title: "Kelvin Ng'eno — AI Engineer & Full-Stack Product Builder",
   description:
-    "Full Stack Developer and AI Engineer specializing in web development, mobile apps, and artificial intelligence solutions.",
+    "Nairobi-based AI engineer and full-stack product builder working across agentic systems, secure backend platforms, machine learning, and mobile products.",
   keywords: [
-    "Full Stack Developer",
     "AI Engineer",
-    "React Developer",
-    "Mobile App Developer",
+    "Full-Stack Product Builder",
+    "Agentic Systems",
+    "Document Ingestion",
     "Machine Learning Engineer",
+    "Mobile Developer",
     "Kenya",
-    "Software Engineer",
   ].join(", "),
 };
 

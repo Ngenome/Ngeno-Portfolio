@@ -4,6 +4,8 @@ export interface Project {
   id: string;
   title: string;
   description: string;
+  role?: string;
+  proof?: string;
   image?: string;
   technologies: string[];
   links: {

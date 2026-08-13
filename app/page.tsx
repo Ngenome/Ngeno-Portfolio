@@ -1,487 +1,465 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { FaGithub, FaLinkedin, FaEnvelope, FaPhone, FaMapMarkerAlt, FaGooglePlay, FaAppStore, FaFileDownload, FaExternalLinkAlt, FaMoon, FaSun, FaArrowRight } from "react-icons/fa";
-import { FaXTwitter } from "react-icons/fa6";
-import { skills } from "@/data/skills";
-import { projects } from "@/data/projects";
+import {
+  FaArrowRight,
+  FaBrain,
+  FaEnvelope,
+  FaExternalLinkAlt,
+  FaFileDownload,
+  FaGithub,
+  FaMapMarkerAlt,
+  FaMoon,
+  FaPhone,
+  FaSun,
+} from "react-icons/fa";
 import { experiences } from "@/data/experience";
-import { socialLinks } from "@/data/social";
+import { projects } from "@/data/projects";
 
-// Helper function to extract domain from URL
-const extractDomain = (url: string) => {
-  try {
-    const domain = new URL(url).hostname.replace('www.', '');
-    return domain;
-  } catch {
-    return url;
-  }
+const publicLinks = [
+  { name: "Navismart", url: "https://navismartai.com", icon: FaExternalLinkAlt },
+  { name: "GitHub", url: "https://github.com/ngenome", icon: FaGithub },
+  {
+    name: "Hugging Face",
+    url: "https://huggingface.co/InterstellarCG/",
+    icon: FaBrain,
+  },
+];
+
+const capabilityGroups = [
+  {
+    title: "AI engineering",
+    items: [
+      "Agentic workflows",
+      "LangGraph & OpenAI Agents SDK",
+      "RAG & semantic search",
+      "OCR & document ingestion",
+      "Embeddings & vector search",
+    ],
+  },
+  {
+    title: "Full-stack systems",
+    items: [
+      "Python & TypeScript",
+      "Django & FastAPI",
+      "React & Next.js",
+      "PostgreSQL & Redis",
+      "RBAC, encryption & audit logging",
+    ],
+  },
+  {
+    title: "ML & speech",
+    items: [
+      "PyTorch & Transformers",
+      "Fine-tuning & LoRA",
+      "ASR, Whisper & Zipformer",
+      "Neural machine translation",
+      "Hugging Face & Modal",
+    ],
+  },
+  {
+    title: "Product delivery",
+    items: [
+      "React Native & Expo",
+      "AWS, Azure & Docker",
+      "Automated testing & CI/CD",
+      "Preview deployments",
+      "Technical & product consulting",
+    ],
+  },
+];
+
+const writing = [
+  {
+    title: "The State of AI Coding in 2026",
+    description:
+      "A working developer's assessment of where AI-assisted development stands—what works, what doesn't, and what most people get wrong.",
+    slug: "ai-coding-2026",
+    tags: ["ai", "coding", "llm"],
+    readingTime: "10 min read",
+  },
+  {
+    title: "Fine-Tuning Gemma 3 for Kikuyu Translation",
+    description:
+      "How I trained a bidirectional English-Kikuyu translation model using LoRA and progressive fine-tuning.",
+    slug: "kikuyu-translator",
+    tags: ["ml", "nlp", "african-languages"],
+    readingTime: "8 min read",
+  },
+];
+
+const linkLabelByProject: Record<string, string> = {
+  "navismart-ai": "Visit Navismart",
+  "dissolve-software": "Visit Dissolve Software",
+  "kikuyu-translator": "View on Hugging Face",
 };
 
 const Portfolio = () => {
   const [isDark, setIsDark] = useState(true);
-  const [activeRole, setActiveRole] = useState<string | null>(null);
 
   useEffect(() => {
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'light') {
-      setIsDark(false);
-    }
+    setIsDark(localStorage.getItem("theme") !== "light");
   }, []);
 
   useEffect(() => {
-    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    localStorage.setItem("theme", isDark ? "dark" : "light");
   }, [isDark]);
 
-  const toggleTheme = () => setIsDark(!isDark);
-
-  const roleDescriptions: { [key: string]: string } = {
-    'Senior Full Stack Engineer': 'Building complete web applications from frontend to backend, handling databases, APIs, and deployment.',
-    'AI Engineer': 'Developing intelligent systems using machine learning, LLMs, and AI agents to solve complex problems.',
-    'Mobile Developer': 'Creating native and cross-platform mobile applications for iOS and Android with React Native.'
-  };
+  const surface = isDark ? "bg-surface-dark text-white" : "bg-white text-gray-900";
+  const heading = isDark ? "text-white" : "text-gray-900";
+  const body = isDark ? "text-gray-300" : "text-gray-700";
+  const muted = isDark ? "text-gray-400" : "text-gray-600";
+  const divider = isDark ? "border-white/10" : "border-gray-200";
+  const panel = isDark ? "bg-white/[0.04]" : "bg-gray-50";
 
   return (
-    <div className={`min-h-screen transition-colors duration-300 relative ${isDark ? 'bg-surface-dark text-white' : 'bg-white text-gray-900'}`}>
-      {/* Network Mesh Background - Left Side Only */}
-      <div className="fixed inset-y-0 left-0 w-[25%] pointer-events-none">
-        <div className="absolute inset-0"
+    <div className={`relative min-h-screen transition-colors duration-300 ${surface}`}>
+      <div className="pointer-events-none fixed inset-y-0 left-0 w-1/4">
+        <div
+          className="absolute inset-0"
           style={{
-            backgroundImage: `
-              linear-gradient(${isDark ? 'rgba(255, 255, 255, 0.08)' : 'rgba(0, 0, 0, 0.08)'} 1px, transparent 1px),
-              linear-gradient(90deg, ${isDark ? 'rgba(255, 255, 255, 0.08)' : 'rgba(0, 0, 0, 0.08)'} 1px, transparent 1px),
-              radial-gradient(circle at 20px 20px, ${isDark ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)'} 2px, transparent 2px)
-            `,
-            backgroundSize: '40px 40px, 40px 40px, 40px 40px',
-            maskImage: 'linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%)',
-            WebkitMaskImage: 'linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%)'
+            backgroundImage: `linear-gradient(${isDark ? "rgba(255,255,255,.08)" : "rgba(0,0,0,.08)"} 1px, transparent 1px), linear-gradient(90deg, ${isDark ? "rgba(255,255,255,.08)" : "rgba(0,0,0,.08)"} 1px, transparent 1px)`,
+            backgroundSize: "40px 40px",
+            maskImage: "linear-gradient(to right, black, transparent)",
+            WebkitMaskImage: "linear-gradient(to right, black, transparent)",
           }}
         />
       </div>
 
-      {/* Content */}
       <div className="relative z-10">
-      {/* Simple Header */}
-      <header className={`sticky top-0 z-50 backdrop-blur-sm border-b transition-colors duration-300 ${
-        isDark ? 'bg-surface-dark/95 border-white/10' : 'bg-white/95 border-gray-200'
-      }`}>
-        <div className="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center">
-          <h1 className={`text-base md:text-xl font-semibold ${isDark ? 'text-white' : 'text-gray-900'}`}>Kelvin Ng'eno</h1>
-          <div className="flex items-center gap-4">
-            <button
-              onClick={toggleTheme}
-              className={`p-2 rounded-lg transition-colors ${
-                isDark ? 'hover:bg-white/10 text-gray-300' : 'hover:bg-gray-100 text-gray-600'
-              }`}
-              aria-label="Toggle theme"
-            >
-              {isDark ? <FaSun className="w-4 h-4" /> : <FaMoon className="w-4 h-4" />}
-            </button>
-            <Link href="/blog"
-              className={`text-sm transition-colors ${
-                isDark ? 'text-gray-300 hover:text-white' : 'text-gray-600 hover:text-gray-900'
-              }`}>
-              Blog
-            </Link>
-            <a href="mailto:hello@ngenondumia.com"
-              className={`text-sm transition-colors ${
-                isDark ? 'text-gray-300 hover:text-white' : 'text-gray-600 hover:text-gray-900'
-              }`}>
-              Contact
+        <header
+          className={`sticky top-0 z-50 border-b backdrop-blur-sm ${
+            isDark ? "border-white/10 bg-surface-dark/95" : "border-gray-200 bg-white/95"
+          }`}
+        >
+          <div className="mx-auto flex max-w-5xl items-center justify-between gap-4 px-6 py-4">
+            <a href="#top" className={`text-base font-semibold md:text-xl ${heading}`}>
+              Kelvin Ng&apos;eno
             </a>
-            <a href="https://docs.google.com/document/d/1MySvsINyYvUlBZZWAD6rRAUzhaXeXyVnSp6zZeVJy6E/edit?usp=sharing" target="_blank" rel="noopener noreferrer"
-              className={`flex items-center gap-2 px-4 py-2 text-sm rounded transition-colors ${
-                isDark ? 'bg-white/10 hover:bg-white/20' : 'bg-gray-100 hover:bg-gray-200'
-              }`}>
-              <FaFileDownload className="w-3 h-3" />
-              Resume
-            </a>
+            <div className="flex items-center gap-3 sm:gap-4">
+              <button
+                onClick={() => setIsDark((current) => !current)}
+                className={`rounded-lg p-2 transition-colors ${
+                  isDark ? "text-gray-300 hover:bg-white/10" : "text-gray-600 hover:bg-gray-100"
+                }`}
+                aria-label={`Switch to ${isDark ? "light" : "dark"} theme`}
+              >
+                {isDark ? <FaSun className="h-4 w-4" /> : <FaMoon className="h-4 w-4" />}
+              </button>
+              <Link href="/blog" className={`hidden text-sm transition-colors sm:block ${muted}`}>
+                Blog
+              </Link>
+              <a href="#work-with-me" className={`text-sm transition-colors ${muted}`}>
+                Contact
+              </a>
+              <a
+                href="/resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`flex items-center gap-2 rounded px-3 py-2 text-sm transition-colors sm:px-4 ${
+                  isDark ? "bg-white/10 hover:bg-white/20" : "bg-gray-100 hover:bg-gray-200"
+                }`}
+              >
+                <FaFileDownload className="h-3 w-3" />
+                <span className="hidden sm:inline">Résumé</span>
+              </a>
+            </div>
           </div>
-        </div>
-      </header>
+        </header>
 
-      {/* Hero Section */}
-      <section className="max-w-5xl mx-auto px-6 py-20">
-        <div className="space-y-6">
-          <div>
-            <h2 className={`text-4xl md:text-6xl font-bold mb-4 ${isDark ? 'text-white' : 'text-gray-900'}`}>
-              Kelvin Ng'eno
-            </h2>
-            <div className="flex flex-wrap items-center justify-start gap-2 text-xl">
-              {['Senior Full Stack Engineer', 'AI Engineer', 'Mobile Developer'].map((role, index) => (
-                <div key={role} className="relative inline-block">
-                  <button
-                    onClick={() => setActiveRole(activeRole === role ? null : role)}
-                    className={`transition-colors hover:text-white ${isDark ? 'text-gray-400' : 'text-gray-600 hover:text-gray-900'}`}
-                  >
-                    {role}
-                  </button>
-                  {activeRole === role && (
-                    <>
-                      {/* Backdrop to close popover */}
-                      <div
-                        className="fixed inset-0 z-40"
-                        onClick={() => setActiveRole(null)}
-                      />
-                      {/* Popover */}
-                      <div className={`absolute top-full left-1/2 transform -translate-x-1/2 mt-2 w-64 sm:w-80 p-4 rounded-lg shadow-lg z-50 ${
-                        isDark ? 'bg-surface-light border border-white/10' : 'bg-white border border-gray-200'
-                      }`}>
-                        <div className={`text-sm leading-relaxed ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
-                          {roleDescriptions[role]}
+        <main id="top">
+          <section className="mx-auto max-w-5xl px-6 py-20 md:py-24">
+            <p className={`mb-4 text-sm font-medium uppercase tracking-[0.18em] ${muted}`}>
+              Nairobi, Kenya · Building for East Africa and beyond
+            </p>
+            <h1 className={`max-w-4xl text-4xl font-bold leading-tight md:text-6xl ${heading}`}>
+              AI Engineer &amp; Full-Stack Product Builder
+            </h1>
+            <p className={`mt-6 max-w-3xl text-xl leading-relaxed md:text-2xl ${body}`}>
+              I build agentic systems, ML infrastructure, and practical products—from secure AI backends to mobile experiences used at scale.
+            </p>
+
+            <div className="mt-8 flex flex-wrap gap-3">
+              {publicLinks.map((link) => (
+                <a
+                  key={link.name}
+                  href={link.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm font-medium transition-colors ${
+                    isDark
+                      ? "border-white/15 text-gray-200 hover:border-white/40 hover:bg-white/5"
+                      : "border-gray-300 text-gray-700 hover:border-gray-500 hover:bg-gray-50"
+                  }`}
+                >
+                  <link.icon className="h-4 w-4" />
+                  {link.name}
+                </a>
+              ))}
+            </div>
+
+            <div className={`mt-8 flex flex-wrap gap-x-6 gap-y-3 text-sm ${muted}`}>
+              <a href="mailto:hello@ngenondumia.com" className="flex items-center gap-2 hover:underline">
+                <FaEnvelope className="h-4 w-4" /> hello@ngenondumia.com
+              </a>
+              <a href="tel:+254726299179" className="flex items-center gap-2 hover:underline">
+                <FaPhone className="h-4 w-4" /> +254 726 299 179
+              </a>
+              <span className="flex items-center gap-2">
+                <FaMapMarkerAlt className="h-4 w-4" /> Nairobi, Kenya
+              </span>
+            </div>
+          </section>
+
+          <section className="mx-auto max-w-5xl px-6 py-16">
+            <h2 className={`mb-6 text-3xl font-bold ${heading}`}>About Me</h2>
+            <div className={`max-w-4xl space-y-5 text-lg leading-relaxed ${body}`}>
+              <p>
+                I&apos;m an AI engineer and full-stack product builder in Nairobi. I started in web and mobile, and that product grounding still shapes how I build AI: the system has to be secure, understandable, and useful to the person on the other side of it.
+              </p>
+              <p>
+                At Navismart AI, I lead agentic workflows for immigration guidance, OCR and VLM-assisted document ingestion, document review, browser interaction, and interview preparation. The product runs on Django and FastAPI services designed around RBAC, PII encryption, audit logging, testing, and preview deployments.
+              </p>
+              <p>
+                I also founded Dissolve Software, where I build web, mobile, AI, and automation systems for SMEs and media clients. That work has included agentic RAG and semantic search, digitization and image-similarity systems, model fine-tuning, speech recognition, and ML scoring prototypes.
+              </p>
+              <p>
+                The East African context is part of the work, not a footnote. I&apos;ve shipped consumer products such as Talanta AI to 20,000+ active iOS and Android users, fine-tuned a Kikuyu-English translation model, and published Kikuyu ASR data on Hugging Face. I like building the infrastructure and products that make local-language technology genuinely usable.
+              </p>
+            </div>
+          </section>
+
+          <section className="mx-auto max-w-5xl px-6 py-16">
+            <div className="mb-8 max-w-2xl">
+              <h2 className={`text-3xl font-bold ${heading}`}>Selected Work</h2>
+              <p className={`mt-3 ${muted}`}>
+                A focused selection of current AI engineering and product work.
+              </p>
+            </div>
+            <div className={`divide-y border-y ${divider}`}>
+              {projects.map((project, index) => (
+                <article key={project.id} className="grid gap-5 py-8 md:grid-cols-[2fr_3fr] md:gap-12">
+                  <div>
+                    <p className={`mb-2 font-mono text-xs ${muted}`}>0{index + 1}</p>
+                    <h3 className={`text-2xl font-semibold ${heading}`}>{project.title}</h3>
+                    {project.links.live ? (
+                      <a
+                        href={project.links.live}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={`mt-4 inline-flex items-center gap-2 text-sm font-medium underline decoration-1 underline-offset-4 ${
+                          isDark ? "text-white" : "text-gray-900"
+                        }`}
+                      >
+                        {linkLabelByProject[project.id]}
+                        <FaExternalLinkAlt className="h-3 w-3" />
+                      </a>
+                    ) : null}
+                  </div>
+                  <div className="space-y-4">
+                    <p className={`leading-relaxed ${body}`}>
+                      <span className={`font-semibold ${heading}`}>Problem and user: </span>
+                      {project.description}
+                    </p>
+                    <p className={`leading-relaxed ${body}`}>
+                      <span className={`font-semibold ${heading}`}>My ownership: </span>
+                      {project.role}
+                    </p>
+                    <p className={`leading-relaxed ${body}`}>
+                      <span className={`font-semibold ${heading}`}>Proof: </span>
+                      {project.proof}
+                    </p>
+                    <div className="flex flex-wrap gap-2 pt-1">
+                      {project.technologies.map((technology) => (
+                        <span
+                          key={technology}
+                          className={`rounded-full px-3 py-1 text-xs ${
+                            isDark ? "bg-white/5 text-gray-300" : "bg-gray-100 text-gray-700"
+                          }`}
+                        >
+                          {technology}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </article>
+              ))}
+            </div>
+            <div className="mt-6 flex flex-wrap gap-5 text-sm">
+              <a
+                href="https://github.com/ngenome"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`inline-flex items-center gap-2 font-medium hover:underline ${heading}`}
+              >
+                <FaGithub /> GitHub
+              </a>
+              <a
+                href="https://huggingface.co/InterstellarCG/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`inline-flex items-center gap-2 font-medium hover:underline ${heading}`}
+              >
+                <FaBrain /> Hugging Face models &amp; datasets
+              </a>
+            </div>
+          </section>
+
+          <section className="mx-auto max-w-5xl px-6 py-16">
+            <h2 className={`mb-8 text-3xl font-bold ${heading}`}>Experience</h2>
+            <div className="space-y-8">
+              {experiences.map((experience, index) => (
+                <article key={experience.id}>
+                  <div className="pb-8">
+                    <div className="mb-4 flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
+                      <div className="flex items-start gap-4">
+                        {experience.logo ? (
+                          <div
+                            className={`relative h-12 w-12 flex-shrink-0 rounded ${
+                              experience.id === "mjenzi" || experience.id === "jobzy-limited" ? "bg-white p-1" : ""
+                            }`}
+                          >
+                            <Image
+                              src={
+                                experience.id === "navismart-ai" && !isDark
+                                  ? "/images/companies/navismart-dark.svg"
+                                  : experience.logo
+                              }
+                              alt=""
+                              fill
+                              sizes="48px"
+                              className="object-contain"
+                            />
+                          </div>
+                        ) : null}
+                        <div>
+                          <h3 className={`text-xl font-semibold ${heading}`}>{experience.role}</h3>
+                          {experience.companyUrl ? (
+                            <a
+                              href={experience.companyUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className={`${muted} hover:underline`}
+                            >
+                              {experience.company}
+                            </a>
+                          ) : (
+                            <p className={muted}>{experience.company}</p>
+                          )}
                         </div>
-                        {/* Arrow */}
-                        <div className={`absolute -top-2 left-1/2 transform -translate-x-1/2 w-4 h-4 rotate-45 ${
-                          isDark ? 'bg-surface-light border-t border-l border-white/10' : 'bg-white border-t border-l border-gray-200'
-                        }`} />
                       </div>
-                    </>
-                  )}
-                  {index < 2 && <span className={`mx-2 ${isDark ? 'text-gray-600' : 'text-gray-400'}`}>·</span>}
+                      <span className={`flex-shrink-0 font-mono text-sm ${muted}`}>
+                        {experience.duration}
+                      </span>
+                    </div>
+                    <p className={`mb-4 max-w-4xl leading-relaxed ${body}`}>{experience.description}</p>
+                    <ul className={`max-w-4xl space-y-2 ${muted}`}>
+                      {experience.achievements.map((achievement) => (
+                        <li key={achievement} className="flex items-start gap-3">
+                          <span className="mt-1 opacity-60">•</span>
+                          <span>{achievement}</span>
+                        </li>
+                      ))}
+                    </ul>
+                    <div className="mt-4 flex flex-wrap gap-2">
+                      {experience.technologies.map((technology) => (
+                        <span
+                          key={technology}
+                          className={`rounded-full px-3 py-1 text-xs ${
+                            isDark ? "bg-white/5 text-gray-300" : "bg-gray-100 text-gray-700"
+                          }`}
+                        >
+                          {technology}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                  {index < experiences.length - 1 ? <hr className={`border-t ${divider}`} /> : null}
+                </article>
+              ))}
+            </div>
+          </section>
+
+          <section className="mx-auto max-w-5xl px-6 py-16">
+            <h2 className={`mb-8 text-3xl font-bold ${heading}`}>Capabilities</h2>
+            <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+              {capabilityGroups.map((group) => (
+                <div key={group.title} className={`border-l-2 pl-4 ${divider}`}>
+                  <h3 className={`mb-4 font-semibold ${heading}`}>{group.title}</h3>
+                  <ul className={`space-y-2 text-sm ${muted}`}>
+                    {group.items.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
                 </div>
               ))}
             </div>
-          </div>
+          </section>
 
-          <p className={`text-lg max-w-2xl leading-relaxed ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
-            Building scalable solutions that solve real problems with frontier technology.
-            6+ years experience serving tens of thousands of users.
-          </p>
-
-          {/* Contact Info */}
-          <div className="flex flex-wrap gap-6 pt-4">
-            <a href="mailto:hello@ngenondumia.com" className={`flex items-center gap-2 transition-colors ${
-              isDark ? 'text-gray-300 hover:text-white' : 'text-gray-600 hover:text-gray-900'
-            }`}>
-              <FaEnvelope className="w-4 h-4" />
-              <span className="text-sm">hello@ngenondumia.com</span>
-            </a>
-            <a href="tel:+254726299179" className={`flex items-center gap-2 transition-colors ${
-              isDark ? 'text-gray-300 hover:text-white' : 'text-gray-600 hover:text-gray-900'
-            }`}>
-              <FaPhone className="w-4 h-4" />
-              <span className="text-sm">+254 726 299 179</span>
-            </a>
-            <div className={`flex items-center gap-2 ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
-              <FaMapMarkerAlt className="w-4 h-4" />
-              <span className="text-sm">Nairobi, Kenya</span>
+          <section className="mx-auto max-w-5xl px-6 py-16">
+            <div className="mb-8 flex items-center justify-between gap-4">
+              <h2 className={`text-3xl font-bold ${heading}`}>Writing</h2>
+              <Link href="/blog" className={`flex items-center gap-2 text-sm ${muted}`}>
+                All posts <FaArrowRight className="h-3 w-3" />
+              </Link>
             </div>
-          </div>
-
-          {/* Social Links */}
-          <div className="flex gap-4 pt-2">
-            {socialLinks.map((link) => (
-              <a
-                key={link.id}
-                href={link.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`p-2 transition-colors ${
-                  isDark ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'
-                }`}
-                aria-label={link.id}
-              >
-                <link.icon className="w-5 h-5" />
-              </a>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* About Me Section */}
-      <section className="max-w-5xl mx-auto px-6 py-16">
-        <h2 className={`text-3xl font-bold mb-6 ${isDark ? 'text-white' : 'text-gray-900'}`}>About Me</h2>
-        <div className={`text-lg leading-relaxed space-y-4 ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
-          <p>
-            I started building frontends in 2019 and haven't stopped shipping since. Over 6+ years I've gone from
-            React and React Native apps to full-stack systems with FastAPI, Django, and PostgreSQL — and more recently
-            into AI/ML, fine-tuning models and building agent workflows.
-          </p>
-          <p>
-            Right now I'm CTO at Navismart AI, building an immigration platform that uses AI agents to guide users
-            through complex application processes. I'm also building Galexia, an educational platform that turns
-            questions into interactive visualizations — flowcharts, 3D molecules, animated canvases, 13 types in total.
-          </p>
-          <p>
-            Most of my work has been for East African businesses and users. I've helped SMEs go digital for the first
-            time and built consumer apps used by 20k+ people on networks where every kilobyte matters. That shapes
-            how I think about performance, UX, and what "good enough" actually means.
-          </p>
-          <p>
-            I use AI tooling daily — Claude Code, Google Antigravity, GitHub Copilot — and I think seriously about
-            where these tools help and where they don't. I also fine-tuned a Gemma 3 model for Kikuyu-English translation,
-            a language spoken by 8M+ people with almost no AI tooling. I build what's missing.
-          </p>
-        </div>
-      </section>
-
-      {/* Experience Section */}
-      <section className="max-w-5xl mx-auto px-6 py-16">
-        <h2 className={`text-3xl font-bold mb-8 ${isDark ? 'text-white' : 'text-gray-900'}`}>Experience</h2>
-        <div className="space-y-8">
-          {experiences.map((exp, index) => (
-            <div key={exp.id}>
-              <div className="pb-8">
-              <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-4 mb-2">
-                <div className="flex items-start gap-4 flex-1">
-                  {exp.logo && (
-                    <div className={`flex-shrink-0 w-12 h-12 relative rounded ${
-                      (exp.id === 'mjenzi' || exp.id === 'jobzy' || exp.id === 'jobzy-limited') ? 'bg-white p-1' : ''
-                    }`}>
-                      <Image
-                        src={exp.id === 'navismart-ai' && !isDark ? '/images/companies/navismart-dark.svg' : exp.logo}
-                        alt={`${exp.company} logo`}
-                        fill
-                        className="object-contain"
-                      />
+            <div className="space-y-4">
+              {writing.map((post) => (
+                <Link key={post.slug} href={`/blog/${post.slug}`} className="group block">
+                  <article className={`rounded-lg p-6 transition-colors ${panel}`}>
+                    <h3 className={`text-xl font-semibold ${heading}`}>{post.title}</h3>
+                    <p className={`mt-2 text-sm leading-relaxed ${muted}`}>{post.description}</p>
+                    <div className={`mt-3 flex flex-wrap items-center gap-2 text-xs ${muted}`}>
+                      <span>{post.readingTime}</span>
+                      <span aria-hidden="true">·</span>
+                      {post.tags.map((tag) => (
+                        <span key={tag}>#{tag}</span>
+                      ))}
                     </div>
-                  )}
-                  <div>
-                    <h3 className={`text-xl font-semibold ${isDark ? 'text-white' : 'text-gray-900'}`}>{exp.role}</h3>
-                    <p className={isDark ? 'text-gray-400' : 'text-gray-600'}>
-                      <a href={exp.companyUrl} target="_blank" rel="noopener noreferrer" className={`transition-colors ${
-                        isDark ? 'hover:text-white' : 'hover:text-gray-900'
-                      }`}>
-                        {exp.company}
-                      </a>
-                    </p>
-                  </div>
-                </div>
-                <span className={`text-sm font-mono flex-shrink-0 ${isDark ? 'text-gray-500' : 'text-gray-500'}`}>{exp.duration}</span>
-              </div>
-
-              <p className={`mb-4 leading-relaxed ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>{exp.description}</p>
-
-              {/* Key achievements */}
-              <ul className="space-y-2 mb-4">
-                {exp.achievements.slice(0, 3).map((achievement, i) => (
-                  <li key={i} className={`flex items-start gap-3 ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
-                    <span className={`mt-1 ${isDark ? 'text-white/50' : 'text-gray-400'}`}>•</span>
-                    <span>{achievement}</span>
-                  </li>
-                ))}
-              </ul>
-
-              {/* Technologies */}
-              <div className="flex flex-wrap gap-2">
-                {exp.technologies.map((tech) => (
-                  <span key={tech} className={`px-3 py-1 text-xs rounded-full ${
-                    isDark ? 'bg-white/5 text-gray-300' : 'bg-gray-100 text-gray-700'
-                  }`}>
-                    {tech}
-                  </span>
-                ))}
-              </div>
-              </div>
-              {index < experiences.length - 1 && (
-                <hr className={`border-t ${isDark ? 'border-white/10' : 'border-gray-200'}`} />
-              )}
+                  </article>
+                </Link>
+              ))}
             </div>
-          ))}
-        </div>
-      </section>
+          </section>
 
-      {/* Projects Section */}
-      <section className="max-w-5xl mx-auto px-6 py-16">
-        <h2 className={`text-3xl font-bold mb-8 ${isDark ? 'text-white' : 'text-gray-900'}`}>Projects</h2>
-        <div className="grid md:grid-cols-2 gap-6">
-          {projects.filter((p) => !p.hidden).map((project) => (
-            <div key={project.id} className={`rounded-lg overflow-hidden transition-colors ${
-              isDark ? 'bg-white/5 hover:bg-white/10' : 'bg-gray-50 hover:bg-gray-100'
-            }`}>
-              {/* Project Image */}
-              {project.image && (
-                <div className="relative h-48 w-full">
-                  <Image
-                    src={project.image}
-                    alt={project.title}
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-              )}
-
-              <div className="p-6">
-                <h3 className={`text-xl font-semibold mb-2 ${isDark ? 'text-white' : 'text-gray-900'}`}>{project.title}</h3>
-                <p className={`mb-4 leading-relaxed text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
-                  {project.description}
-                </p>
-
-              {/* Project Links */}
-              <div className="flex flex-wrap gap-2 mb-4">
-                {project.links.live && (
-                  <a href={project.links.live} target="_blank" rel="noopener noreferrer"
-                    className={`flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-lg transition-all hover:scale-105 ${
-                      isDark
-                        ? 'bg-blue-500/20 text-blue-400 hover:bg-blue-500/30 border border-blue-500/30'
-                        : 'bg-blue-50 text-blue-600 hover:bg-blue-100 border border-blue-200'
-                    }`}>
-                    <FaExternalLinkAlt className="w-4 h-4" />
-                    <span>Visit Site</span>
-                  </a>
-                )}
-                {project.links.github && (
-                  <a href={project.links.github} target="_blank" rel="noopener noreferrer"
-                    className={`flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-lg transition-all hover:scale-105 ${
-                      isDark
-                        ? 'bg-gray-500/20 text-gray-300 hover:bg-gray-500/30 border border-gray-500/30'
-                        : 'bg-gray-50 text-gray-700 hover:bg-gray-100 border border-gray-200'
-                    }`}>
-                    <FaGithub className="w-4 h-4" />
-                    <span>View Code</span>
-                  </a>
-                )}
-                {project.links.playStore && (
-                  <a href={project.links.playStore} target="_blank" rel="noopener noreferrer"
-                    className={`flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-lg transition-all hover:scale-105 ${
-                      isDark
-                        ? 'bg-green-500/20 text-green-400 hover:bg-green-500/30 border border-green-500/30'
-                        : 'bg-green-50 text-green-600 hover:bg-green-100 border border-green-200'
-                    }`}>
-                    <FaGooglePlay className="w-4 h-4" />
-                    <span>Play Store</span>
-                  </a>
-                )}
-                {project.links.appStore && (
-                  <a href={project.links.appStore} target="_blank" rel="noopener noreferrer"
-                    className={`flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-lg transition-all hover:scale-105 ${
-                      isDark
-                        ? 'bg-blue-500/20 text-blue-400 hover:bg-blue-500/30 border border-blue-500/30'
-                        : 'bg-blue-50 text-blue-600 hover:bg-blue-100 border border-blue-200'
-                    }`}>
-                    <FaAppStore className="w-4 h-4" />
-                    <span>App Store</span>
-                  </a>
-                )}
-              </div>
-
-              {/* Technologies */}
-              <div className="flex flex-wrap gap-2">
-                {project.technologies.map((tech) => (
-                  <span key={tech} className={`px-2 py-1 text-xs rounded ${
-                    isDark ? 'bg-white/5 text-gray-300' : 'bg-gray-200 text-gray-700'
-                  }`}>
-                    {tech}
-                  </span>
-                ))}
-              </div>
-              </div>
+          <section id="work-with-me" className="mx-auto max-w-5xl px-6 py-16 md:py-20">
+            <div className={`rounded-2xl border p-8 md:p-12 ${divider} ${panel}`}>
+              <p className={`mb-3 text-sm font-medium uppercase tracking-[0.18em] ${muted}`}>
+                Work with me
+              </p>
+              <h2 className={`max-w-3xl text-3xl font-bold leading-tight md:text-4xl ${heading}`}>
+                Bring me the difficult product and engineering problems.
+              </h2>
+              <p className={`mt-5 max-w-3xl text-lg leading-relaxed ${body}`}>
+                I work on AI systems, full-stack products, mobile applications, and focused technical or product consulting engagements—from early architecture through production delivery.
+              </p>
+              <a
+                href="mailto:hello@ngenondumia.com?subject=Project%20inquiry"
+                className={`mt-8 inline-flex items-center gap-2 rounded-lg px-5 py-3 font-medium transition-colors ${
+                  isDark ? "bg-white text-gray-950 hover:bg-gray-200" : "bg-gray-950 text-white hover:bg-gray-800"
+                }`}
+              >
+                <FaEnvelope className="h-4 w-4" />
+                hello@ngenondumia.com
+              </a>
             </div>
-          ))}
-        </div>
-      </section>
+          </section>
+        </main>
 
-      {/* Skills Section */}
-      <section className="max-w-5xl mx-auto px-6 py-16">
-        <h2 className={`text-3xl font-bold mb-8 ${isDark ? 'text-white' : 'text-gray-900'}`}>Skills & Technologies</h2>
-        <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-8">
-          {[
-            { name: "Frontend", color: "blue" },
-            { name: "Backend", color: "green" },
-            { name: "Mobile", color: "purple" },
-            { name: "AI/ML", color: "orange" }
-          ].map((category) => {
-            const categorySkills = skills.filter(skill => {
-              if (category.name === "Frontend") return ["React", "Next.js", "TypeScript", "Tailwind CSS", "Vue.js", "Redux"].includes(skill.name);
-              if (category.name === "Backend") return ["Elixir", "Phoenix Framework", "Node.js", "Python", "PostgreSQL", "MongoDB", "Express", "Django"].includes(skill.name);
-              if (category.name === "Mobile") return ["React Native", "Flutter", "Swift", "Kotlin"].includes(skill.name);
-              if (category.name === "AI/ML") return ["PyTorch", "Neural Networks", "TensorFlow", "OpenAI Agents SDK", "LangGraph", "Scikit-learn", "Numpy"].includes(skill.name);
-              return false;
-            });
-
-            const colorClasses = {
-              blue: isDark ? 'text-blue-400 border-blue-400/30' : 'text-blue-600 border-blue-600/30',
-              green: isDark ? 'text-green-400 border-green-400/30' : 'text-green-600 border-green-600/30',
-              purple: isDark ? 'text-purple-400 border-purple-400/30' : 'text-purple-600 border-purple-600/30',
-              orange: isDark ? 'text-orange-400 border-orange-400/30' : 'text-orange-600 border-orange-600/30'
-            };
-
-            return (
-              <div key={category.name} className={`border-l-2 pl-4 ${colorClasses[category.color as keyof typeof colorClasses]}`}>
-                <h3 className={`font-semibold mb-4 ${colorClasses[category.color as keyof typeof colorClasses].split(' ')[0]}`}>{category.name}</h3>
-                <ul className="space-y-2">
-                  {categorySkills.map((skill) => (
-                    <li key={skill.name} className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
-                      {skill.name}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            );
-          })}
-        </div>
-      </section>
-
-      {/* Writing Section */}
-      <section className="max-w-5xl mx-auto px-6 py-16">
-        <div className="flex items-center justify-between mb-8">
-          <h2 className={`text-3xl font-bold ${isDark ? 'text-white' : 'text-gray-900'}`}>Writing</h2>
-          <Link href="/blog" className={`flex items-center gap-2 text-sm transition-colors ${
-            isDark ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'
-          }`}>
-            All posts <FaArrowRight className="w-3 h-3" />
-          </Link>
-        </div>
-        <div className="space-y-6">
-          {[
-            {
-              title: "The State of AI Coding in 2026",
-              description: "A working developer's honest assessment of where AI-assisted development actually stands — what works, what doesn't, and what most people get wrong.",
-              slug: "ai-coding-2026",
-              tags: ["ai", "coding", "llm"],
-              readingTime: "10 min read",
-            },
-            {
-              title: "Fine-Tuning Gemma 3 for Kikuyu Translation",
-              description: "How I trained a bidirectional English-Kikuyu translation model using LoRA, progressive fine-tuning, and 141K parallel translations.",
-              slug: "kikuyu-translator",
-              tags: ["ml", "nlp", "african-languages"],
-              readingTime: "8 min read",
-            },
-          ].map((post) => (
-            <Link key={post.slug} href={`/blog/${post.slug}`} className="group block">
-              <div className={`p-6 rounded-lg transition-colors ${
-                isDark ? 'bg-white/5 hover:bg-white/10' : 'bg-gray-50 hover:bg-gray-100'
-              }`}>
-                <h3 className={`text-xl font-semibold mb-2 group-hover:translate-x-1 transition-transform ${
-                  isDark ? 'text-white' : 'text-gray-900'
-                }`}>
-                  {post.title}
-                </h3>
-                <p className={`leading-relaxed text-sm mb-3 ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
-                  {post.description}
-                </p>
-                <div className="flex items-center gap-3">
-                  <span className={`text-xs ${isDark ? 'text-gray-500' : 'text-gray-500'}`}>
-                    {post.readingTime}
-                  </span>
-                  <span className={isDark ? 'text-gray-700' : 'text-gray-300'}>&middot;</span>
-                  <div className="flex gap-2">
-                    {post.tags.map((tag) => (
-                      <span key={tag} className={`text-xs px-2 py-0.5 rounded-full ${
-                        isDark ? 'bg-white/5 text-gray-400' : 'bg-gray-200 text-gray-600'
-                      }`}>
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </Link>
-          ))}
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className={`border-t mt-20 ${isDark ? 'border-white/10' : 'border-gray-200'}`}>
-        <div className="max-w-5xl mx-auto px-6 py-8">
-          <p className={`text-center text-sm ${isDark ? 'text-gray-500' : 'text-gray-500'}`}>
-            © {new Date().getFullYear()} Kelvin Ng'eno. All rights reserved.
-          </p>
-        </div>
-      </footer>
+        <footer className={`mt-12 border-t ${divider}`}>
+          <div className={`mx-auto flex max-w-5xl flex-col gap-3 px-6 py-8 text-sm sm:flex-row sm:items-center sm:justify-between ${muted}`}>
+            <p>© {new Date().getFullYear()} Kelvin Ng&apos;eno.</p>
+            <div className="flex gap-4">
+              {publicLinks.map((link) => (
+                <a key={link.name} href={link.url} target="_blank" rel="noopener noreferrer" className="hover:underline">
+                  {link.name}
+                </a>
+              ))}
+            </div>
+          </div>
+        </footer>
       </div>
     </div>
   );
