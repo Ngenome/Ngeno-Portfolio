@@ -1,10 +1,9 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { FaGithub, FaLinkedin, FaEnvelope, FaPhone, FaMapMarkerAlt, FaGooglePlay, FaAppStore, FaFileDownload, FaExternalLinkAlt, FaMoon, FaSun, FaArrowRight } from "react-icons/fa";
-import { FaXTwitter } from "react-icons/fa6";
+import { FaArrowRight, FaEnvelope, FaExternalLinkAlt, FaFileDownload, FaGithub, FaMapMarkerAlt, FaMoon, FaPhone, FaSun } from "react-icons/fa";
 import { skills } from "@/data/skills";
 import { projects } from "@/data/projects";
 import { experiences } from "@/data/experience";
@@ -22,7 +21,6 @@ const extractDomain = (url: string) => {
 
 const Portfolio = () => {
   const [isDark, setIsDark] = useState(true);
-  const [activeRole, setActiveRole] = useState<string | null>(null);
 
   useEffect(() => {
     const savedTheme = localStorage.getItem('theme');
@@ -36,12 +34,6 @@ const Portfolio = () => {
   }, [isDark]);
 
   const toggleTheme = () => setIsDark(!isDark);
-
-  const roleDescriptions: { [key: string]: string } = {
-    'Senior Full Stack Engineer': 'Building complete web applications from frontend to backend, handling databases, APIs, and deployment.',
-    'AI Engineer': 'Developing intelligent systems using machine learning, LLMs, and AI agents to solve complex problems.',
-    'Mobile Developer': 'Creating native and cross-platform mobile applications for iOS and Android with React Native.'
-  };
 
   return (
     <div className={`min-h-screen transition-colors duration-300 relative ${isDark ? 'bg-surface-dark text-white' : 'bg-white text-gray-900'}`}>
@@ -67,9 +59,9 @@ const Portfolio = () => {
       <header className={`sticky top-0 z-50 backdrop-blur-sm border-b transition-colors duration-300 ${
         isDark ? 'bg-surface-dark/95 border-white/10' : 'bg-white/95 border-gray-200'
       }`}>
-        <div className="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center">
-          <h1 className={`text-base md:text-xl font-semibold ${isDark ? 'text-white' : 'text-gray-900'}`}>Kelvin Ng'eno</h1>
-          <div className="flex items-center gap-4">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 py-4 flex justify-between items-center gap-3">
+          <h1 className={`shrink-0 text-sm sm:text-xl font-semibold whitespace-nowrap ${isDark ? 'text-white' : 'text-gray-900'}`}>Kelvin Ng'eno</h1>
+          <div className="flex items-center gap-2 sm:gap-4">
             <button
               onClick={toggleTheme}
               className={`p-2 rounded-lg transition-colors ${
@@ -85,13 +77,13 @@ const Portfolio = () => {
               }`}>
               Blog
             </Link>
-            <a href="mailto:hello@ngenondumia.com"
-              className={`text-sm transition-colors ${
+            <a href="#work-with-me"
+              className={`hidden sm:inline text-sm transition-colors ${
                 isDark ? 'text-gray-300 hover:text-white' : 'text-gray-600 hover:text-gray-900'
               }`}>
-              Contact
+              Work with me
             </a>
-            <a href="https://docs.google.com/document/d/1MySvsINyYvUlBZZWAD6rRAUzhaXeXyVnSp6zZeVJy6E/edit?usp=sharing" target="_blank" rel="noopener noreferrer"
+            <a href="/resume.pdf" target="_blank" rel="noopener noreferrer"
               className={`flex items-center gap-2 px-4 py-2 text-sm rounded transition-colors ${
                 isDark ? 'bg-white/10 hover:bg-white/20' : 'bg-gray-100 hover:bg-gray-200'
               }`}>
@@ -109,45 +101,14 @@ const Portfolio = () => {
             <h2 className={`text-4xl md:text-6xl font-bold mb-4 ${isDark ? 'text-white' : 'text-gray-900'}`}>
               Kelvin Ng'eno
             </h2>
-            <div className="flex flex-wrap items-center justify-start gap-2 text-xl">
-              {['Senior Full Stack Engineer', 'AI Engineer', 'Mobile Developer'].map((role, index) => (
-                <div key={role} className="relative inline-block">
-                  <button
-                    onClick={() => setActiveRole(activeRole === role ? null : role)}
-                    className={`transition-colors hover:text-white ${isDark ? 'text-gray-400' : 'text-gray-600 hover:text-gray-900'}`}
-                  >
-                    {role}
-                  </button>
-                  {activeRole === role && (
-                    <>
-                      {/* Backdrop to close popover */}
-                      <div
-                        className="fixed inset-0 z-40"
-                        onClick={() => setActiveRole(null)}
-                      />
-                      {/* Popover */}
-                      <div className={`absolute top-full left-1/2 transform -translate-x-1/2 mt-2 w-64 sm:w-80 p-4 rounded-lg shadow-lg z-50 ${
-                        isDark ? 'bg-surface-light border border-white/10' : 'bg-white border border-gray-200'
-                      }`}>
-                        <div className={`text-sm leading-relaxed ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
-                          {roleDescriptions[role]}
-                        </div>
-                        {/* Arrow */}
-                        <div className={`absolute -top-2 left-1/2 transform -translate-x-1/2 w-4 h-4 rotate-45 ${
-                          isDark ? 'bg-surface-light border-t border-l border-white/10' : 'bg-white border-t border-l border-gray-200'
-                        }`} />
-                      </div>
-                    </>
-                  )}
-                  {index < 2 && <span className={`mx-2 ${isDark ? 'text-gray-600' : 'text-gray-400'}`}>·</span>}
-                </div>
-              ))}
-            </div>
+            <p className={`text-xl ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+              AI Engineer &amp; Full-Stack Product Builder
+            </p>
           </div>
 
           <p className={`text-lg max-w-2xl leading-relaxed ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
-            Building scalable solutions that solve real problems with frontier technology.
-            6+ years experience serving tens of thousands of users.
+            AI engineer and full-stack product leader building agentic systems, ML infrastructure,
+            and practical products.
           </p>
 
           {/* Contact Info */}
@@ -171,19 +132,20 @@ const Portfolio = () => {
           </div>
 
           {/* Social Links */}
-          <div className="flex gap-4 pt-2">
+          <div className="flex flex-wrap gap-x-5 gap-y-3 pt-2">
             {socialLinks.map((link) => (
               <a
                 key={link.id}
                 href={link.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`p-2 transition-colors ${
+                className={`inline-flex items-center gap-2 text-sm transition-colors ${
                   isDark ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'
                 }`}
-                aria-label={link.id}
+                aria-label={link.name}
               >
-                <link.icon className="w-5 h-5" />
+                <link.icon className="w-4 h-4" />
+                <span>{link.name}</span>
               </a>
             ))}
           </div>
@@ -195,24 +157,24 @@ const Portfolio = () => {
         <h2 className={`text-3xl font-bold mb-6 ${isDark ? 'text-white' : 'text-gray-900'}`}>About Me</h2>
         <div className={`text-lg leading-relaxed space-y-4 ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
           <p>
-            I started building frontends in 2019 and haven't stopped shipping since. Over 6+ years I've gone from
-            React and React Native apps to full-stack systems with FastAPI, Django, and PostgreSQL — and more recently
-            into AI/ML, fine-tuning models and building agent workflows.
+            I&apos;m an AI engineer and full-stack product builder in Nairobi. I started in web and mobile,
+            and that product grounding still shapes how I build AI: the system has to be secure,
+            understandable, and useful to the person on the other side of it.
           </p>
           <p>
-            Right now I'm CTO at Navismart AI, building an immigration platform that uses AI agents to guide users
-            through complex application processes. I'm also building Galexia, an educational platform that turns
-            questions into interactive visualizations — flowcharts, 3D molecules, animated canvases, 13 types in total.
+            At Navismart AI, I lead agentic workflows for immigration guidance, OCR and VLM-assisted
+            document ingestion, document review, browser interaction, and interview preparation. The
+            platform runs on secure Django and FastAPI services with RBAC, PII encryption, and audit logging.
           </p>
           <p>
-            Most of my work has been for East African businesses and users. I've helped SMEs go digital for the first
-            time and built consumer apps used by 20k+ people on networks where every kilobyte matters. That shapes
-            how I think about performance, UX, and what "good enough" actually means.
+            I also founded Dissolve Software, where I build web, mobile, AI, and automation systems for
+            SMEs and media clients. That work has included agentic RAG and semantic search, digitization
+            and image-similarity systems, model fine-tuning, speech recognition, and ML scoring prototypes.
           </p>
           <p>
-            I use AI tooling daily — Claude Code, Google Antigravity, GitHub Copilot — and I think seriously about
-            where these tools help and where they don't. I also fine-tuned a Gemma 3 model for Kikuyu-English translation,
-            a language spoken by 8M+ people with almost no AI tooling. I build what's missing.
+            The East African context is part of the work. I&apos;ve shipped Talanta AI to 20,000+ active
+            iOS and Android users, fine-tuned a Kikuyu-English translation model, and published Kikuyu
+            ASR data on Hugging Face. I like building products that make local-language technology useful.
           </p>
         </div>
       </section>
@@ -256,7 +218,7 @@ const Portfolio = () => {
 
               {/* Key achievements */}
               <ul className="space-y-2 mb-4">
-                {exp.achievements.slice(0, 3).map((achievement, i) => (
+                {exp.achievements.map((achievement, i) => (
                   <li key={i} className={`flex items-start gap-3 ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
                     <span className={`mt-1 ${isDark ? 'text-white/50' : 'text-gray-400'}`}>•</span>
                     <span>{achievement}</span>
@@ -286,90 +248,83 @@ const Portfolio = () => {
       {/* Projects Section */}
       <section className="max-w-5xl mx-auto px-6 py-16">
         <h2 className={`text-3xl font-bold mb-8 ${isDark ? 'text-white' : 'text-gray-900'}`}>Projects</h2>
-        <div className="grid md:grid-cols-2 gap-6">
-          {projects.filter((p) => !p.hidden).map((project) => (
-            <div key={project.id} className={`rounded-lg overflow-hidden transition-colors ${
-              isDark ? 'bg-white/5 hover:bg-white/10' : 'bg-gray-50 hover:bg-gray-100'
-            }`}>
-              {/* Project Image */}
-              {project.image && (
-                <div className="relative h-48 w-full">
-                  <Image
-                    src={project.image}
-                    alt={project.title}
-                    fill
-                    className="object-cover"
-                  />
+        <div className={`divide-y border-y ${isDark ? 'divide-white/10 border-white/10' : 'divide-gray-200 border-gray-200'}`}>
+          {projects.map((project) => (
+            <article key={project.id} className="py-8">
+              <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-4">
+                <div>
+                  <h3 className={`text-xl font-semibold mb-2 ${isDark ? 'text-white' : 'text-gray-900'}`}>{project.title}</h3>
+                  <p className={`leading-relaxed ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+                    {project.description}
+                  </p>
                 </div>
-              )}
-
-              <div className="p-6">
-                <h3 className={`text-xl font-semibold mb-2 ${isDark ? 'text-white' : 'text-gray-900'}`}>{project.title}</h3>
-                <p className={`mb-4 leading-relaxed text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
-                  {project.description}
-                </p>
-
-              {/* Project Links */}
-              <div className="flex flex-wrap gap-2 mb-4">
                 {project.links.live && (
                   <a href={project.links.live} target="_blank" rel="noopener noreferrer"
-                    className={`flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-lg transition-all hover:scale-105 ${
-                      isDark
-                        ? 'bg-blue-500/20 text-blue-400 hover:bg-blue-500/30 border border-blue-500/30'
-                        : 'bg-blue-50 text-blue-600 hover:bg-blue-100 border border-blue-200'
+                    className={`flex-shrink-0 inline-flex items-center gap-2 text-sm font-medium ${
+                      isDark ? 'text-gray-300 hover:text-white' : 'text-gray-700 hover:text-gray-900'
                     }`}>
-                    <FaExternalLinkAlt className="w-4 h-4" />
-                    <span>Visit Site</span>
-                  </a>
-                )}
-                {project.links.github && (
-                  <a href={project.links.github} target="_blank" rel="noopener noreferrer"
-                    className={`flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-lg transition-all hover:scale-105 ${
-                      isDark
-                        ? 'bg-gray-500/20 text-gray-300 hover:bg-gray-500/30 border border-gray-500/30'
-                        : 'bg-gray-50 text-gray-700 hover:bg-gray-100 border border-gray-200'
-                    }`}>
-                    <FaGithub className="w-4 h-4" />
-                    <span>View Code</span>
-                  </a>
-                )}
-                {project.links.playStore && (
-                  <a href={project.links.playStore} target="_blank" rel="noopener noreferrer"
-                    className={`flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-lg transition-all hover:scale-105 ${
-                      isDark
-                        ? 'bg-green-500/20 text-green-400 hover:bg-green-500/30 border border-green-500/30'
-                        : 'bg-green-50 text-green-600 hover:bg-green-100 border border-green-200'
-                    }`}>
-                    <FaGooglePlay className="w-4 h-4" />
-                    <span>Play Store</span>
-                  </a>
-                )}
-                {project.links.appStore && (
-                  <a href={project.links.appStore} target="_blank" rel="noopener noreferrer"
-                    className={`flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-lg transition-all hover:scale-105 ${
-                      isDark
-                        ? 'bg-blue-500/20 text-blue-400 hover:bg-blue-500/30 border border-blue-500/30'
-                        : 'bg-blue-50 text-blue-600 hover:bg-blue-100 border border-blue-200'
-                    }`}>
-                    <FaAppStore className="w-4 h-4" />
-                    <span>App Store</span>
+                    {extractDomain(project.links.live)} <FaExternalLinkAlt className="w-3 h-3" />
                   </a>
                 )}
               </div>
-
-              {/* Technologies */}
+              <p className={`text-sm mb-2 ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
+                <span className="font-semibold">Role:</span> {project.role}
+              </p>
+              <p className={`text-sm leading-relaxed mb-4 ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+                <span className={`font-semibold ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>Proof:</span> {project.proof}
+              </p>
               <div className="flex flex-wrap gap-2">
                 {project.technologies.map((tech) => (
                   <span key={tech} className={`px-2 py-1 text-xs rounded ${
-                    isDark ? 'bg-white/5 text-gray-300' : 'bg-gray-200 text-gray-700'
+                    isDark ? 'bg-white/5 text-gray-300' : 'bg-gray-100 text-gray-700'
                   }`}>
                     {tech}
                   </span>
                 ))}
               </div>
-              </div>
-            </div>
+            </article>
           ))}
+        </div>
+        <div className="flex flex-wrap gap-6 pt-6">
+          <a href="https://navismartai.com" target="_blank" rel="noopener noreferrer"
+            className={`inline-flex items-center gap-2 text-sm ${isDark ? 'text-gray-300 hover:text-white' : 'text-gray-700 hover:text-gray-900'}`}>
+            Navismart AI <FaExternalLinkAlt className="w-3 h-3" />
+          </a>
+          <a href="https://github.com/ngenome" target="_blank" rel="noopener noreferrer"
+            className={`inline-flex items-center gap-2 text-sm ${isDark ? 'text-gray-300 hover:text-white' : 'text-gray-700 hover:text-gray-900'}`}>
+            <FaGithub className="w-4 h-4" /> GitHub
+          </a>
+          <a href="https://huggingface.co/InterstellarCG/" target="_blank" rel="noopener noreferrer"
+            className={`inline-flex items-center gap-2 text-sm ${isDark ? 'text-gray-300 hover:text-white' : 'text-gray-700 hover:text-gray-900'}`}>
+            Hugging Face <FaExternalLinkAlt className="w-3 h-3" />
+          </a>
+        </div>
+      </section>
+
+      {/* Work With Me Section */}
+      <section id="work-with-me" className="max-w-5xl mx-auto px-6 py-16 scroll-mt-24">
+        <div className={`rounded-xl border p-8 sm:p-10 ${
+          isDark ? 'border-white/10 bg-white/5' : 'border-gray-200 bg-gray-50'
+        }`}>
+          <p className={`text-sm font-medium uppercase tracking-widest mb-3 ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
+            Work with me
+          </p>
+          <h2 className={`text-3xl font-bold mb-4 ${isDark ? 'text-white' : 'text-gray-900'}`}>
+            Build the useful version.
+          </h2>
+          <p className={`max-w-2xl leading-relaxed mb-6 ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
+            I take on AI systems, full-stack product work, mobile delivery, and focused technical or
+            product consulting—from agentic and document workflows to production backends and apps.
+          </p>
+          <a
+            href="mailto:hello@ngenondumia.com?subject=Project%20inquiry"
+            className={`inline-flex items-center gap-2 px-5 py-3 rounded-lg font-medium transition-colors ${
+              isDark ? 'bg-white text-gray-900 hover:bg-gray-200' : 'bg-gray-900 text-white hover:bg-gray-700'
+            }`}
+          >
+            <FaEnvelope className="w-4 h-4" />
+            hello@ngenondumia.com
+          </a>
         </div>
       </section>
 
@@ -378,16 +333,16 @@ const Portfolio = () => {
         <h2 className={`text-3xl font-bold mb-8 ${isDark ? 'text-white' : 'text-gray-900'}`}>Skills & Technologies</h2>
         <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-8">
           {[
-            { name: "Frontend", color: "blue" },
-            { name: "Backend", color: "green" },
-            { name: "Mobile", color: "purple" },
-            { name: "AI/ML", color: "orange" }
+            { name: "AI Engineering", color: "orange" },
+            { name: "Full-Stack Systems", color: "green" },
+            { name: "ML & Speech", color: "blue" },
+            { name: "Product Delivery", color: "purple" }
           ].map((category) => {
             const categorySkills = skills.filter(skill => {
-              if (category.name === "Frontend") return ["React", "Next.js", "TypeScript", "Tailwind CSS", "Vue.js", "Redux"].includes(skill.name);
-              if (category.name === "Backend") return ["Elixir", "Phoenix Framework", "Node.js", "Python", "PostgreSQL", "MongoDB", "Express", "Django"].includes(skill.name);
-              if (category.name === "Mobile") return ["React Native", "Flutter", "Swift", "Kotlin"].includes(skill.name);
-              if (category.name === "AI/ML") return ["PyTorch", "Neural Networks", "TensorFlow", "OpenAI Agents SDK", "LangGraph", "Scikit-learn", "Numpy"].includes(skill.name);
+              if (category.name === "AI Engineering") return ["AI Agents", "OpenAI Agents SDK", "LangGraph", "Browser Use", "RAG & Semantic Search", "OCR & VLM Pipelines"].includes(skill.name);
+              if (category.name === "Full-Stack Systems") return ["Python", "Django", "FastAPI", "PostgreSQL", "Redis", "React", "Next.js", "TypeScript"].includes(skill.name);
+              if (category.name === "ML & Speech") return ["PyTorch", "TensorFlow", "Scikit-learn", "Hugging Face", "Whisper & ASR"].includes(skill.name);
+              if (category.name === "Product Delivery") return ["React Native", "Expo", "AWS", "Azure", "Docker", "CI/CD Pipelines"].includes(skill.name);
               return false;
             });
 
@@ -435,7 +390,7 @@ const Portfolio = () => {
             },
             {
               title: "Fine-Tuning Gemma 3 for Kikuyu Translation",
-              description: "How I trained a bidirectional English-Kikuyu translation model using LoRA, progressive fine-tuning, and 141K parallel translations.",
+              description: "How I trained a bidirectional English-Kikuyu translation model using LoRA and progressive fine-tuning.",
               slug: "kikuyu-translator",
               tags: ["ml", "nlp", "african-languages"],
               readingTime: "8 min read",

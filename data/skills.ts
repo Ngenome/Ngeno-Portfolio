@@ -99,6 +99,26 @@ export const skills: Skill[] = [
     category: "ai",
   },
   {
+    name: "RAG & Semantic Search",
+    icon: FaRobot,
+    category: "ai",
+  },
+  {
+    name: "OCR & VLM Pipelines",
+    icon: FaBrain,
+    category: "ai",
+  },
+  {
+    name: "Hugging Face",
+    icon: FaBrain,
+    category: "ai",
+  },
+  {
+    name: "Whisper & ASR",
+    icon: FaBrain,
+    category: "ai",
+  },
+  {
     name: "Computer Vision",
     icon: FaBrain,
     category: "ai",
@@ -365,5 +385,4 @@ export const skills: Skill[] = [
     category: "frontend",
   },
 ];
-
 

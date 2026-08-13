@@ -4,6 +4,8 @@ export interface Project {
   id: string;
   title: string;
   description: string;
+  role?: string;
+  proof?: string;
   image?: string;
   technologies: string[];
   links: {
@@ -55,5 +57,5 @@ export interface SocialLink {
   id: string;
   name: string;
   url: string;
-  icon: React.ComponentType;
+  icon: React.ComponentType<{ className?: string }>;
 }

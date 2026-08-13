@@ -1,5 +1,6 @@
 // src/data/social.ts
 import { SocialLink } from "../types";
+import { createElement } from "react";
 import {
   FaGithub,
   FaLinkedin,
@@ -11,12 +12,21 @@ import {
 } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 
+const HuggingFaceIcon = ({ className }: { className?: string }) =>
+  createElement("span", { className, role: "img", "aria-label": "Hugging Face" }, "🤗");
+
 export const socialLinks: SocialLink[] = [
   {
     id: "github",
     name: "GitHub",
     url: "https://github.com/ngenome",
     icon: FaGithub,
+  },
+  {
+    id: "hugging-face",
+    name: "Hugging Face",
+    url: "https://huggingface.co/InterstellarCG/",
+    icon: HuggingFaceIcon,
   },
   {
     id: "linkedin",
@@ -71,17 +81,19 @@ export const contactInfo = {
 
 export const resumeData = {
   downloadUrl: "/resume.pdf",
-  lastUpdated: "2024-03",
+  lastUpdated: "2026-08",
   sections: {
     profile: {
       title: "Professional Summary",
       content:
-        "Innovative and results-driven Full Stack Developer with over 3 years of experience in web and mobile app development, and 4 years in front-end development. Adept at designing scalable APIs, integrating backends with intuitive front-ends, and delivering user-centric digital solutions. Passionate about leveraging cutting-edge technologies to create impactful software that solves REAL problems.",
+        "AI engineer and full-stack product builder working across agentic systems, secure backend architecture, machine learning, web, and mobile product delivery.",
     },
     expertise: [
       "Full Stack Development",
       "Mobile App Development",
-      "AI/ML Integration",
+      "AI Engineering",
+      "Agentic Workflows",
+      "Document Ingestion",
       "Cloud Architecture",
       "UI/UX Design",
       "System Architecture",
